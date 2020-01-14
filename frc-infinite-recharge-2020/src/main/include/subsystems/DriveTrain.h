@@ -8,17 +8,28 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include <frc/WPILib.h>
+#include <Constants.h>
+#include <Robot.h>
+#include <commands/DriveWithJoystick.h>
+#include "ctre/Phoenix.h"
 
-class ExampleSubsystem : public frc2::SubsystemBase {
+class DriveTrain : public frc2::SubsystemBase {
  public:
-  ExampleSubsystem();
 
+
+  DriveTrain();
+  void TankDrive(double leftspeed, double rightspeed);
+  void ArcadeDrive(double speed, double turn);
+  void Stop();
+  
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
- private:
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
+    // remember to put something here later ya feel?
+
+  private:
+
 };

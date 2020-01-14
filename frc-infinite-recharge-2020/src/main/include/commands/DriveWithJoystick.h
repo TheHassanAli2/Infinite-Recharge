@@ -9,26 +9,36 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-
-#include "subsystems/ExampleSubsystem.h"
-
+#include <RobotContainer.h>
+#include "subsystems/DriveTrain.h"
+#include "Robot.h"
 /**
  * An example command that uses an example subsystem.
- *
+ * pianist
  * <p>Note that this extends CommandHelper, rather extending CommandBase
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class ExampleCommand
-    : public frc2::CommandHelper<frc2::CommandBase, ExampleCommand> {
+class DriveWithJoystick
+    : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
  public:
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  explicit ExampleCommand(ExampleSubsystem* subsystem);
+  DriveWithJoystick(DriveTrain* subsystem);
+  
+  void Initialize() override;
+
+  void Execute() override;
+
+  bool IsFinished() override; 
+
+  void End();
+  
+  void Interrupted();
 
  private:
-  ExampleSubsystem* m_subsystem;
+  DriveTrain* m_drivetrain;
 };
