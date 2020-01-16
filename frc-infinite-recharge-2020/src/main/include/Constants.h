@@ -5,24 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 namespace DriveConstants
 {
-  std::shared_ptr<frc::ADXRS450_Gyro> gyro;
-  std::shared_ptr<frc::Encoder> leftDriveEncoder;
-  std::shared_ptr<frc::Encoder> rightDriveEncoder;
-  std::shared_ptr<frc::DifferentialDrive> differentialDrive;
 
-  std::shared_ptr<frc::SpeedControllerGroup> leftDrive;
-  std::shared_ptr<frc::SpeedControllerGroup> rightDrive;
-  std::shared_ptr<frc::SpeedController> frontLeftDrive;  
-  std::shared_ptr<frc::SpeedController> backLeftDrive;
-  std::shared_ptr<frc::SpeedController> frontRightDrive;
-  std::shared_ptr<frc::SpeedController> backRightDrive;
-  std::shared_ptr<frc::DoubleSolenoid> gearSolenoid;
-  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid;
-  std::shared_ptr<frc::Compressor> compressor;
 }
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -33,3 +21,4 @@ namespace DriveConstants
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+#endif //CONSTANTS_H

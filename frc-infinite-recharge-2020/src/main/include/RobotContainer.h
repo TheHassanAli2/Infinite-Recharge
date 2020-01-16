@@ -5,10 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+
+#ifndef ROBOTCONTAINER_H
+#define ROBOTCONTAINER_H
 
 #include <frc2/command/Command.h>
 #include <frc/WPILib.h>
+#include <subsystems/DriveTrain.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -20,12 +23,10 @@
 class RobotContainer {
  public:
   RobotContainer();
-  std::shared_ptr<frc::Joystick> getDriveStick();
-	std::shared_ptr<frc::Joystick> getDriveStick2();
 
-  std::shared_ptr<frc::Joystick> driveStick; //DriveTrain Controller (PS4 Port 0)
-	std::shared_ptr<frc::Joystick> driveStick2; //Emergency Controller (XBOX Port 1)
-	
+	frc::Joystick xbox{0};
+	frc::Joystick ps4{1};
+
 	// Drive Stick Buttons
 	frc::JoystickButton *aButtonS;
 	frc::JoystickButton *bButtonS;
@@ -68,6 +69,11 @@ class RobotContainer {
 	static const int RIGHT_X_AXIS_E = 2;
 	static const int RIGHT_Y_AXIS_E = 5;
 
+	
+private:
+	DriveTrain drivetrain;
 
   void ConfigureButtonBindings();
 }; 
+
+#endif // ROBOTMAP_H

@@ -5,13 +5,22 @@
 /* the project.                                                               */
  
 #include "commands/DriveWithJoystick.h"
-DriveWithJoystick::DriveWithJoystick(DriveTrain* subsystem): m_drivetrain(subsystem){
-        AddRequirements({subsystem});
+
+
+DriveWithJoystick::DriveWithJoystick(DriveTrain* subsystem): drivetrain{subsystem}{
+        AddRequirements(subsystem);
     }
+
+DriveWithJoystick::~DriveWithJoystick() {
+
+}
+
 void DriveWithJoystick::Execute(){
-    float m_speed = (0.95 * Robot::robotcontainer->driveStick2->GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
-    float m_turn = (1.0 * Robot::robotcontainer->driveStick2->GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
-    Robot::drivetrain->ArcadeDrive(m_speed, m_turn);
+    //float m_speed = (0.95 * Robot::robotcontainer->driveStick2->GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
+    float m_speed = (0.95 * container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
+    //float m_turn = (1.0 * Robot::robotcontainer->driveStick2->GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
+    float m_turn = (1.0 * container->ps4.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
+    drivetrain->ArcadeDrive(m_speed, m_turn);
 } 
 
 bool DriveWithJoystick::IsFinished(){
@@ -19,9 +28,13 @@ bool DriveWithJoystick::IsFinished(){
 }
 
 void DriveWithJoystick::End(){
-    Robot::drivetrain->Stop();
+    drivetrain->Stop();
 }
 
 void DriveWithJoystick::Interrupted(){
     End();
+}
+
+void DriveWithJoystick::Initialize() {
+    
 }

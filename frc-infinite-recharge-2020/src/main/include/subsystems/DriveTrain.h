@@ -4,14 +4,14 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
-#pragma once
+#ifndef DRIVETRAIN_H
+#define DRIVETRAIN_H
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/WPILib.h>
 #include <Constants.h>
-#include <Robot.h>
-#include <commands/DriveWithJoystick.h>
+//#include <Robot.h>
+//#include <commands/DriveWithJoystick.h>
 #include "ctre/Phoenix.h"
 
 class DriveTrain : public frc2::SubsystemBase {
@@ -22,7 +22,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void TankDrive(double leftspeed, double rightspeed);
   void ArcadeDrive(double speed, double turn);
   void Stop();
-  
+     std::shared_ptr<frc::DifferentialDrive> differentialDrive;
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -31,5 +31,9 @@ class DriveTrain : public frc2::SubsystemBase {
     // remember to put something here later ya feel?
 
   private:
-
+    VictorSPX frontLeftMotor;
+    VictorSPX backLeftMotor;
+    VictorSPX frontRightMotor;
+    VictorSPX backRightMotor;
 };
+#endif // DRIVETRAIN_H

@@ -10,26 +10,12 @@
 
 using namespace DriveConstants;
 
-DriveTrain::DriveTrain()
+DriveTrain::DriveTrain() : frontLeftMotor(2), backLeftMotor(3), frontRightMotor(0), backRightMotor(1)
 {
-void frc2::CommandScheduler::RegisterSubsystem();	
-#define FRONT_LEFT_DRIVE_PORT 2
-#define BACK_LEFT_DRIVE_PORT 3
-#define FRONT_RIGHT_DRIVE_PORT 0
-#define BACK_RIGHT_DRIVE_PORT 1
-
-  backLeftDrive = DriveConstants::backLeftDrive;
-  frontLeftDrive = DriveConstants::frontLeftDrive;
-  backRightDrive = DriveConstants::backRightDrive;
-  frontRightDrive = DriveConstants::frontRightDrive;
-
-  backLeftDrive.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(3));
-
-  frontLeftDrive.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(2));
-
-  backRightDrive.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(1));
-
-  frontRightDrive.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(0));
+frontLeftMotor.SetInverted(true);
+backLeftMotor.SetInverted(true);
+frontRightMotor.SetInverted(true);
+backRightMotor.SetInverted(true);
 }
 
 void DriveTrain::Periodic()

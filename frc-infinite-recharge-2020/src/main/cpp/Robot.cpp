@@ -1,26 +1,29 @@
 #include <Robot.h>
 #include <unistd.h>
 
-std::unique_ptr<RobotContainer> Robot::robotcontainer;
-std::shared_ptr<DriveTrain> Robot::drivetrain;
+#include <frc2/command/PrintCommand.h>
+#include <frc2/command/CommandScheduler.h>
 
 void Robot::RobotInit() {
 
     printf("%s  %d\n", __FUNCTION__, __LINE__);
 
 
-    drivetrain.reset(new DriveTrain());
-    robotcontainer.reset(new RobotContainer());
+    //drivetrain.reset(new DriveTrain());
+    //robotcontainer.reset(new RobotContainer());
 
     printf("Robot init completed\n");
- 
+    frc2::PrintCommand("yo wussup").Schedule();
 
 }
 
+void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
+
 void Robot::AutonomousInit(){
-if (m_autonomousCommand != nullptr)
+if (m_autonomousCommand != nullptr){
         m_autonomousCommand->Cancel();
         m_autonomousCommand = nullptr;
+}
 }
 
 void Robot::DisabledInit() {
@@ -28,26 +31,23 @@ void Robot::DisabledInit() {
 }
 
 void Robot::DisabledPeriodic() {
-    frc2::CommandScheduler::GetInstance();
+
 }
 
 void Robot::AutonomousPeriodic() {
-    frc2::CommandScheduler::Run();
 
 }
 
 void Robot::TeleopInit() {
-    if (m_autonomousCommand != nullptr)
+    if (m_autonomousCommand != nullptr){
         m_autonomousCommand->Cancel();
         m_autonomousCommand = nullptr;
 
-
+    }
 }
 
-void Robot::TeleopPeriodic() {
-    frc2::CommandScheduler::Run();
-    DriveTrain.SetDefaultCommand(std::move(DriveWithJoystick));
-}
+void Robot::TeleopPeriodic(){}
+
 
 void Robot::TestPeriodic() {}
 

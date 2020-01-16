@@ -5,7 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#ifndef DRIVEWITHJOYSTICK_H
+#define DRIVEWITHJOYSTICK_H
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
@@ -27,7 +28,8 @@ class DriveWithJoystick
    *
    * @param subsystem The subsystem used by this command.
    */
-  DriveWithJoystick(DriveTrain* subsystem);
+  DriveWithJoystick(DriveTrain* drivetrain);
+  virtual ~DriveWithJoystick();
   
   void Initialize() override;
 
@@ -40,5 +42,7 @@ class DriveWithJoystick
   void Interrupted();
 
  private:
-  DriveTrain* m_drivetrain;
+  DriveTrain* drivetrain;
+  RobotContainer* container; 
 };
+#endif // DRIVEWITHJOYSTICK_H
