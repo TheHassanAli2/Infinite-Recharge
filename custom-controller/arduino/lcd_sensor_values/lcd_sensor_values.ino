@@ -1,5 +1,7 @@
-#include <Wire.h> 
+#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+
+
 const int buttonPin=2;
 int buttonState = 0;
 int count = 0;
@@ -7,12 +9,16 @@ int pressed;
 int old_reading = 0;
 int new_reading = 0;
 int old_button = 0;
-int new_button = 0;
-  
+int new_button = 0;  
 LiquidCrystal_I2C lcd(0x27,20,4);
 int potPin1 = A1;         
 
-
+/*
+ * Prints a message on a screen
+ * 
+ * msg:  string to print
+ * line: the line number (0 or 1)
+ */
 void print_msg (const char *msg, int line)
 {
   for (int i = 16; i >= -16 ; --i)
@@ -24,6 +30,10 @@ void print_msg (const char *msg, int line)
   }
 }
 
+/*
+ * Setup function. Called at initial boot of the
+ * program.
+ */
 void setup ()
 {
   pinMode(buttonPin,INPUT);
@@ -46,6 +56,10 @@ void setup ()
   lcd.print("ButtonValue: 0");
 }
 
+/*
+ * Main program loop. Called to run
+ * the program.
+ */
 void loop()
 {
   char buffer[80] = {0};
