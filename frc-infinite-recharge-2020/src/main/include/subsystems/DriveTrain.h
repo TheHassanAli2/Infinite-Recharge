@@ -22,7 +22,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void TankDrive(double leftspeed, double rightspeed);
   void ArcadeDrive(double speed, double turn);
   void Stop();
-     std::shared_ptr<frc::DifferentialDrive> differentialDrive;
+  
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -31,9 +31,12 @@ class DriveTrain : public frc2::SubsystemBase {
     // remember to put something here later ya feel?
 
   private:
-    VictorSPX frontLeftMotor;
-    VictorSPX backLeftMotor;
-    VictorSPX frontRightMotor;
-    VictorSPX backRightMotor;
+    std::shared_ptr<frc::SpeedController> frontLeftMotor;
+    std::shared_ptr<frc::SpeedController> backLeftMotor;
+    std::shared_ptr<frc::SpeedController> frontRightMotor;
+    std::shared_ptr<frc::SpeedController> backRightMotor;
+    std::shared_ptr<frc::DifferentialDrive> differentialDrive;
+    std::shared_ptr<frc::SpeedControllerGroup> leftDrive;
+    std::shared_ptr<frc::SpeedControllerGroup> rightDrive;
 };
 #endif // DRIVETRAIN_H

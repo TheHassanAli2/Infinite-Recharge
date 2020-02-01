@@ -28,8 +28,7 @@ class DriveWithJoystick
    *
    * @param subsystem The subsystem used by this command.
    */
-  DriveWithJoystick(DriveTrain* drivetrain);
-  virtual ~DriveWithJoystick();
+  DriveWithJoystick(DriveTrain* subsystem, RobotContainer* contained);
   
   void Initialize() override;
 

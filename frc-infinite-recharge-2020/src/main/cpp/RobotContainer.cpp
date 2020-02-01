@@ -11,7 +11,7 @@
 
 RobotContainer::RobotContainer()
 {
-	drivetrain.SetDefaultCommand(std::move(DriveWithJoystick(&drivetrain)));
+	drivetrain.SetDefaultCommand(std::move(DriveWithJoystick(&drivetrain, this)));
 	ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()

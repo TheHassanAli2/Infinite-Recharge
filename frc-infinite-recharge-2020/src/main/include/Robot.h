@@ -38,7 +38,6 @@ private:
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand = nullptr;
   //frc::SendableChooser<frc::Command*> m_chooser;
-  DriveTrain drivetrain;
 
   RobotContainer container;
 };

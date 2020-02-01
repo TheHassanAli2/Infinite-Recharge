@@ -1,4 +1,3 @@
-
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -7,15 +6,29 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/DriveTrain.h"
+#include "frc/SpeedController.h"
 
 using namespace DriveConstants;
 
-DriveTrain::DriveTrain() : frontLeftMotor(2), backLeftMotor(3), frontRightMotor(0), backRightMotor(1)
+DriveTrain::DriveTrain()
 {
-frontLeftMotor.SetInverted(true);
-backLeftMotor.SetInverted(true);
-frontRightMotor.SetInverted(true);
-backRightMotor.SetInverted(true);
+  printf("Drivetrain init completed\n");
+  frontLeftMotor.reset(new frc::VictorSP(0));
+  backLeftMotor.reset(new frc::VictorSP(1));
+  frontRightMotor.reset(new frc::VictorSP(2));
+  backRightMotor.reset(new frc::VictorSP(3));
+  leftDrive.reset(new frc::SpeedControllerGroup(*backLeftMotor, *frontLeftMotor));
+  rightDrive.reset(new frc::SpeedControllerGroup(*backRightMotor, *frontRightMotor));
+  differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
+
+
+  frontLeftMotor->SetInverted(true);
+  backLeftMotor->SetInverted(true);
+  frontRightMotor->SetInverted(true);
+  backRightMotor->SetInverted(true);
+  leftDrive->SetInverted(true);
+  rightDrive->SetInverted(true);
+
 }
 
 void DriveTrain::Periodic()
