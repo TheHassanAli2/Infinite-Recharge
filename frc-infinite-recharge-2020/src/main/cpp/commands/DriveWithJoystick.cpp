@@ -6,6 +6,7 @@
  
 #include "commands/DriveWithJoystick.h"
 
+namespace frc4783 {
 
 DriveWithJoystick::DriveWithJoystick(DriveTrain* subsystem, RobotContainer* contained) : drivetrain(subsystem), container(contained){
         AddRequirements(subsystem);
@@ -34,3 +35,5 @@ void DriveWithJoystick::Interrupted(){
 void DriveWithJoystick::Initialize() {
     
 }
+
+} /* namespace frc4783 */

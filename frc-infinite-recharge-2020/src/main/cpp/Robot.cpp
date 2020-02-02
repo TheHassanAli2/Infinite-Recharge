@@ -8,7 +8,6 @@ void Robot::RobotInit() {
 
     printf("%s  %d\n", __FUNCTION__, __LINE__);
 
-
     //drivetrain.reset(new DriveTrain());
     //robotcontainer.reset(new RobotContainer());
 
@@ -20,10 +19,10 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
 void Robot::AutonomousInit(){
-if (m_autonomousCommand != nullptr){
-        m_autonomousCommand->Cancel();
-        m_autonomousCommand = nullptr;
-}
+    if (m_autonomousCommand != nullptr){
+            m_autonomousCommand->Cancel();
+            m_autonomousCommand = nullptr;
+    }
 }
 
 void Robot::DisabledInit() {
@@ -42,7 +41,6 @@ void Robot::TeleopInit() {
     if (m_autonomousCommand != nullptr){
         m_autonomousCommand->Cancel();
         m_autonomousCommand = nullptr;
-
     }
 }
 

@@ -9,8 +9,9 @@
 #ifndef ROBOTCONTAINER_H
 #define ROBOTCONTAINER_H
 
+#include <frc/Joystick.h>
+#include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
-#include <frc/WPILib.h>
 #include <subsystems/DriveTrain.h>
 
 /**
@@ -21,59 +22,58 @@
  * commands, and button mappings) should be declared here.
  */
 class RobotContainer {
- public:
-  RobotContainer();
+public:
+    RobotContainer();
 
-	frc::Joystick xbox{0};
-	frc::Joystick ps4{1};
+    frc::Joystick xbox{0};
+    frc::Joystick ps4{1};
 
-	// Drive Stick Buttons
-	frc::JoystickButton *aButtonS;
-	frc::JoystickButton *bButtonS;
-	frc::JoystickButton *xButtonS;
-	frc::JoystickButton *yButtonS;
-	frc::JoystickButton *leftBumperButtonS;
-	frc::JoystickButton *rightBumperButtonS;
-	frc::JoystickButton *selectButtonS;
-	frc::JoystickButton *startButtonS;
-	frc::JoystickButton *leftStickButtonS;
-	frc::JoystickButton *rightStickButtonS;
-	frc::JoystickButton *leftTriggerButtonS;
-	frc::JoystickButton *rightTriggerButtonS;
-	frc::JoystickButton *homeButtonS;
-	frc::JoystickButton *touchpadButtonS;
+    // Drive Stick Buttons
+    frc::JoystickButton *aButtonS;
+    frc::JoystickButton *bButtonS;
+    frc::JoystickButton *xButtonS;
+    frc::JoystickButton *yButtonS;
+    frc::JoystickButton *leftBumperButtonS;
+    frc::JoystickButton *rightBumperButtonS;
+    frc::JoystickButton *selectButtonS;
+    frc::JoystickButton *startButtonS;
+    frc::JoystickButton *leftStickButtonS;
+    frc::JoystickButton *rightStickButtonS;
+    frc::JoystickButton *leftTriggerButtonS;
+    frc::JoystickButton *rightTriggerButtonS;
+    frc::JoystickButton *homeButtonS;
+    frc::JoystickButton *touchpadButtonS;
 
-	frc::JoystickButton *aButtonP;
-	frc::JoystickButton *bButtonP;
-	frc::JoystickButton *xButtonP;
-	frc::JoystickButton *yButtonP;
-	frc::JoystickButton *leftBumperButtonP;
-	frc::JoystickButton *rightBumperButtonP;
-	frc::JoystickButton *selectButtonP;
-	frc::JoystickButton *startButtonP;
-	frc::JoystickButton *leftStickButtonP;
-	frc::JoystickButton *rightStickButtonP;
+    frc::JoystickButton *aButtonP;
+    frc::JoystickButton *bButtonP;
+    frc::JoystickButton *xButtonP;
+    frc::JoystickButton *yButtonP;
+    frc::JoystickButton *leftBumperButtonP;
+    frc::JoystickButton *rightBumperButtonP;
+    frc::JoystickButton *selectButtonP;
+    frc::JoystickButton *startButtonP;
+    frc::JoystickButton *leftStickButtonP;
+    frc::JoystickButton *rightStickButtonP;
 
-	// Axies for controller
-	static const int LEFT_X_AXIS = 0;	//Logitech
-	static const int LEFT_Y_AXIS = 1;
-	static const int LEFT_TRIGGER_AXIS = 3;
-	static const int RIGHT_TRIGGER_AXIS = 2;
-	static const int RIGHT_X_AXIS = 4;
-	static const int RIGHT_Y_AXIS = 5;
+    // Axies for controller
+    static const int LEFT_X_AXIS = 0;	//Logitech
+    static const int LEFT_Y_AXIS = 1;
+    static const int LEFT_TRIGGER_AXIS = 3;
+    static const int RIGHT_TRIGGER_AXIS = 2;
+    static const int RIGHT_X_AXIS = 4;
+    static const int RIGHT_Y_AXIS = 5;
 
-	static const int LEFT_X_AXIS_E = 0; 	//PS4
-	static const int LEFT_Y_AXIS_E = 1;
-	static const int LEFT_TRIGGER_AXIS_E = 3;
-	static const int RIGHT_TRIGGER_AXIS_E = 4;
-	static const int RIGHT_X_AXIS_E = 2;
-	static const int RIGHT_Y_AXIS_E = 5;
+    static const int LEFT_X_AXIS_E = 0; 	//PS4
+    static const int LEFT_Y_AXIS_E = 1;
+    static const int LEFT_TRIGGER_AXIS_E = 3;
+    static const int RIGHT_TRIGGER_AXIS_E = 4;
+    static const int RIGHT_X_AXIS_E = 2;
+    static const int RIGHT_Y_AXIS_E = 5;
 
-	
 private:
-	DriveTrain drivetrain;
+    frc4783::DriveTrain drivetrain;
 
-  void ConfigureButtonBindings();
+    void ConfigureButtonBindings();
 }; 
 
 #endif // ROBOTMAP_H

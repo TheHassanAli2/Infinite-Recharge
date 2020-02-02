@@ -2,7 +2,6 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include <frc/WPILib.h>
 #include <Constants.h>
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
@@ -34,11 +33,11 @@ class Robot : public frc::TimedRobot {
     void TestPeriodic() override;
 
 private:
-  // Have it null by default so that if testing teleop it
-  // doesn't have undefined behavior and potentially crash.
-  frc2::Command* m_autonomousCommand = nullptr;
-  //frc::SendableChooser<frc::Command*> m_chooser;
+    // Have it null by default so that if testing teleop it
+    // doesn't have undefined behavior and potentially crash.
+    frc2::Command* m_autonomousCommand = nullptr;
+    //frc::SendableChooser<frc::Command*> m_chooser;
 
-  RobotContainer container;
+    RobotContainer container;
 };
 #endif //ROBOT_H
