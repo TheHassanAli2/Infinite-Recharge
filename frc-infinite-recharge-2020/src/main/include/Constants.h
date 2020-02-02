@@ -5,7 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -16,3 +17,11 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+
+
+namespace DriveConstants
+{
+
+}
+
+#endif //CONSTANTS_H
