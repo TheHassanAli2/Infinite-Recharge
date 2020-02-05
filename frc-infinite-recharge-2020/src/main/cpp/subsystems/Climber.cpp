@@ -6,12 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Climber.h"
-#include "frc/SpeedController.h"
-#include "frc/DoubleSolenoid.h"
+#include <frc/VictorSP.h>
+#include <frc/DoubleSolenoid.h>
+
+namespace frc4783{
 
 Climber::Climber() {
   pivotMotor.reset(new frc::VictorSP(4));
-  climbSolenoid.reset(new frc::DoubleSolenoid(#))
+  climbSolenoid.reset(new frc::DoubleSolenoid(0,1));
 
   pivotMotor->SetInverted(true);
 }
@@ -22,15 +24,15 @@ void Climber::Periodic() {
 
 void Climber::ClimbReset(){
   climbSolenoid->Set(frc::DoubleSolenoid::Value::kReverse);
-  pivotMotor.Set(0);
+  pivotMotor->Set(0);
 }
 
 void Climber::ClimbMotor(bool clockwise) {
   if (clockwise == true){
-    pivotMotor.Set(1);
+    pivotMotor->Set(1);
   }
   else {
-    pivotMotor.Set(-1);
+    pivotMotor->Set(-1);
   }
 }
 
@@ -44,7 +46,7 @@ void Climber::ClimbSolenoid(bool extended) {
 }
 
 void Climber::ClimbPart1() {
-  pivotMotor.Set(1);
+  pivotMotor->Set(1);
   // might add pause
   climbSolenoid->Set(frc::DoubleSolenoid::Value::kForward);
 }
@@ -52,3 +54,5 @@ void Climber::ClimbPart1() {
 void Climber::ClimbPart2() {
   climbSolenoid->Set(frc::DoubleSolenoid::Value::kReverse);
 }
+
+} //namespace frc4783

@@ -21,6 +21,9 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
+
+namespace frc4783 {
+
 class Climb
     : public frc2::CommandHelper<frc2::CommandBase, Climb> {
  public:
@@ -44,5 +47,8 @@ class Climb
  private:
   Climber* climber;
   RobotContainer* container;
+  bool mode;
 };
+
+} //namespace frc4783
 #endif // CLIMB_H

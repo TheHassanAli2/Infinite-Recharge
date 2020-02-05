@@ -7,11 +7,20 @@
 
 #include "commands/Climb.h"
 
+
+namespace frc4783 {
+
 Climb::Climb(Climber* subsystem, RobotContainer* contained) : climber(subsystem), container(contained){
         AddRequirements(subsystem);
-    }
+        bool mode = true;
+        }
 void Climb::Initialize() {
-    
+    if (mode == true){
+        climber->ClimbPart1();
+    }
+    else {
+        climber->ClimbPart2();
+    }
 }
 
 void Climb::Execute(){
@@ -29,3 +38,5 @@ void Climb::End(){
 void Climb::Interrupted(){
    
 } 
+
+} //namespace frc4783

@@ -9,15 +9,19 @@
 #define CLIMBER_H
 
 #include <frc2/command/SubsystemBase.h>
+#include <frc/SpeedController.h>
+#include <frc/DoubleSolenoid.h>
 #include <frc/WPILib.h>
 #include <Constants.h>
+
+namespace frc4783 {
 
 class Climber : public frc2::SubsystemBase {
  public:
   Climber();
   void ClimbReset();
-  void ClimbMotor();
-  void ClimbSolenoid();
+  void ClimbMotor(bool clockwise);
+  void ClimbSolenoid(bool extended);
   void ClimbPart1();
   void ClimbPart2();
 
@@ -32,4 +36,6 @@ class Climber : public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
+
+} //namespace frc4783
 #endif // CLIMBER_H
