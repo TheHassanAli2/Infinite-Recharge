@@ -14,3 +14,22 @@ ControlPanel::ControlPanel() {
 void ControlPanel::Periodic() {
   // Implementation of subsystem periodic method goes here.
 }
+
+void ControlPanel::InitDefaultCommand (){
+}
+
+void ControlPanel::SetMotorSpeed(float speed){  
+  controlpanelMotor.Set(speed)
+}
+
+void ControlPanel::SpinClockwise(){
+  controlpanelMotor.Set(1);
+}
+
+void ControlPanel::SpinCounterClockwise(){
+  controlpanelMotor.Set(-1);
+}
+
+void ControlPanel::StopMotor(){
+  controlpanelMotor.Set(0);
+}
