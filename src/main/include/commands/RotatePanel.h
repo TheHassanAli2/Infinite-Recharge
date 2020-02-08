@@ -46,5 +46,5 @@ class RotatePanel
 
  private:
   frc4783::ControlPanel *controlpanelSubsystem;
-  
+  bool on;
 };

@@ -50,7 +50,7 @@ public:
 
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
-    frc::JoystickButton *xButtonP;
+    frc2::JoystickButton *xButtonP;
     frc::JoystickButton *yButtonP;
     frc::JoystickButton *leftBumperButtonP;
     frc::JoystickButton *rightBumperButtonP;

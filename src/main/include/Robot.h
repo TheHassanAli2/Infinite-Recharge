@@ -7,8 +7,8 @@
 #include <frc2/command/Command.h>
 
 // Vision includes
-#include <cameraserver/CameraServer.h>
-#include <thread>
+//#include <cameraserver/CameraServer.h>
+//#include <thread>
 
 // Subsystem includes
 #include <RobotContainer.h>

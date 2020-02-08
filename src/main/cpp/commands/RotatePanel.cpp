@@ -11,13 +11,23 @@
 #include "Robot.h"
 
 RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)
-    : controlpanelSubsystem{ctrlPanel} {
-printf("Rotate Panel ctor\n");
+    : controlpanelSubsystem(ctrlPanel),
+    on(false) {
+    printf("Rotate Panel ctor\n");
 }
 
 void RotatePanel::Initialize(){
     //SetTimeout(3);
+    if (on ){
+        controlpanelSubsystem->SetMotorSpeed(0);
+        on = false;
+    }
+    else {
         controlpanelSubsystem->SetMotorSpeed(0.5);
+        on = true;
+    }
+
+    printf("RotatePanel::initialize: %d\n", on);
 }
     
 void RotatePanel::Execute(){
@@ -27,14 +37,16 @@ void RotatePanel::Execute(){
 bool RotatePanel::IsFinished(){
     //if (IsTimedOut()) {
     //printf("%s  %d TIMEOUT \n", __FUNCTION__, __LINE__);
-    return false;
- 
-}
-
-void RotatePanel::End(){
+    printf("RotatePanel::isFinished\n");
+    return true;
 
 }
 
 void RotatePanel::Interrupted(){
+printf("RotatePanel::interrupted\n");
+}
 
+void RotatePanel::End() {
+    printf("RotatePanel::end\n");
+controlpanelSubsystem->StopMotor();
 }

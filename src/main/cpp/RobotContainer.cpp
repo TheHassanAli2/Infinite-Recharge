@@ -11,15 +11,17 @@
 
 RobotContainer::RobotContainer()
 {
+    printf("RobotContainer: drivetrain -set default command\n");
     drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
     ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()
 {
+    printf("configure button bindings");
     // Drive Stick Buttons
     aButtonP = new frc::JoystickButton(&xbox,1);
     bButtonP = new frc::JoystickButton(&xbox, 2);
-    xButtonP = new frc::JoystickButton(&xbox, 3);
+    xButtonP = new frc2::JoystickButton(&xbox, 3);
     yButtonP = new frc::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
     rightBumperButtonP = new frc::JoystickButton(&xbox, 6);
@@ -44,6 +46,7 @@ void RobotContainer::ConfigureButtonBindings()
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
 
 printf("configure button bindings - init rotatepanel command\n");
-    aButtonS->WhileHeld(new RotatePanel(&ctrlPanel));
+    aButtonS->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
+    xButtonP->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
 
 }
