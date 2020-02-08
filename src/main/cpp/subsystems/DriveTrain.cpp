@@ -39,8 +39,13 @@ void DriveTrain::Periodic()
 
 void DriveTrain::ArcadeDrive(double speed, double turn)
 {
+
+    printf("Controller values are: %f \n",turn*1.0);
     differentialDrive->ArcadeDrive(speed, turn);
+
 }
+
+
 
 void DriveTrain::Stop()
 {
