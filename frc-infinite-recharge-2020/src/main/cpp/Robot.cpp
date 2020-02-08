@@ -12,19 +12,13 @@ void Robot::RobotInit() {
     //drivetrain.reset(new DriveTrain());
     //robotcontainer.reset(new RobotContainer());
 
-    printf("Robot init completed\n");
     frc2::PrintCommand("yo wussup").Schedule();
-
+    
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
-void Robot::AutonomousInit(){
-if (m_autonomousCommand != nullptr){
-        m_autonomousCommand->Cancel();
-        m_autonomousCommand = nullptr;
-}
-}
+void Robot::AutonomousInit(){}
 
 void Robot::DisabledInit() {
     
@@ -42,7 +36,6 @@ void Robot::TeleopInit() {
     if (m_autonomousCommand != nullptr){
         m_autonomousCommand->Cancel();
         m_autonomousCommand = nullptr;
-
     }
 }
 

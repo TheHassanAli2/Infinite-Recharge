@@ -9,28 +9,38 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/WPILib.h>
-#include <Constants.h>
+#include <frc/DoubleSolenoid.h>
 //#include <Robot.h>
 //#include <commands/DriveWithJoystick.h>
 #include "ctre/Phoenix.h"
 
 class DriveTrain : public frc2::SubsystemBase {
- public:
+public:
+
+    DriveTrain();
+    //DriveWithJoystick Methods
+    void TankDrive(double leftspeed, double rightspeed);
+    void ArcadeDrive(double speed, double turn);
+    void Stop();
+
+    /**
+     * Will be called periodically whenever the CommandScheduler runs.
+     */
+    void Periodic() override;
+
+    //GearShift Methods
+    void ReverseGear();
+	void ForwardGear();
 
 
-  DriveTrain();
-  void TankDrive(double leftspeed, double rightspeed);
-  void ArcadeDrive(double speed, double turn);
-  void Stop();
-  
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  void Periodic() override;
-
+    // Gearshift Solenoids and variables
+     
+    bool highGear;
     // remember to put something here later ya feel?
+    std::shared_ptr<frc::DoubleSolenoid> gearSolenoid;
 
-  private:
+private:
+    // DriveWithJoystick Motors
     std::shared_ptr<frc::SpeedController> frontLeftMotor;
     std::shared_ptr<frc::SpeedController> backLeftMotor;
     std::shared_ptr<frc::SpeedController> frontRightMotor;
@@ -38,5 +48,7 @@ class DriveTrain : public frc2::SubsystemBase {
     std::shared_ptr<frc::DifferentialDrive> differentialDrive;
     std::shared_ptr<frc::SpeedControllerGroup> leftDrive;
     std::shared_ptr<frc::SpeedControllerGroup> rightDrive;
+  
 };
+
 #endif // DRIVETRAIN_H

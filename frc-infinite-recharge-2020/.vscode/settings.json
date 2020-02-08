@@ -13,7 +13,7 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "C_Cpp.errorSquiggles": "Enabled",
+  "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
     "thread": "cpp",
     "array": "cpp",
@@ -75,7 +75,8 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "cinttypes": "cpp",
-    "typeinfo": "cpp"
-  },
+    "typeinfo": "cpp",
+    "*.inc": "cpp"
+},
   "C_Cpp.default.configurationProvider": "vscode-wpilib"
 }

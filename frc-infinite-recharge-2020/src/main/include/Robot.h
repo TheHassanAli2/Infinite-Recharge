@@ -34,11 +34,11 @@ class Robot : public frc::TimedRobot {
     void TestPeriodic() override;
 
 private:
-  // Have it null by default so that if testing teleop it
-  // doesn't have undefined behavior and potentially crash.
-  frc2::Command* m_autonomousCommand = nullptr;
-  //frc::SendableChooser<frc::Command*> m_chooser;
+    // Have it null by default so that if testing teleop it
+    // doesn't have undefined behavior and potentially crash.
+    frc2::Command* m_autonomousCommand = nullptr;
+    //frc::SendableChooser<frc::Command*> m_chooser;
 
-  RobotContainer container;
+      RobotContainer robotcontainer;
 };
 #endif //ROBOT_H

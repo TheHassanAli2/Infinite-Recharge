@@ -23,25 +23,25 @@
 class DriveWithJoystick
     : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
  public:
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  DriveWithJoystick(DriveTrain* subsystem, RobotContainer* contained);
-  
-  void Initialize() override;
+    /**
+     * Creates a new ExampleCommand.
+     *
+     * @param subsystem The subsystem used by this command.
+     */
+    DriveWithJoystick(DriveTrain* subsystem, RobotContainer* contained);
+    
+    void Initialize() override;
 
-  void Execute() override;
+    void Execute() override;
 
-  bool IsFinished() override; 
+    bool IsFinished() override; 
 
-  void End();
-  
-  void Interrupted();
+    void End();
+    
+    void Interrupted();
 
  private:
-  DriveTrain* drivetrain;
-  RobotContainer* container; 
+    DriveTrain* drivetrain;
+    RobotContainer* container; 
 };
 #endif // DRIVEWITHJOYSTICK_H
