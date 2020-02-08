@@ -6,8 +6,10 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/ControlPanel.h"
-
+#include <frc/VictorSP.h>
 ControlPanel::ControlPanel() {
+  controlpanelMotor.reset(new frc::VictorSP(1));
+
   // Implementation of subsystem constructor goes here.
 }
 
@@ -19,17 +21,17 @@ void ControlPanel::InitDefaultCommand (){
 }
 
 void ControlPanel::SetMotorSpeed(float speed){  
-  controlpanelMotor.Set(speed)
+  controlpanelMotor->Set(speed);
 }
 
 void ControlPanel::SpinClockwise(){
-  controlpanelMotor.Set(1);
+  controlpanelMotor->Set(1);
 }
 
 void ControlPanel::SpinCounterClockwise(){
-  controlpanelMotor.Set(-1);
+  controlpanelMotor->Set(-1);
 }
 
 void ControlPanel::StopMotor(){
-  controlpanelMotor.Set(0);
+  controlpanelMotor->Set(0);
 }

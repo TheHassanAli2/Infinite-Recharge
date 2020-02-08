@@ -15,7 +15,7 @@ namespace frc4783 {
 DriveTrain::DriveTrain()
 {
     printf("Drivetrain init completed\n");
-    frontLeftMotor.reset(new frc::VictorSP(0));
+    //frontLeftMotor.reset(new frc::VictorSP(0));
     backLeftMotor.reset(new frc::VictorSP(1));
     frontRightMotor.reset(new frc::VictorSP(2));
     backRightMotor.reset(new frc::VictorSP(3));

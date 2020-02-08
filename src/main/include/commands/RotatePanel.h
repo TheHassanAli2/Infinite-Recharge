@@ -18,17 +18,23 @@
  * <p>Note that this extends CommandHelper, rather extending CommandBase
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
+ * 
+ * 
+ *
  */
 class RotatePanel
     : public frc2::CommandHelper<frc2::CommandBase, RotatePanel> {
  public:
+  RotatePanel();
+    
   /**
    * Creates a new RotatePanel.
    *
    * @param subsystem The subsystem used by this command.
    */
-  explicit RotatePanel(ControlPanel* subsystem);
+  explicit RotatePanel(ControlPanel* ControlPanel);
 
  private:
-  ControlPanel* m_subsystem;
+  ControlPanel *controlpanelSubsystem;
+  
 };
