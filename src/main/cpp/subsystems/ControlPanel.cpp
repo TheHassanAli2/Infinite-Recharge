@@ -7,9 +7,12 @@
 
 #include "subsystems/ControlPanel.h"
 #include <frc/VictorSP.h>
-ControlPanel::ControlPanel() {
-  controlpanelMotor.reset(new frc::VictorSP(1));
 
+namespace frc4783 {
+
+ControlPanel::ControlPanel() {
+  controlpanelMotor.reset(new frc::VictorSP(0));
+  printf("Control Panel ctor\n");
   // Implementation of subsystem constructor goes here.
 }
 
@@ -35,3 +38,5 @@ void ControlPanel::SpinCounterClockwise(){
 void ControlPanel::StopMotor(){
   controlpanelMotor->Set(0);
 }
+
+} // namespace frc4783

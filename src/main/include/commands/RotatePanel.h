@@ -26,15 +26,25 @@ class RotatePanel
     : public frc2::CommandHelper<frc2::CommandBase, RotatePanel> {
  public:
   RotatePanel();
+    void Initialize();
+
+    void Execute();
+    
+    bool IsFinished();
+    
+    void End();
+    
+    void Interrupted();
+    
     
   /**
    * Creates a new RotatePanel.
    *
    * @param subsystem The subsystem used by this command.
    */
-  explicit RotatePanel(ControlPanel* ControlPanel);
+  explicit RotatePanel(frc4783::ControlPanel* ControlPanel);
 
  private:
-  ControlPanel *controlpanelSubsystem;
+  frc4783::ControlPanel *controlpanelSubsystem;
   
 };

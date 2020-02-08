@@ -13,6 +13,7 @@
 // Subsystem includes
 #include <RobotContainer.h>
 #include <subsystems/DriveTrain.h>
+#include <subsystems/ControlPanel.h>
 
 class Robot : public frc::TimedRobot {
     public:

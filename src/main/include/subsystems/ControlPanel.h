@@ -16,6 +16,8 @@
 #include <frc2/command/CommandHelper.h> 
 #include <frc/smartdashboard/smartdashboard.h>
 
+namespace frc4783 {
+
 class ControlPanel : public frc2::Subsystem {
   private:
     std::shared_ptr<frc::SpeedController> controlpanelMotor;
@@ -46,4 +48,4 @@ class ControlPanel : public frc2::Subsystem {
 };
 
   
- //}  // namespace frc
+ }  // namespace frc4783

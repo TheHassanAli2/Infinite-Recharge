@@ -10,9 +10,13 @@
 #define ROBOTCONTAINER_H
 
 #include <frc/Joystick.h>
+#include <frc2/command/button/JoystickButton.h>
 #include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
+
+#include <subsystems/ControlPanel.h>
+#include <commands/RotatePanel.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -29,7 +33,7 @@ public:
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
-    frc::JoystickButton *aButtonS;
+    frc2::JoystickButton *aButtonS;
     frc::JoystickButton *bButtonS;
     frc::JoystickButton *xButtonS;
     frc::JoystickButton *yButtonS;
@@ -72,6 +76,7 @@ public:
 
 private:
     frc4783::DriveTrain drivetrain;
+    frc4783::ControlPanel  ctrlPanel;
 
     void ConfigureButtonBindings();
 }; 

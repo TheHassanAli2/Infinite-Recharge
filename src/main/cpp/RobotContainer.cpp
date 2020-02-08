@@ -30,7 +30,7 @@ void RobotContainer::ConfigureButtonBindings()
 
     // Drive Stick Buttons
     xButtonS = new frc::JoystickButton(&ps4, 1);			 //'[]' on PS
-    aButtonS = new frc::JoystickButton(&ps4, 2);			 //'X' on PS
+    aButtonS = new frc2::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
     yButtonS = new frc::JoystickButton(&ps4, 4);			 //'/\' on PS
     leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
@@ -42,4 +42,8 @@ void RobotContainer::ConfigureButtonBindings()
     leftStickButtonS = new frc::JoystickButton(&ps4, 11);   //'L3' on PS
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
+
+printf("configure button bindings - init rotatepanel command\n");
+    aButtonS->WhileHeld(new RotatePanel(&ctrlPanel));
+
 }
