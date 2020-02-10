@@ -11,6 +11,9 @@
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
 #include <frc/smartdashboard/smartdashboard.h>
+#include <unistd.h>
+#include "Robot.h"
+#include <frc/commands/Scheduler.h>
 
 static constexpr auto i2cPort = frc::I2C::Port::kOnboard;
 
@@ -18,11 +21,24 @@ rev::ColorSensorV3 m_colorSensor{i2cPort};
 
 rev::ColorMatch m_colorMatcher;
 
-static constexpr frc::Color kBlueTarget = frc::Color(0.23, 0.48,0.26);
-static constexpr frc::Color kGreenTarget = frc::Color(0.27, 0.55, 0.15);
-static constexpr frc::Color kRedTarget = frc::Color(0.61, 0.33, 0.06);
-static constexpr frc::Color kYellowTarget = frc::Color(0.43, 0.49,0.06);
+#define COMPETITION_VALUES
+#ifdef COMPETITION_VALUES
 
+// Values from color sample
+static constexpr frc::Color kBlueTarget = frc::Color(0.11, 0.41, 0.46);
+static constexpr frc::Color kGreenTarget = frc::Color(0.16, 0.57, 0.25);
+static constexpr frc::Color kRedTarget = frc::Color(0.52, 0.34, 0.13);
+static constexpr frc::Color kYellowTarget = frc::Color(0.31, 0.56, 0.12);
+
+#else
+
+// Values from Ctrl Panel Prototype
+static constexpr frc::Color kBlueTarget = frc::Color(0.147, 0.42, 0.42);
+static constexpr frc::Color kGreenTarget = frc::Color(0.196, 0.522, 0.280);
+static constexpr frc::Color kRedTarget = frc::Color(0.397, 0.419, 0.177);
+static constexpr frc::Color kYellowTarget = frc::Color(0.314, 0.539 ,0.146);
+
+#endif
 
 
 namespace frc4783 {
@@ -30,6 +46,10 @@ namespace frc4783 {
 ControlPanel::ControlPanel() {
   controlpanelMotor.reset(new frc::VictorSP(0));
   printf("Control Panel ctor\n");
+    m_colorMatcher.AddColorMatch(kBlueTarget);
+  m_colorMatcher.AddColorMatch(kGreenTarget);
+  m_colorMatcher.AddColorMatch(kRedTarget);
+  m_colorMatcher.AddColorMatch(kYellowTarget);
   // Implementation of subsystem constructor goes here.
 }
 
@@ -43,8 +63,6 @@ void ControlPanel::Periodic() {
   frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
   frc::SmartDashboard::PutNumber("IR", IR);
 
-  printf("r: %f  g: %f  b: %f\n", detectedColor.red, detectedColor.green, detectedColor.blue);
-
   uint32_t proximity = m_colorSensor.GetProximity();
 
   frc::SmartDashboard::PutNumber("Proximity", proximity);
@@ -53,25 +71,33 @@ void ControlPanel::Periodic() {
   double confidence = 0.0;
   frc::Color matchedColor = m_colorMatcher.MatchClosestColor(detectedColor, confidence);
 
+//printf("matched: r: %f  g: %f  b: %f  ", matchedColor.red, matchedColor.green, matchedColor.blue);
+  
+
   if (matchedColor == kBlueTarget) {
-      printf ("Blue ");
+      //printf ("Blue ");
+      colorString = "Blue";
     } else if (matchedColor == kRedTarget) {
-      printf ("Red ");
+      //printf ("Red ");
+      colorString = "Red";
     } else if (matchedColor == kGreenTarget) {
-      printf ("Green ");
+      //printf ("Green ");
+      colorString = "Green";
     } else if (matchedColor == kYellowTarget) {
-      printf ("Yellow ");
+      //printf ("Yellow ");
+      colorString = "Yellow";
     } else {
-      printf ("Unknown ");
+      //printf ("Unknown ");
+      colorString = "Unknown";
     }
+
+  printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
+
 
 }
 
 void ControlPanel::InitDefaultCommand (){
-  m_colorMatcher.AddColorMatch(kBlueTarget);
-  m_colorMatcher.AddColorMatch(kGreenTarget);
-  m_colorMatcher.AddColorMatch(kRedTarget);
-  m_colorMatcher.AddColorMatch(kYellowTarget);
+
 }
 
 void ControlPanel::SetMotorSpeed(float speed){  
