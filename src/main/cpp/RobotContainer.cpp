@@ -8,6 +8,10 @@
 #include "RobotContainer.h"
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
+#include <frc2/command/button/JoystickButton.h>
+
+#include "commands/MoveIntake.h"
+#include "commands/SpitIntake.h"
 
 RobotContainer::RobotContainer()
 {
@@ -33,8 +37,8 @@ void RobotContainer::ConfigureButtonBindings()
     aButtonS = new frc::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
     yButtonS = new frc::JoystickButton(&ps4, 4);			 //'/\' on PS
-    leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
-    rightBumperButtonS = new frc::JoystickButton(&ps4, 6);  //'R1' on PS
+    leftBumperButtonS = new frc2::JoystickButton(&ps4, 5);   //'L1' on PS
+    rightBumperButtonS = new frc2::JoystickButton(&ps4, 6);  //'R1' on PS
     leftTriggerButtonS = new frc::JoystickButton(&ps4, 7);  //'L2' on PS
     rightTriggerButtonS = new frc::JoystickButton(&ps4, 8); //'R2' on PS
     selectButtonS = new frc::JoystickButton(&ps4, 9);		 //'Share/Back' on PS
@@ -42,4 +46,11 @@ void RobotContainer::ConfigureButtonBindings()
     leftStickButtonS = new frc::JoystickButton(&ps4, 11);   //'L3' on PS
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
+
+      leftBumperButtonS
+        ->WhileHeld(new frc4783::MoveIntake(&intake));
+
+      rightBumperButtonS
+        ->WhileHeld(new frc4783::SpitIntake(&intake));
+    
 }

@@ -11,8 +11,10 @@
 
 #include <frc/Joystick.h>
 #include <frc/buttons/JoystickButton.h>
+#include <frc2/command/button/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
+#include <subsystems/Intake.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -33,8 +35,8 @@ public:
     frc::JoystickButton *bButtonS;
     frc::JoystickButton *xButtonS;
     frc::JoystickButton *yButtonS;
-    frc::JoystickButton *leftBumperButtonS;
-    frc::JoystickButton *rightBumperButtonS;
+    frc2::JoystickButton *leftBumperButtonS;
+    frc2::JoystickButton *rightBumperButtonS;
     frc::JoystickButton *selectButtonS;
     frc::JoystickButton *startButtonS;
     frc::JoystickButton *leftStickButtonS;
@@ -72,7 +74,7 @@ public:
 
 private:
     frc4783::DriveTrain drivetrain;
-
+    Intake intake;
     void ConfigureButtonBindings();
 }; 
 
