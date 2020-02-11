@@ -24,15 +24,15 @@ rev::ColorMatch m_colorMatcher;
 #define COMPETITION_VALUES
 #ifdef COMPETITION_VALUES
 
-// Values from color sample
-static constexpr frc::Color kBlueTarget = frc::Color(0.11, 0.41, 0.46);
-static constexpr frc::Color kGreenTarget = frc::Color(0.16, 0.57, 0.25);
-static constexpr frc::Color kRedTarget = frc::Color(0.52, 0.34, 0.13);
-static constexpr frc::Color kYellowTarget = frc::Color(0.31, 0.56, 0.12);
+// Values from color sample from kit without light
+static constexpr frc::Color kBlueTarget = frc::Color(0.23, 0.49, 0.27);
+static constexpr frc::Color kGreenTarget = frc::Color(0.25, 0.58, 0.15);
+static constexpr frc::Color kRedTarget = frc::Color(0.65, 0.29, 0.04);
+static constexpr frc::Color kYellowTarget = frc::Color(0.43, 0.49, 0.06);
 
 #else
 
-// Values from Ctrl Panel Prototype
+// Values from Ctrl Panel Prototype without light
 static constexpr frc::Color kBlueTarget = frc::Color(0.147, 0.42, 0.42);
 static constexpr frc::Color kGreenTarget = frc::Color(0.196, 0.522, 0.280);
 static constexpr frc::Color kRedTarget = frc::Color(0.397, 0.419, 0.177);
