@@ -5,8 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef CLIMB_H
-#define CLIMB_H
+#ifndef CLIMBEXTEND_H
+#define CLIMBEXTEND_H
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
@@ -24,15 +24,15 @@
 
 namespace frc4783 {
 
-class Climb
-    : public frc2::CommandHelper<frc2::CommandBase, Climb> {
+class ClimbExtend
+    : public frc2::CommandHelper<frc2::CommandBase, ClimbExtend> {
  public:
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  Climb(Climber* subsystem, RobotContainer* contained);
+  ClimbExtend(Climber* subsystem);
   //explicit ExampleCommand(ExampleSubsystem* subsystem);
   void Initialize() override;
 
@@ -46,8 +46,6 @@ class Climb
 
  private:
   Climber* climber;
-  RobotContainer* container;
-  bool mode;
 };
 
 } //namespace frc4783

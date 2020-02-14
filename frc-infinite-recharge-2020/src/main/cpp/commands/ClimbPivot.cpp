@@ -5,38 +5,33 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/Climb.h"
+#include "commands/ClimbPivot.h"
+#include "subsystems/Climber.h"
 
 
 namespace frc4783 {
 
-Climb::Climb(Climber* subsystem, RobotContainer* contained) : climber(subsystem), container(contained){
+ClimbPivot::ClimbPivot(Climber* subsystem) : climber(subsystem){
         AddRequirements(subsystem);
-        bool mode = true;
         }
-void Climb::Initialize() {
-    if (mode == true){
-        climber->ClimbPart1();
-    }
-    else {
-        climber->ClimbPart2();
-    }
-}
+void ClimbPivot::Initialize() {
+    climber->ClimbPivotStage(1);
+} 
 
-void Climb::Execute(){
+void ClimbPivot::Execute(){
         
 } 
 
-bool Climb::IsFinished(){
-    
+bool ClimbPivot::IsFinished(){
+    return climber->ClimbLimitSwitch();
+} 
+
+void ClimbPivot::End(){
+    climber->ClimbPivotStage(2);       
 }
 
-void Climb::End(){
-    
-}
-
-void Climb::Interrupted(){
+void ClimbPivot::Interrupted(){
    
 } 
 
-} //namespace frc4783
+} 
