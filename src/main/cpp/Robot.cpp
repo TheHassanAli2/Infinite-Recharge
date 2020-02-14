@@ -4,19 +4,24 @@
 #include <frc2/command/PrintCommand.h>
 #include <frc2/command/CommandScheduler.h>
 
+#include <array>
+
+#include <frc/AddressableLED.h>
+#include <frc/TimedRobot.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+
 void Robot::RobotInit() {
-
-    printf("%s  %d\n", __FUNCTION__, __LINE__);
-
-    //drivetrain.reset(new DriveTrain());
-    //robotcontainer.reset(new RobotContainer());
-
-    printf("Robot init completed\n");
-    frc2::PrintCommand("yo wussup").Schedule();
-
+    m_led.SetLength(kLength);
+    m_led.SetData(m_ledBuffer);
+    m_led.Start();
 }
 
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
+void Robot::RobotPeriodic() { 
+    frc2::CommandScheduler::GetInstance().Run();
+    Red();
+    // Set the LEDs
+    m_led.SetData(m_ledBuffer);
+}
 
 void Robot::AutonomousInit(){
     if (m_autonomousCommand != nullptr){
@@ -44,8 +49,8 @@ void Robot::TeleopInit() {
     }
 }
 
-void Robot::TeleopPeriodic(){}
-
+void Robot::TeleopPeriodic(){
+}    
 
 void Robot::TestPeriodic() {}
 

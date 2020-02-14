@@ -1,0 +1,10 @@
+See file:///C:/Users/darre/Documents/Robotics/frc-infinite-recharge-2020/frc-infinite-recharge-2020/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
+compiling DriveTrain.cpp successful.
+
+compiling RobotContainer.cpp successful.
+
+compiling DriveWithJoystick.cpp successful.
+
+compiling Robot.cpp successful.
+
+Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/Users/darre/Documents/Robotics/frc-infinite-recharge-2020/frc-infinite-recharge-2020/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
