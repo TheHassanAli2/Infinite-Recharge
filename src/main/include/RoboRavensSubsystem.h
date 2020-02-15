@@ -3,14 +3,16 @@
 #include <frc2/command/Subsystem.h>
 //#include <frc2/command/CommandBase.h>
 //#include <frc2/command/CommandHelper.h> 
-
+#include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
+#include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 namespace frc4783 {
 
 class RoboRavensSubsystem : public frc2::Subsystem {    
 
-    enum MotorControllerTypes {
+    enum MotorControllerType {
         VictorSPX,
         TalonSRX
+        
     };
 
     enum SignalType {
@@ -20,6 +22,8 @@ class RoboRavensSubsystem : public frc2::Subsystem {
 
     public:
         RoboRavensSubsystem();
+        void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
+
         void InitDefaultCommand();
         void Reset();
         void SetMotorSpeed(int motorId, float speed);
