@@ -11,7 +11,9 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc/SpeedController.h>
 #include <frc/DoubleSolenoid.h>
-#include <frc/WPILib.h>
+#include <frc/DigitalInput.h>
+#include <frc/Counter.h>
+
 #include <Constants.h>
 
 namespace frc4783 {
@@ -22,17 +24,24 @@ class Climber : public frc2::SubsystemBase {
   void ClimbReset();
   void ClimbMotor(bool clockwise);
   void ClimbSolenoid(bool extended);
-  void ClimbPart1();
-  void ClimbPart2();
-
+  void ClimbPivotStage(int pivotStage);
+  void ClimbExtendStage();
+  void ClimbRetractStage();
+  bool ClimbLimitSwitch();
+  
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
  private:
-  std::shared_ptr<frc::SpeedController> pivotMotor;
-  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid;
+  std::shared_ptr<frc::SpeedController> pivotMotor1;
+  std::shared_ptr<frc::SpeedController> pivotMotor2;
+  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid1;
+  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid2;
+  std::shared_ptr<frc::DigitalInput> limitSwitch;
+  std::shared_ptr<frc::Counter> counter;
+  Climber* climber; 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };

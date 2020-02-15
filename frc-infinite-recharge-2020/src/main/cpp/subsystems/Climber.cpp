@@ -8,14 +8,19 @@
 #include "subsystems/Climber.h"
 #include <frc/VictorSP.h>
 #include <frc/DoubleSolenoid.h>
+#include "commands/ClimbPivot.h" 
 
 namespace frc4783{
 
 Climber::Climber() {
-  pivotMotor.reset(new frc::VictorSP(4));
-  climbSolenoid.reset(new frc::DoubleSolenoid(0,1));
-
-  pivotMotor->SetInverted(true);
+  pivotMotor1.reset(new frc::VictorSP(4));
+  pivotMotor2.reset(new frc::VictorSP(5));
+  climbSolenoid1.reset(new frc::DoubleSolenoid(0,1));
+  climbSolenoid2.reset(new frc::DoubleSolenoid(4,5)); //Actually 2 & 3
+  limitSwitch.reset(new frc::DigitalInput(1));
+  counter.reset(new frc::Counter(limitSwitch));
+  pivotMotor1->SetInverted(true);
+  pivotMotor2->SetInverted(true);
 }
 
 void Climber::Periodic() {
@@ -23,36 +28,61 @@ void Climber::Periodic() {
 }
 
 void Climber::ClimbReset(){
-  climbSolenoid->Set(frc::DoubleSolenoid::Value::kReverse);
-  pivotMotor->Set(0);
+  climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
+  climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
+  pivotMotor1->Set(0);
+  pivotMotor2->Set(0);
 }
 
 void Climber::ClimbMotor(bool clockwise) {
   if (clockwise == true){
-    pivotMotor->Set(1);
+    pivotMotor1->Set(1);
   }
   else {
-    pivotMotor->Set(-1);
+    pivotMotor1->Set(-1);
   }
 }
 
 void Climber::ClimbSolenoid(bool extended) {
   if (extended == true){
-    climbSolenoid->Set(frc::DoubleSolenoid::Value::kForward);
+    climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward);
   }
   else {
-    climbSolenoid->Set(frc::DoubleSolenoid::Value::kReverse);
+    climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
   }
 }
 
-void Climber::ClimbPart1() {
-  pivotMotor->Set(1);
-  // might add pause
-  climbSolenoid->Set(frc::DoubleSolenoid::Value::kForward);
+void Climber::ClimbPivotStage(int pivotStage) {
+  switch (pivotStage){
+    case 1: 
+      pivotMotor1->Set(1);
+      pivotMotor2->Set(-1);
+      break;
+    case 2:
+      pivotMotor1->Set(0);
+      pivotMotor2->Set(0);
+      break;
+  }
+  
 }
 
-void Climber::ClimbPart2() {
-  climbSolenoid->Set(frc::DoubleSolenoid::Value::kReverse);
+void Climber::ClimbExtendStage() {
+  climbSolenoid1->Set(frc::DoubleSolenoid::Value::kForward);
+  climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward);
 }
 
-} //namespace frc4783
+void Climber::ClimbRetractStage() {
+  climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
+  climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
+}
+
+bool Climber::ClimbLimitSwitch() {
+  return counter->Get() >0;
+  
+}
+  
+}
+
+
+
+ //namespace frc4783

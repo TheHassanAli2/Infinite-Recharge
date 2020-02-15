@@ -15,7 +15,8 @@ ClimbPivot::ClimbPivot(Climber* subsystem) : climber(subsystem){
         AddRequirements(subsystem);
         }
 void ClimbPivot::Initialize() {
-    climber->ClimbPivotStage(1);
+    //climber->ClimbPivotStage(1);
+    climber->ClimbMotor(true);
 } 
 
 void ClimbPivot::Execute(){
@@ -23,11 +24,12 @@ void ClimbPivot::Execute(){
 } 
 
 bool ClimbPivot::IsFinished(){
-    return climber->ClimbLimitSwitch();
+    //return climber->ClimbLimitSwitch();
+    return false;
 } 
 
 void ClimbPivot::End(){
-    climber->ClimbPivotStage(2);       
+    //climber->ClimbPivotStage(2);       
 }
 
 void ClimbPivot::Interrupted(){
