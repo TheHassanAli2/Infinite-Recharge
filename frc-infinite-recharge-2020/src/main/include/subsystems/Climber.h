@@ -13,6 +13,7 @@
 #include <frc/DoubleSolenoid.h>
 #include <frc/DigitalInput.h>
 #include <frc/Counter.h>
+#include <ctre/Phoenix.h>
 
 #include <Constants.h>
 

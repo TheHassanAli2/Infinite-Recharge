@@ -44,6 +44,7 @@ class ClimbPivot
 
  private:
   Climber* climber;
+  bool pivot = true;
 };
 
 } //namespace frc4783

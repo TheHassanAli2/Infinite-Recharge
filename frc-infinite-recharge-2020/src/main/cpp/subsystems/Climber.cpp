@@ -13,13 +13,16 @@
 namespace frc4783{
 
 Climber::Climber() {
-  pivotMotor1.reset(new frc::VictorSP(4));
-  pivotMotor2.reset(new frc::VictorSP(5));
+  
+  /*pivotMotor1.reset(new frc::VictorSP(4));
+  pivotMotor2.reset(new frc::VictorSP(5));*/
+  pivotMotor1.reset(new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(4));
+  pivotMotor2.reset(new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(5));
   climbSolenoid1.reset(new frc::DoubleSolenoid(0,1));
   climbSolenoid2.reset(new frc::DoubleSolenoid(4,5)); //Actually 2 & 3
   limitSwitch.reset(new frc::DigitalInput(1));
   counter.reset(new frc::Counter(limitSwitch));
-  pivotMotor1->SetInverted(true);
+
   pivotMotor2->SetInverted(true);
 }
 
@@ -77,6 +80,7 @@ void Climber::ClimbRetractStage() {
 }
 
 bool Climber::ClimbLimitSwitch() {
+  printf(counter->Get() >0 ? "true" : "false");
   return counter->Get() >0;
   
 }
