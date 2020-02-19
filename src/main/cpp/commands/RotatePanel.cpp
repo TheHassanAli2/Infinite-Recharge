@@ -8,22 +8,23 @@
 
 #include "subsystems/ControlPanel.h"
 #include "commands/RotatePanel.h"
+#include "RoboRavensSubsystem.h"
 #include "Robot.h"
 
 RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)
     : controlpanelSubsystem(ctrlPanel),
-    on(false) {
-    printf("Rotate Panel ctor\n");
-}
+    on(false) 
+    {
+      printf("Rotate Panel ctor\n");
+    }
 
 void RotatePanel::Initialize(){
-    //SetTimeout(3);
     if (on ){
-        controlpanelSubsystem->SetMotorSpeed(0);
+        controlpanelSubsystem->RotateControlPanel(0);
         on = false;
     }
     else {
-        controlpanelSubsystem->SetMotorSpeed(0.5);
+        controlpanelSubsystem->RotateControlPanel(0.5);
         on = true;
     }
 
@@ -31,12 +32,10 @@ void RotatePanel::Initialize(){
 }
     
 void RotatePanel::Execute(){
-     //frc::SmartDashboard::PutNumber("PiVoTeNcODeR",controlpanelSubsystem->SpinClockwise());
+     
 }
 
 bool RotatePanel::IsFinished(){
-    //if (IsTimedOut()) {
-    //printf("%s  %d TIMEOUT \n", __FUNCTION__, __LINE__);
     printf("RotatePanel::isFinished\n");
     return true;
 

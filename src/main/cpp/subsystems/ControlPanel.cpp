@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/ControlPanel.h"
-#include <frc/VictorSP.h>
+#include "RoboRavensSubsystem.h"
 #include <frc/util/color.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
@@ -44,76 +44,50 @@ static constexpr frc::Color kYellowTarget = frc::Color(0.314, 0.539 ,0.146);
 namespace frc4783 {
 
 ControlPanel::ControlPanel() {
-  controlpanelMotor.reset(new frc::VictorSP(0));
-  printf("Control Panel ctor\n");
+    printf("Control Panel ctor\n");
     m_colorMatcher.AddColorMatch(kBlueTarget);
-  m_colorMatcher.AddColorMatch(kGreenTarget);
-  m_colorMatcher.AddColorMatch(kRedTarget);
-  m_colorMatcher.AddColorMatch(kYellowTarget);
-  // Implementation of subsystem constructor goes here.
+    m_colorMatcher.AddColorMatch(kGreenTarget);
+    m_colorMatcher.AddColorMatch(kRedTarget);
+    m_colorMatcher.AddColorMatch(kYellowTarget);
+
+    InitializeMotor(ControlPanelMotorId, VictorSPX, PWM, ControlPanelMotorPort);
 }
 
 void ControlPanel::Periodic() {
-  frc::Color detectedColor = m_colorSensor.GetColor();
+    frc::Color detectedColor = m_colorSensor.GetColor();
 
-  double IR = m_colorSensor.GetIR();
+    double IR = m_colorSensor.GetIR();
 
-  frc::SmartDashboard::PutNumber("Red", detectedColor.red);
-  frc::SmartDashboard::PutNumber("Green", detectedColor.green);
-  frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
-  frc::SmartDashboard::PutNumber("IR", IR);
+    frc::SmartDashboard::PutNumber("Red", detectedColor.red);
+    frc::SmartDashboard::PutNumber("Green", detectedColor.green);
+    frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
+    frc::SmartDashboard::PutNumber("IR", IR);
 
-  uint32_t proximity = m_colorSensor.GetProximity();
+    uint32_t proximity = m_colorSensor.GetProximity();
+    frc::SmartDashboard::PutNumber("Proximity", proximity);
 
-  frc::SmartDashboard::PutNumber("Proximity", proximity);
+    std::string colorString;
+    double confidence = 0.0;
+    frc::Color matchedColor = m_colorMatcher.MatchClosestColor(detectedColor, confidence);
 
-  std::string colorString;
-  double confidence = 0.0;
-  frc::Color matchedColor = m_colorMatcher.MatchClosestColor(detectedColor, confidence);
-
-//printf("matched: r: %f  g: %f  b: %f  ", matchedColor.red, matchedColor.green, matchedColor.blue);
-  
-
-  if (matchedColor == kBlueTarget) {
-      //printf ("Blue ");
+    if (matchedColor == kBlueTarget) {
       colorString = "Blue";
     } else if (matchedColor == kRedTarget) {
-      //printf ("Red ");
       colorString = "Red";
     } else if (matchedColor == kGreenTarget) {
-      //printf ("Green ");
       colorString = "Green";
     } else if (matchedColor == kYellowTarget) {
-      //printf ("Yellow ");
       colorString = "Yellow";
     } else {
-      //printf ("Unknown ");
       colorString = "Unknown";
     }
 
-  printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
-
-
-}
-
-void ControlPanel::InitDefaultCommand (){
+    printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
 
 }
 
-void ControlPanel::SetMotorSpeed(float speed){  
-  controlpanelMotor->Set(speed);
-}
-
-void ControlPanel::SpinClockwise(){
-  controlpanelMotor->Set(1);
-}
-
-void ControlPanel::SpinCounterClockwise(){
-  controlpanelMotor->Set(-1);
-}
-
-void ControlPanel::StopMotor(){
-  controlpanelMotor->Set(0);
+void ControlPanel::RotateControlPanel(float speed) {
+    SetMotorSpeed(ControlPanelMotorId, speed);
 }
 
 } // namespace frc4783

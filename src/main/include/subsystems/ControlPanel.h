@@ -9,35 +9,27 @@
 
 #include <frc2/command/Subsystem.h>
 #include "Constants.h"
-#include <frc/SpeedController.h>
-#include <frc/SpeedControllerGroup.h>
-#include <frc/VictorSP.h>
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h> 
-//#include <frc/smartdashboard/smartdashboard.h>
+
+#include "RoboRavensSubsystem.h"
 
 namespace frc4783 {
 
-class ControlPanel : public frc2::Subsystem {
+class ControlPanel : public RoboRavensSubsystem {
   private:
-    std::shared_ptr<frc::SpeedController> controlpanelMotor;
+    static const int ControlPanelMotorId = 0;
+    static const int ControlPanelMotorPort = 8;
 
- public:
- 
-  ControlPanel();
-   void GetColor();
-        void ControlPanelInit();
-        void GetIR();
-        void PutNumber();
-        void GetProximity();
+  public:
+   ControlPanel();
+    void GetColor();
+    void ControlPanelInit();
+    void GetIR();
+    void PutNumber();
+    void GetProximity();
 
-        void InitDefaultCommand();
-        void Reset();
-        void SetMotorSpeed(float speed);
-        void SpinClockwise();
-        void SpinCounterClockwise();
-        void StopMotor();
-      
+    void RotateControlPanel(float speed);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
@@ -48,4 +40,4 @@ class ControlPanel : public frc2::Subsystem {
 };
 
   
- }  // namespace frc4783
+}  // namespace frc4783
