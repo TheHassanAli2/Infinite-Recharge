@@ -19,7 +19,7 @@ namespace frc4783 {
 class ControlPanel : public RoboRavensSubsystem {
   private:
     static const int ControlPanelMotorId = 0;
-    static const int ControlPanelMotorPort = 8;
+    static const int ControlPanelMotorPort = 0;
 
   public:
    ControlPanel();

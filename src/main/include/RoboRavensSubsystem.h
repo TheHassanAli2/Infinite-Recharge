@@ -7,43 +7,49 @@
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 
+#include <map>
+
 namespace frc4783 {
 
 class RoboRavensSubsystem : public frc2::Subsystem {    
 
-    public:
-      enum MotorControllerType {
-          VictorSPX,
-          TalonSRX
-      };
+public:
+    enum MotorControllerType {
+        VictorSPX,
+        TalonSRX
+    };
 
-      enum SignalType {
-          PWM,
-          CAN
-      };
+    enum SignalType {
+        PWM,
+        CAN
+    };
 
     RoboRavensSubsystem();
-      void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
+    void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
 
-      void InitDefaultCommand();
-      void Reset();
-      void SetMotorSpeed(int motorId, float speed);
-      void SpinClockwise();
-      void SpinCounterClockwise();
-      void StopMotor();
-      void Periodic() override;
+    void InitDefaultCommand();
+    void Reset();
+    void SetMotorSpeed(int motorId, float speed);
+    void SpinClockwise();
+    void SpinCounterClockwise();
+    void StopMotor();
+    void Periodic() override;
 
 
-      protected:
+protected:
+#if 0
       std::shared_ptr<frc::SpeedController> m_motor1;
       std::shared_ptr<frc::SpeedController> m_motor2;
       std::shared_ptr<frc::SpeedController> m_motor3;
+#endif
 
-      std::shared_ptr<frc::Solenoid> m_solenoid1;
-      std::shared_ptr<frc::Solenoid> m_solenoid2; 
-      std::shared_ptr<frc::Solenoid> m_solenoid3; 
+    std::map<int, std::shared_ptr<frc::SpeedController>> m_motors;
 
-      int MotorType;         
+    std::shared_ptr<frc::Solenoid> m_solenoid1;
+    std::shared_ptr<frc::Solenoid> m_solenoid2; 
+    std::shared_ptr<frc::Solenoid> m_solenoid3; 
+
+    int MotorType;         
 };
 
 }  //namespace 4783

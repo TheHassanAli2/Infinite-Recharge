@@ -82,11 +82,12 @@ void ControlPanel::Periodic() {
       colorString = "Unknown";
     }
 
-    printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
+    //printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
 
 }
 
 void ControlPanel::RotateControlPanel(float speed) {
+    printf("ControlPanel:::RotateControlPanel %f\n", speed);
     SetMotorSpeed(ControlPanelMotorId, speed);
 }
 

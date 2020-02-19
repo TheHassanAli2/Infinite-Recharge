@@ -28,6 +28,12 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
      controller = (new frc::Talon(portId));  
     }
 
+    std::shared_ptr<frc::SpeedController> sptr;
+    sptr.reset(controller);
+
+    m_motors[motorId] = sptr;
+
+#if 0
     switch(motorId) {
      case 0: {
         m_motor1.reset(controller);
@@ -45,6 +51,7 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
      default:
         break;
     }
+#endif
 }
 
 void frc4783::RoboRavensSubsystem::InitDefaultCommand(){
@@ -57,6 +64,14 @@ void frc4783::RoboRavensSubsystem::Reset(){
 
 void frc4783::RoboRavensSubsystem::SetMotorSpeed(int motorId, float speed)
 {
+
+    std::map<int, std::shared_ptr<frc::SpeedController>>::iterator iter = m_motors.find(motorId);
+    if (iter != m_motors.end()) {
+        std::shared_ptr<frc::SpeedController> sptr = iter->second;
+        sptr->Set(speed);
+    }
+
+#if 0
     switch (motorId) {
      case 0: {
         m_motor1->Set(speed);
@@ -75,7 +90,8 @@ void frc4783::RoboRavensSubsystem::SetMotorSpeed(int motorId, float speed)
         
      default: 
         break;
-        }    
+        }
+#endif    
 } 
 
 void frc4783::RoboRavensSubsystem::SpinClockwise(){
