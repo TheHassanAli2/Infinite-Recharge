@@ -71,7 +71,6 @@ public:
     static const int RIGHT_TRIGGER_AXIS_E = 4;
     static const int RIGHT_X_AXIS_E = 2;
     static const int RIGHT_Y_AXIS_E = 5;
-
 private:
     frc4783::DriveTrain drivetrain;
     Intake intake;

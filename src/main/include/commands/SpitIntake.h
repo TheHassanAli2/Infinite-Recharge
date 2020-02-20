@@ -22,8 +22,10 @@ class SpitIntake
   bool IsFinished();
   void End();
   void Interrupted();
+
  private:
-  Intake* intake;
-};
+ Intake* intake;
+  bool intakeCheck;
+} ;
 
 } // namespace frc4783

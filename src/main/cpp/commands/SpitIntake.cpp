@@ -11,14 +11,26 @@ namespace frc4783 {
 
 SpitIntake::SpitIntake(Intake* subsystem) : intake(subsystem){
         AddRequirements(subsystem);
+            intakeCheck = false;
+    }
+void SpitIntake::Initialize() {
+    if (intakeCheck ){
+        intake->Stop();
+        intakeCheck = false;
+    }
+    else {
+        intake->Reverse();
+        intakeCheck = true;
     }
 
+}
+
 void SpitIntake::Execute(){
-    intake->Reverse();
+
 } 
 
 bool SpitIntake::IsFinished(){
-    return false;
+    return true;
 }
 
 void SpitIntake::End(){
@@ -26,11 +38,7 @@ void SpitIntake::End(){
 }
 
 void SpitIntake::Interrupted(){
-    End();
-}
-
-void SpitIntake::Initialize() {
-    
+    //End();
 }
 
 } /* namespace frc4783 */

@@ -11,14 +11,26 @@ namespace frc4783 {
 
 MoveIntake::MoveIntake(Intake* subsystem) : intake(subsystem){
         AddRequirements(subsystem);
+            intakeCheck = false;
+    }
+void MoveIntake::Initialize() {
+    if (intakeCheck ){
+        intake->Stop();
+        intakeCheck = false;
+    }
+    else {
+        intake->Turn();
+        intakeCheck = true;
     }
 
+}
+
 void MoveIntake::Execute(){
-    intake->Turn();
+
 } 
 
 bool MoveIntake::IsFinished(){
-    return false;
+    return true;
 }
 
 void MoveIntake::End(){
@@ -26,11 +38,7 @@ void MoveIntake::End(){
 }
 
 void MoveIntake::Interrupted(){
-    End();
-}
-
-void MoveIntake::Initialize() {
-    
+    //End();
 }
 
 } /* namespace frc4783 */

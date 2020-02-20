@@ -12,7 +12,6 @@
 
 #include "commands/MoveIntake.h"
 #include "commands/SpitIntake.h"
-
 RobotContainer::RobotContainer()
 {
     drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
@@ -48,9 +47,9 @@ void RobotContainer::ConfigureButtonBindings()
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
 
       leftBumperButtonS
-        ->WhileHeld(new frc4783::MoveIntake(&intake));
+        ->ToggleWhenPressed(new frc4783::MoveIntake(&intake));
 
       rightBumperButtonS
-        ->WhileHeld(new frc4783::SpitIntake(&intake));
+        ->ToggleWhenPressed(new frc4783::SpitIntake(&intake));
     
 }
