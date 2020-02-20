@@ -17,24 +17,29 @@ using namespace DriveConstants;
 namespace frc4783 {
 
 DriveTrain::DriveTrain()
+
+:   m_leftEncoder{0, 1},
+    m_rightEncoder{2, 3},
+    m_odometry{frc::Rotation2d(units::degree_t(GetHeading()))}
 {
     printf("Drivetrain init completed\n");
+
+    // Motorcontrollers
     frontLeftMotor.reset(new frc::VictorSP(0));
     backLeftMotor.reset(new frc::VictorSP(1));
     frontRightMotor.reset(new frc::VictorSP(2));
     backRightMotor.reset(new frc::VictorSP(3));
+    //Motorcontroller groups
     leftDrive.reset(new frc::SpeedControllerGroup(*backLeftMotor, *frontLeftMotor));
     rightDrive.reset(new frc::SpeedControllerGroup(*backRightMotor, *frontRightMotor));
     differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
-    m_odometry.reset(new frc::DifferentialDriveOdometry());
-    m_leftEncoder.reset(new frc::Encoder());
-    m_rightEncoder.reset(new frc::Encoder());
-    m_leftEncoder{kLeftEncoderPorts[0], kLeftEncoderPorts[1]},
-    m_rightEncoder{kRightEncoderPorts[0], kRightEncoderPorts[1]},
-    m_odometry{frc::Rotation2d(units::degree_t(GetHeading()))} 
+    // Sensors
+    // m_odometry.reset(new frc::DifferentialDriveOdometry());
+    //m_gyro.Reset();
+    
     // Set the distance per pulse for the encoders
-    m_leftEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
-    m_rightEncoder.SetDistancePerPulse(kEncoderDistancePerPulse);
+    m_leftEncoder.SetDistancePerPulse(0.00498727);
+    m_rightEncoder.SetDistancePerPulse(0.00498727);
 
     ResetEncoders();
 
@@ -74,14 +79,14 @@ void DriveTrain::TankDrive(double leftspeed, double rightspeed)
 }
 
 void DriveTrain::TankDriveVolts(units::volt_t left, units::volt_t right) {
-    leftDrive.SetVoltage(left);
-    rightDrive.SetVoltage(-right);
-    m_drive.Feed();
+    leftDrive->SetVoltage(left);
+    rightDrive->SetVoltage(-right);
+    differentialDrive->Feed();
 }
 
 void DriveTrain::ResetEncoders() {
-    m_leftEncoder.reset();
-    m_rightEncoder.reset();
+    m_leftEncoder.Reset();
+    m_rightEncoder.Reset();
 }
 
 double DriveTrain::GetAverageEncoderDistance() {
@@ -89,25 +94,20 @@ double DriveTrain::GetAverageEncoderDistance() {
 }
 
 void DriveTrain::SetMaxOutput(double maxOutput) {
-    m_drive.SetMaxOutput(maxOutput);
+    differentialDrive->SetMaxOutput(maxOutput);
 }
 
-frc::Encoder DriveTrain::GetLeftEncoder() { return m_leftEncoder; }
-
-frc::Encoder DriveTrain::GetRightEncoder() { return m_rightEncoder; }
-
-
 frc::DifferentialDriveWheelSpeeds DriveTrain::GetWheelSpeeds() {
-    return {units::meters_per_second_t(m_leftEncoder.GetRate()),
-    units::meters_per_second_t(m_rightEncoder.GetRate())};
+  return {units::meters_per_second_t(m_leftEncoder.GetRate()),
+          units::meters_per_second_t(m_rightEncoder.GetRate())};
 }
 
 double DriveTrain::GetHeading() {
-    return std::remainder(m_gyro.GetAngle(), 360) * (kGyroReversed ? -1.0 : 1.0);
+    return std::remainder(m_gyro.GetAngle(), 360) * (DriveConstants::kGyroReversed ? -1.0 : 1.0);
 }
 
 double DriveTrain::GetTurnRate() {
-    return m_gyro.GetRate() * (kGyroReversed ? -1.0 : 1.0);
+    return m_gyro.GetRate() * (DriveConstants::kGyroReversed ? -1.0 : 1.0);
 }
 
 frc::Pose2d DriveTrain::GetPose() { return m_odometry.GetPose(); }

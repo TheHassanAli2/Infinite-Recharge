@@ -21,6 +21,8 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and button mappings) should be declared here.
  */
+
+namespace frc4783 {
 class RobotContainer {
 public:
     RobotContainer();
@@ -75,5 +77,7 @@ private:
 
     void ConfigureButtonBindings();
 }; 
+
+} // frc4783
 
 #endif // ROBOTMAP_H

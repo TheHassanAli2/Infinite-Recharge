@@ -27,12 +27,9 @@ namespace frc4783 {
 class DriveWithJoystick
     : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
 public:
-    /**
-     * Creates a new ExampleCommand.
-     *
-     * @param subsystem The subsystem used by this command.
-     */
-    DriveWithJoystick(DriveTrain* subsystem, RobotContainer* contained);
+  
+  
+    DriveWithJoystick(frc4783::DriveTrain* subsystem, frc4783::RobotContainer* contained);
 
     void Initialize() override;
 
@@ -45,8 +42,8 @@ public:
     void Interrupted();
 
 private:
-    DriveTrain* drivetrain;
-    RobotContainer* container; 
+    frc4783::DriveTrain* drivetrain;
+    frc4783::RobotContainer* container; 
 };
 
 } /* namespace frc4783 */

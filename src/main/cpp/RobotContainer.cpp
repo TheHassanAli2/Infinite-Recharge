@@ -9,12 +9,14 @@
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
 
-RobotContainer::RobotContainer()
+namespace frc4783{
+
+frc4783::RobotContainer::RobotContainer()
 {
     drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
     ConfigureButtonBindings();
 }
-void RobotContainer::ConfigureButtonBindings()
+void frc4783::RobotContainer::ConfigureButtonBindings()
 {
     // Drive Stick Buttons
     aButtonP = new frc::JoystickButton(&xbox,1);
@@ -43,3 +45,5 @@ void RobotContainer::ConfigureButtonBindings()
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
 }
+
+} // frc4783

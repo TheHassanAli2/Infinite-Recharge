@@ -37,6 +37,7 @@ namespace DriveConstants
     // RAMSETE follower values
     constexpr double kRamseteB = 2;
     constexpr double kRamseteZeta = 0.7;
+    constexpr bool kGyroReversed = true;
 }
 
 #endif //CONSTANTS_H
