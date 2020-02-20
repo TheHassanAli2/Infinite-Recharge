@@ -4,7 +4,7 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
+#include "frc/DoubleSolenoid.h"
 #include "subsystems/ControlPanel.h"
 #include "RoboRavensSubsystem.h"
 #include <frc/util/color.h>
@@ -51,7 +51,9 @@ ControlPanel::ControlPanel() {
     m_colorMatcher.AddColorMatch(kYellowTarget);
 
     InitializeMotor(ControlPanelMotorId, VictorSPX, PWM, ControlPanelMotorPort);
-}
+    InitializeSolenoid(SolenoidId, SolenoidForwardPort, SolenoidReversePort);
+
+    }
 
 void ControlPanel::Periodic() {
     frc::Color detectedColor = m_colorSensor.GetColor();
@@ -89,6 +91,11 @@ void ControlPanel::Periodic() {
 void ControlPanel::RotateControlPanel(float speed) {
     printf("ControlPanel:::RotateControlPanel %f\n", speed);
     SetMotorSpeed(ControlPanelMotorId, speed);
+
+}
+
+void ControlPanel::SetSolenoidDirection(frc::DoubleSolenoid::Value direction) {
+    RoboRavensSubsystem::SetSolenoidDirection(SolenoidId, direction);
 }
 
 } // namespace frc4783

@@ -23,7 +23,7 @@ void RobotContainer::ConfigureButtonBindings()
     aButtonP = new frc::JoystickButton(&xbox,1);
     bButtonP = new frc::JoystickButton(&xbox, 2);
     xButtonP = new frc2::JoystickButton(&xbox, 3);
-    yButtonP = new frc::JoystickButton(&xbox, 4);
+    yButtonP = new frc2::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
     rightBumperButtonP = new frc::JoystickButton(&xbox, 6);
     selectButtonP = new frc::JoystickButton(&xbox, 7);
@@ -35,7 +35,7 @@ void RobotContainer::ConfigureButtonBindings()
     xButtonS = new frc::JoystickButton(&ps4, 1);			 //'[]' on PS
     aButtonS = new frc2::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
-    yButtonS = new frc::JoystickButton(&ps4, 4);			 //'/\' on PS
+    yButtonS = new frc2::JoystickButton(&ps4, 4);			 //'/\' on PS
     leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
     rightBumperButtonS = new frc::JoystickButton(&ps4, 6);  //'R1' on PS
     leftTriggerButtonS = new frc::JoystickButton(&ps4, 7);  //'L2' on PS
@@ -49,5 +49,8 @@ void RobotContainer::ConfigureButtonBindings()
 printf("configure button bindings - init rotatepanel command\n");
     aButtonS->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
     xButtonP->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
+
+    yButtonP->ToggleWhenPressed(new Solenoid(&ctrlPanel));
+    yButtonS->ToggleWhenPressed(new Solenoid(&ctrlPanel));
 
 }

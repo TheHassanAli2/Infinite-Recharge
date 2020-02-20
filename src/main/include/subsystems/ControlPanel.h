@@ -20,6 +20,10 @@ class ControlPanel : public RoboRavensSubsystem {
   private:
     static const int ControlPanelMotorId = 0;
     static const int ControlPanelMotorPort = 0;
+    static const int SolenoidId = 0;
+    static const int SolenoidForwardPort = 0;
+    static const int SolenoidReversePort = 1;
+
 
   public:
    ControlPanel();
@@ -28,8 +32,9 @@ class ControlPanel : public RoboRavensSubsystem {
     void GetIR();
     void PutNumber();
     void GetProximity();
-
     void RotateControlPanel(float speed);
+    void SetSolenoidDirection(frc::DoubleSolenoid::Value direction);
+
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

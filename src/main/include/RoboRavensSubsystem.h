@@ -2,6 +2,7 @@
 #define ROBORAVENSSUBSYSTEM_H
 
 #include <frc/Solenoid.h>
+#include <frc/DoubleSolenoid.h>
 #include <frc/SpeedController.h>
 #include <frc2/command/Subsystem.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
@@ -24,6 +25,7 @@ public:
         CAN
     };
 
+
     RoboRavensSubsystem();
     void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
 
@@ -35,6 +37,13 @@ public:
     void StopMotor();
     void Periodic() override;
 
+    void InitializeSolenoid(int solenoidId, int forwardport, int reverseport);
+    void SolenoidReset();
+    void SolenoidMotor();
+    void SetSolenoidDirection(int solenoidId, frc::DoubleSolenoid::Value solenoidValue);
+    
+    
+
 
 protected:
 #if 0
@@ -45,11 +54,13 @@ protected:
 
     std::map<int, std::shared_ptr<frc::SpeedController>> m_motors;
 
-    std::shared_ptr<frc::Solenoid> m_solenoid1;
-    std::shared_ptr<frc::Solenoid> m_solenoid2; 
-    std::shared_ptr<frc::Solenoid> m_solenoid3; 
+    std::map<int, std::shared_ptr<frc::DoubleSolenoid>> m_solenoids;
 
-    int MotorType;         
+    //std::shared_ptr<frc::Solenoid> m_solenoid1;
+    //std::shared_ptr<frc::Solenoid> m_solenoid2; 
+    //std::shared_ptr<frc::Solenoid> m_solenoid3; 
+
+        
 };
 
 }  //namespace 4783

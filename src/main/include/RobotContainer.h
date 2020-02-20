@@ -17,6 +17,7 @@
 
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
+#include <commands/Solenoid.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -36,7 +37,7 @@ public:
     frc2::JoystickButton *aButtonS;
     frc::JoystickButton *bButtonS;
     frc::JoystickButton *xButtonS;
-    frc::JoystickButton *yButtonS;
+    frc2::JoystickButton *yButtonS;
     frc::JoystickButton *leftBumperButtonS;
     frc::JoystickButton *rightBumperButtonS;
     frc::JoystickButton *selectButtonS;
@@ -51,7 +52,7 @@ public:
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
     frc2::JoystickButton *xButtonP;
-    frc::JoystickButton *yButtonP;
+    frc2::JoystickButton *yButtonP;
     frc::JoystickButton *leftBumperButtonP;
     frc::JoystickButton *rightBumperButtonP;
     frc::JoystickButton *selectButtonP;

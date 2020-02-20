@@ -13,7 +13,7 @@
 
 RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)
     : controlpanelSubsystem(ctrlPanel),
-    on(false) 
+      on(false) 
     {
       printf("Rotate Panel ctor\n");
     }

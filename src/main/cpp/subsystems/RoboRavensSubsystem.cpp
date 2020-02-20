@@ -1,4 +1,5 @@
 #include "RoboRavensSubsystem.h"
+#include <frc/DoubleSolenoid.h>
 #include <frc/VictorSP.h>
 #include <frc/Talon.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
@@ -13,11 +14,12 @@ RoboRavensSubsystem::RoboRavensSubsystem(){
 void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId) 
 {
     frc:: SpeedController * controller = nullptr;
+    
 
     if ( (motorType == VictorSPX) && (signal == CAN) )
     {
      controller = new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(portId);
-    }
+}
     else if ( (motorType == TalonSRX) && (signal == CAN) ) {
      controller = new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(portId);       
     }
@@ -32,6 +34,8 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
     sptr.reset(controller);
 
     m_motors[motorId] = sptr;
+
+// Hello
 
 #if 0
     switch(motorId) {
@@ -52,6 +56,16 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
         break;
     }
 #endif
+}
+
+void frc4783::RoboRavensSubsystem::InitializeSolenoid(int solenoidId, int forwardport, int reverseport){
+    
+    frc:: DoubleSolenoid * solenoid = new frc::DoubleSolenoid(forwardport, reverseport);
+    
+    std::shared_ptr<frc::DoubleSolenoid> dsptr;
+    dsptr.reset(solenoid);
+
+    m_solenoids[solenoidId] = dsptr;
 }
 
 void frc4783::RoboRavensSubsystem::InitDefaultCommand(){
@@ -107,5 +121,14 @@ void frc4783::RoboRavensSubsystem::Periodic(){
 
 }  
 
-} // namespace frc4783
+void frc4783:: RoboRavensSubsystem:: SetSolenoidDirection(int solenoidId, frc::DoubleSolenoid::Value solenoidValue){
+
+std::map<int, std::shared_ptr<frc::DoubleSolenoid>>::iterator iter = m_solenoids.find(solenoidId);
+    if (iter != m_solenoids.end()) {
+        std::shared_ptr<frc::DoubleSolenoid> dsptr = iter->second;
+        dsptr->Set(solenoidValue);
+        }
+} 
+}// namespace frc4783
+
 
