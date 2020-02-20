@@ -19,10 +19,10 @@ namespace frc4783 {
 class ControlPanel : public RoboRavensSubsystem {
   private:
     static const int ControlPanelMotorId = 0;
-    static const int ControlPanelMotorPort = 0;
+    static const int ControlPanelMotorPort = 9;
     static const int SolenoidId = 0;
-    static const int SolenoidForwardPort = 0;
-    static const int SolenoidReversePort = 1;
+    static const int SolenoidForwardPort = 4;
+    static const int SolenoidReversePort = 5;
 
 
   public:

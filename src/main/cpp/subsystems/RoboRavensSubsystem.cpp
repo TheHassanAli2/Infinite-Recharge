@@ -19,7 +19,7 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
     if ( (motorType == VictorSPX) && (signal == CAN) )
     {
      controller = new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(portId);
-}
+    }
     else if ( (motorType == TalonSRX) && (signal == CAN) ) {
      controller = new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(portId);       
     }
@@ -34,8 +34,6 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
     sptr.reset(controller);
 
     m_motors[motorId] = sptr;
-
-// Hello
 
 #if 0
     switch(motorId) {

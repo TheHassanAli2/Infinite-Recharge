@@ -11,7 +11,7 @@ Solenoid::Solenoid(frc4783::ControlPanel* Solenoid)
     }
 
 void Solenoid::Initialize(){
-    printf("Solenoid cmd: initialize\n")
+    printf("Solenoid cmd: initialize\n");
     if (extended ){
         SolenoidSubsystem->SetSolenoidDirection(frc::DoubleSolenoid::Value::kForward);
         extended = false;
@@ -40,5 +40,5 @@ printf("Solenoid::interrupted\n");
 
 void Solenoid::End() {
     printf("Solenoid::end\n");
-  //RoboRavensSubsystem->StopSolenoid();
+
 }

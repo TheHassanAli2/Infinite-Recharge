@@ -1,13 +1,11 @@
 #ifndef ROBORAVENSSUBSYSTEM_H
 #define ROBORAVENSSUBSYSTEM_H
-
 #include <frc/Solenoid.h>
 #include <frc/DoubleSolenoid.h>
 #include <frc/SpeedController.h>
 #include <frc2/command/Subsystem.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
-
 #include <map>
 
 namespace frc4783 {
@@ -25,10 +23,8 @@ public:
         CAN
     };
 
-
     RoboRavensSubsystem();
     void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
-
     void InitDefaultCommand();
     void Reset();
     void SetMotorSpeed(int motorId, float speed);
@@ -41,8 +37,6 @@ public:
     void SolenoidReset();
     void SolenoidMotor();
     void SetSolenoidDirection(int solenoidId, frc::DoubleSolenoid::Value solenoidValue);
-    
-    
 
 
 protected:
@@ -55,10 +49,6 @@ protected:
     std::map<int, std::shared_ptr<frc::SpeedController>> m_motors;
 
     std::map<int, std::shared_ptr<frc::DoubleSolenoid>> m_solenoids;
-
-    //std::shared_ptr<frc::Solenoid> m_solenoid1;
-    //std::shared_ptr<frc::Solenoid> m_solenoid2; 
-    //std::shared_ptr<frc::Solenoid> m_solenoid3; 
 
         
 };
