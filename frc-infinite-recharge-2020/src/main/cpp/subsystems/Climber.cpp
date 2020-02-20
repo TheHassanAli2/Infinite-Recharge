@@ -23,7 +23,7 @@ Climber::Climber() {
   limitSwitch.reset(new frc::DigitalInput(1));
   counter.reset(new frc::Counter(limitSwitch));
 
-  pivotMotor2->SetInverted(true);
+  //pivotMotor2->SetInverted(true);
 }
 
 void Climber::Periodic() {

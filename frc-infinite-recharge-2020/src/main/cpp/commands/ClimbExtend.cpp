@@ -15,7 +15,8 @@ ClimbExtend::ClimbExtend(Climber* subsystem) : climber(subsystem){
         AddRequirements(subsystem);
         }
 void ClimbExtend::Initialize() {
-    climber->ClimbExtendStage();       
+    //climber->ClimbExtendStage();  
+    climber->ClimbSolenoid(true);     
 } 
 
 void ClimbExtend::Execute(){

@@ -8,6 +8,7 @@
 #include "RobotContainer.h"
 #include "ctre/Phoenix.h"
 #include "commands/ClimbPivot.h"
+#include "commands/ClimbExtend.h"
 #include <frc2/command/button/JoystickButton.h>
 #include "subsystems/Climber.h"
 //#include "commands/DriveWithJoystick.h"
@@ -48,5 +49,6 @@ void RobotContainer::ConfigureButtonBindings()
     homeButtonS = new frc2::JoystickButton(&ps4, 13);		 //'PS' on PS
 
     // Setting up trigger for command
-    yButtonS->WhenPressed(new frc4783::ClimbPivot(&climber));
+    //yButtonS->WhenPressed(new frc4783::ClimbPivot(&climber));
+    yButtonS->WhenPressed(new frc4783::ClimbExtend(&climber));
 }

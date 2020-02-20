@@ -14,6 +14,7 @@
 #include <frc/DigitalInput.h>
 #include <frc/Counter.h>
 #include <ctre/Phoenix.h>
+#include <frc/Compressor.h>
 
 #include <Constants.h>
 
@@ -40,6 +41,7 @@ class Climber : public frc2::SubsystemBase {
   std::shared_ptr<frc::SpeedController> pivotMotor2;
   std::shared_ptr<frc::DoubleSolenoid> climbSolenoid1;
   std::shared_ptr<frc::DoubleSolenoid> climbSolenoid2;
+  std::shared_ptr<frc::Compressor> compressorOn;
   std::shared_ptr<frc::DigitalInput> limitSwitch;
   std::shared_ptr<frc::Counter> counter;
   Climber* climber; 

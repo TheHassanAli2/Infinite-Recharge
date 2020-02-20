@@ -9,6 +9,7 @@
 #include "subsystems/Climber.h"
 
 
+
 namespace frc4783 {
 
 ClimbPivot::ClimbPivot(Climber* subsystem) : climber(subsystem){
@@ -29,7 +30,8 @@ bool ClimbPivot::IsFinished(){
 } 
 
 void ClimbPivot::End(){
-climber->ClimbPivotStage(2);       
+climber->ClimbPivotStage(2); 
+//container->isExtended = true;      
 }
 
 void ClimbPivot::Interrupted(){

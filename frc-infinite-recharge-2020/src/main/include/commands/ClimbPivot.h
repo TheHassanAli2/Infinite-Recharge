@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/Climber.h"
+#include "RobotContainer.h"
 
 /**
  * An example command that uses an example subsystem.
@@ -44,7 +45,8 @@ class ClimbPivot
 
  private:
   Climber* climber;
-  bool pivot = true;
+  //RobotContainer* container;
+  //bool pivot = true;
 };
 
 } //namespace frc4783
