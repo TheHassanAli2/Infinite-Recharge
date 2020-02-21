@@ -30,7 +30,6 @@ class RobotContainer {
 public:
     RobotContainer();
 
-    frc::Joystick xbox{0};
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
@@ -49,6 +48,8 @@ public:
     frc::JoystickButton *homeButtonS;
     frc::JoystickButton *touchpadButtonS;
 
+#ifdef XBOX_CONTROLLER
+    frc::Joystick xbox{0};
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
     frc2::JoystickButton *xButtonP;
@@ -59,6 +60,7 @@ public:
     frc::JoystickButton *startButtonP;
     frc::JoystickButton *leftStickButtonP;
     frc::JoystickButton *rightStickButtonP;
+#endif
 
     // Axies for controller
     static const int LEFT_X_AXIS = 0;	//Logitech
