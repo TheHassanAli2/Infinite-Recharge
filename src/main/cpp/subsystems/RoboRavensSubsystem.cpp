@@ -1,4 +1,4 @@
-#include "RoboRavensSubsystem.h"
+#include "subsystems/RoboRavensSubsystem.h"
 #include <frc/DoubleSolenoid.h>
 #include <frc/VictorSP.h>
 #include <frc/Talon.h>
@@ -13,8 +13,11 @@ RoboRavensSubsystem::RoboRavensSubsystem(){
  
 void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId) 
 {
+    /**
+     * Instantiate an appropriate frc::SpeedController object, and store in m_motors, indexed by motorId
+     */
+
     frc:: SpeedController * controller = nullptr;
-    
 
     if ( (motorType == VictorSPX) && (signal == CAN) )
     {
@@ -35,31 +38,15 @@ void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerT
 
     m_motors[motorId] = sptr;
 
-#if 0
-    switch(motorId) {
-     case 0: {
-        m_motor1.reset(controller);
-        break;
-        }
-
-     case 1: {
-        m_motor2.reset(controller);
-        break;
-        }
-     case 2: {
-        m_motor3.reset(controller);
-        break;
-        }
-     default:
-        break;
-    }
-#endif
 }
 
 void frc4783::RoboRavensSubsystem::InitializeSolenoid(int solenoidId, int forwardport, int reverseport){
     
+    /**
+     * Instantiate an frc::DoubleSolenoid object, and store in m_solenoids, indexed by solenoidId
+     */
     frc:: DoubleSolenoid * solenoid = new frc::DoubleSolenoid(forwardport, reverseport);
-    
+
     std::shared_ptr<frc::DoubleSolenoid> dsptr;
     dsptr.reset(solenoid);
 
@@ -76,34 +63,15 @@ void frc4783::RoboRavensSubsystem::Reset(){
 
 void frc4783::RoboRavensSubsystem::SetMotorSpeed(int motorId, float speed)
 {
-
+    /**
+     * find the motor based on motorId, then set the speed
+     */
     std::map<int, std::shared_ptr<frc::SpeedController>>::iterator iter = m_motors.find(motorId);
     if (iter != m_motors.end()) {
         std::shared_ptr<frc::SpeedController> sptr = iter->second;
         sptr->Set(speed);
     }
 
-#if 0
-    switch (motorId) {
-     case 0: {
-        m_motor1->Set(speed);
-        break;
-        }
-        
-     case 1: { 
-        m_motor2->Set(speed);
-        break;
-        }
-        
-     case 2: {
-        m_motor3-> Set(speed);
-        break;
-        }
-        
-     default: 
-        break;
-        }
-#endif    
 } 
 
 void frc4783::RoboRavensSubsystem::SpinClockwise(){
@@ -121,12 +89,16 @@ void frc4783::RoboRavensSubsystem::Periodic(){
 
 void frc4783:: RoboRavensSubsystem:: SetSolenoidDirection(int solenoidId, frc::DoubleSolenoid::Value solenoidValue){
 
-std::map<int, std::shared_ptr<frc::DoubleSolenoid>>::iterator iter = m_solenoids.find(solenoidId);
+    /**
+     * find the solenoid by solendoiId, the set the solendoid direction
+     */
+    std::map<int, std::shared_ptr<frc::DoubleSolenoid>>::iterator iter = m_solenoids.find(solenoidId);
     if (iter != m_solenoids.end()) {
         std::shared_ptr<frc::DoubleSolenoid> dsptr = iter->second;
         dsptr->Set(solenoidValue);
         }
 } 
+
 }// namespace frc4783
 
 

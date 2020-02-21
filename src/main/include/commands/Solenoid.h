@@ -1,9 +1,11 @@
 #pragma once
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "RoboRavensSubsystem.h"
 #include "subsystems/ControlPanel.h"
 
+/**
+ * Example Command for controlling a double solenoid
+ */
 class Solenoid
     : public frc2::CommandHelper<frc2::CommandBase, Solenoid> {
  
@@ -11,9 +13,9 @@ class Solenoid
     explicit Solenoid(frc4783::ControlPanel* ControlPanel);
 
     void Initialize();
-    void Execute();    
+    void Execute();
     bool IsFinished();
-    void End();    
+    void End();
     void Interrupted();
 
 private:

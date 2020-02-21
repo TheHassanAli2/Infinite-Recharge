@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 #include "frc/DoubleSolenoid.h"
 #include "subsystems/ControlPanel.h"
-#include "RoboRavensSubsystem.h"
 #include <frc/util/color.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"

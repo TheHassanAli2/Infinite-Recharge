@@ -1,6 +1,5 @@
 #include "subsystems/ControlPanel.h"
 #include "commands/RotatePanel.h"
-#include "RoboRavensSubsystem.h"
 #include "Robot.h"
 
 RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)

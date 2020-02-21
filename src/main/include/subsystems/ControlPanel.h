@@ -12,14 +12,23 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h> 
 
-#include "RoboRavensSubsystem.h"
+#include "subsystems/RoboRavensSubsystem.h"
 
 namespace frc4783 {
 
 class ControlPanel : public RoboRavensSubsystem {
   private:
+    /**
+     * Constants for control panel motor
+     */
     static const int ControlPanelMotorId = 0;
     static const int ControlPanelMotorPort = 9;
+
+    /**
+     * Constants for control panel solenoid
+     * 
+     * Note: solenoid is used for testing solendoid code
+     */
     static const int SolenoidId = 0;
     static const int SolenoidForwardPort = 4;
     static const int SolenoidReversePort = 5;
@@ -32,7 +41,19 @@ class ControlPanel : public RoboRavensSubsystem {
     void GetIR();
     void PutNumber();
     void GetProximity();
+
+    /**
+     * Control the control panel motor
+     * 
+     * @param speed  set the speed for the motor (0 to stop, negative or positive for direction)
+     */
     void RotateControlPanel(float speed);
+
+    /**
+     * Control the solenoid
+     * 
+     * @param direction  set the solenoid direction (kOff, kForward, kReverse)
+     */
     void SetSolenoidDirection(frc::DoubleSolenoid::Value direction);
 
 
