@@ -5,20 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//ya feel?
+
 #include "RobotContainer.h"
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
+#include "commands/GearShift.h"
+#include <frc2/command/button/JoystickButton.h>
 
-RobotContainer::RobotContainer()
+namespace frc4783{
+
+frc4783::RobotContainer::RobotContainer()
 {
-    drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
+    printf("RobotContainer init completed");
+    drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, this)));
     ConfigureButtonBindings();
 }
-void RobotContainer::ConfigureButtonBindings()
+void frc4783::RobotContainer::ConfigureButtonBindings()
 {
+#ifdef XBOX_CONTROLLER
     // Drive Stick Buttons
     aButtonP = new frc::JoystickButton(&xbox,1);
-    bButtonP = new frc::JoystickButton(&xbox, 2);
+    //bButtonP = new frc::JoystickButton(&xbox, 2);
     xButtonP = new frc::JoystickButton(&xbox, 3);
     yButtonP = new frc::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
@@ -27,10 +35,11 @@ void RobotContainer::ConfigureButtonBindings()
     startButtonP = new frc::JoystickButton(&xbox, 8);
     leftStickButtonP = new frc::JoystickButton(&xbox, 9);
     rightStickButtonP = new frc::JoystickButton(&xbox, 10);
+#endif
 
     // Drive Stick Buttons
     xButtonS = new frc::JoystickButton(&ps4, 1);			 //'[]' on PS
-    aButtonS = new frc::JoystickButton(&ps4, 2);			 //'X' on PS
+    //aButtonS = new frc::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
     yButtonS = new frc::JoystickButton(&ps4, 4);			 //'/\' on PS
     leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
@@ -42,4 +51,9 @@ void RobotContainer::ConfigureButtonBindings()
     leftStickButtonS = new frc::JoystickButton(&ps4, 11);   //'L3' on PS
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
+
+    frc2::JoystickButton(&ps4, 2)
+        .ToggleWhenPressed(new frc4783::GearShift(drivetrain));
 }
+
+}  //namespace

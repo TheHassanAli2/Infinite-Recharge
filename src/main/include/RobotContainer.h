@@ -9,10 +9,11 @@
 #ifndef ROBOTCONTAINER_H
 #define ROBOTCONTAINER_H
 
-#include <frc/Joystick.h>
-#include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
-#include <subsystems/DriveTrain.h>
+#include <frc/buttons/JoystickButton.h>
+#include <frc/Joystick.h>
+#include <subsystems/rrTwoSpeed.h>
+#include <frc2/command/ParallelRaceGroup.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -21,11 +22,17 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and button mappings) should be declared here.
  */
+
+//ya feel?
+
+namespace frc4783{
 class RobotContainer {
 public:
     RobotContainer();
 
-    frc::Joystick xbox{0};
+
+    frc2::Command* GetAutonomousCommand();
+
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
@@ -44,6 +51,9 @@ public:
     frc::JoystickButton *homeButtonS;
     frc::JoystickButton *touchpadButtonS;
 
+#ifdef XBOX_CONTROLLER
+    frc::Joystick xbox{0};
+
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
     frc::JoystickButton *xButtonP;
@@ -54,6 +64,7 @@ public:
     frc::JoystickButton *startButtonP;
     frc::JoystickButton *leftStickButtonP;
     frc::JoystickButton *rightStickButtonP;
+#endif
 
     // Axies for controller
     static const int LEFT_X_AXIS = 0;	//Logitech
@@ -70,10 +81,11 @@ public:
     static const int RIGHT_X_AXIS_E = 2;
     static const int RIGHT_Y_AXIS_E = 5;
 
-private:
-    frc4783::DriveTrain drivetrain;
 
+private:
+    //Pointer Object of rrDriveTrain and object of rrTwoSpeed
+    frc4783::rrDriveTrain *drivetrain = new frc4783::rrDifferentialDrive();
     void ConfigureButtonBindings();
 }; 
-
+}
 #endif // ROBOTMAP_H
