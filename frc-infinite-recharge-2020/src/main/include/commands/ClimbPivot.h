@@ -10,8 +10,8 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/Climber.h"
 #include "RobotContainer.h"
+#include "subsystems/Climber.h"
 
 /**
  * An example command that uses an example subsystem.
@@ -31,7 +31,7 @@ class ClimbPivot
    *
    * @param subsystem The subsystem used by this command.
    */
-  ClimbPivot(Climber* subsystem);
+  ClimbPivot(Climber* subsystem, RobotContainer* contained);
   //explicit ExampleCommand(ExampleSubsystem* subsystem);
   void Initialize() override;
 
@@ -44,8 +44,8 @@ class ClimbPivot
   void Interrupted();
 
  private:
-  Climber* climber;
-  //RobotContainer* container;
+  frc4783::Climber* climber;
+  frc4783::RobotContainer* container;
   //bool pivot = true;
 };
 

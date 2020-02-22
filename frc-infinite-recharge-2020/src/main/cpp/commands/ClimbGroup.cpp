@@ -6,16 +6,18 @@
 /*----------------------------------------------------------------------------*/
 
 #include "commands/ClimbGroup.h"
-#include "commands/ClimbPivot.h"
-#include "commands/ClimbExtend.h"
 #include "subsystems/Climber.h"
 
+namespace frc4783{
 // NOTE:  Consider using this command inline, rather than writing a subclass.
 // For more information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-ClimbGroup::ClimbGroup() {
+ClimbGroup::ClimbGroup(frc4783::Climber* climber, frc4783::RobotContainer* container) {
   
-
+  AddCommands(frc4783::ClimbPivot(climber, container), frc4783::ClimbExtend(climber));
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
+
 }
+
+} 

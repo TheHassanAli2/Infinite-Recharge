@@ -13,18 +13,22 @@
 #include <frc2/command/SequentialCommandGroup.h>
 #include "RobotContainer.h"
 #include "subsystems/Climber.h"
-#include "Robot.h"
 #include "commands/ClimbExtend.h"
 #include "commands/ClimbPivot.h"
+#include "Robot.h"
+
+namespace frc4783{
 
 class ClimbGroup: public frc2::CommandHelper<frc2::SequentialCommandGroup, ClimbGroup> {
   public:
-    //ClimbGroup(Climber* climber);
-    ClimbGroup();
+    ClimbGroup(frc4783::Climber* climber, frc4783::RobotContainer* container);
+    //ClimbGroup();
   private:
 
    
 
 };
+
+} //namespace frc4783
 
 #endif //

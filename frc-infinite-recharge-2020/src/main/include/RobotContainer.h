@@ -9,7 +9,6 @@
 #ifndef ROBOTCONTAINER_H
 #define ROBOTCONTAINER_H
 
-#include "commands/ClimbPivot.h"
 #include "subsystems/Climber.h"
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
@@ -18,6 +17,8 @@
 #include <frc2/command/Command.h>
 
 //#include <subsystems/DriveTrain.h>
+
+namespace frc4783{
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -79,8 +80,10 @@ public:
 private:
     //frc4783::DriveTrain drivetrain;
     frc4783::Climber climber;
+    RobotContainer* container;
     
     void ConfigureButtonBindings();
 }; 
 
+} //namespace frc4783
 #endif // ROBOTMAP_H

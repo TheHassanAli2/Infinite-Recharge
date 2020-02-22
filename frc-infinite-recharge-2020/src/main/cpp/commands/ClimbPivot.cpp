@@ -12,7 +12,7 @@
 
 namespace frc4783 {
 
-ClimbPivot::ClimbPivot(Climber* subsystem) : climber(subsystem){
+ClimbPivot::ClimbPivot(Climber* subsystem, RobotContainer* contained) : climber(subsystem), container(contained){
         AddRequirements(subsystem);
         }
 void ClimbPivot::Initialize() {
