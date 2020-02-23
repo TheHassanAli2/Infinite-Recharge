@@ -9,6 +9,10 @@
 
 #include <subsystems/rrDriveTrain.h>
 
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/SpeedControllerGroup.h>
+
+
 //ya feel?
 
 namespace frc4783{
@@ -21,14 +25,19 @@ class rrDifferentialDrive : public frc4783::rrDriveTrain{
 public:
 
     rrDifferentialDrive();
-    //DriveWithJoystick Methods
-    void setSpeed(int port, double speed);
-    void TankDrive(double leftspeed, double rightspeed);
-    void ArcadeDrive(double speed, double turn);
-    void Stop();
-    void ReverseGear();
-	void ForwardGear();
+
+    //Driving methods
+    void TankDrive(double leftspeed, double rightspeed) override;
+    void ArcadeDrive(double speed, double turn) override;
+    void Stop() override;
+
     void Periodic();
+
+protected:
+    std::shared_ptr<frc::DifferentialDrive> differentialDrive;
+    std::shared_ptr<frc::SpeedControllerGroup> leftDrive;
+    std::shared_ptr<frc::SpeedControllerGroup> rightDrive;
+
 };
-}
+} // namespace frc4783
 #endif // RRDIFFERENTIALDRIVE_H

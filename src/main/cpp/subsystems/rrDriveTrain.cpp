@@ -7,15 +7,21 @@
 
 #include "subsystems/rrDriveTrain.h"
 
-//ya feel?
+#include <frc/VictorSP.h>
+#include "ctre/Phoenix.h"
+#include "frc/PWMVictorSPX.h"
+#include "frc/PWMTalonSRX.h"
 
 namespace frc4783{
 
-frc4783::rrDriveTrain::rrDriveTrain()
+rrDriveTrain::rrDriveTrain()
 {
     //Motor Controller and Signal type enumeration
-    enum motortype motors = VictorSPX; 
-    enum signaltype signal = PWM;
+    /**
+     * @todo: motor type and signal type should be parameters to rrDriveTrain constructor
+     */
+    motors = VictorSPX; 
+    signal = CAN;
 
     //Port numeration
     frontLeftPort = 0;
@@ -29,14 +35,12 @@ frc4783::rrDriveTrain::rrDriveTrain()
         frontRightMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(frontRightPort));
         backLeftMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(backLeftPort));
         backRightMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(backRightPort));
-
     }
     else if (motors == VictorSPX && signal == PWM){
         frontLeftMotor.reset(new frc::VictorSP(frontLeftPort));
         backLeftMotor.reset(new frc::VictorSP(frontRightPort));
         frontRightMotor.reset(new frc::VictorSP(backLeftPort));
         backRightMotor.reset(new frc::VictorSP(backRightPort));
-
     }
     else if (motors == TalonSRX && signal == CAN){
         frontLeftMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(frontLeftPort));
@@ -50,16 +54,18 @@ frc4783::rrDriveTrain::rrDriveTrain()
         frontRightMotor.reset(new frc::PWMTalonSRX(backLeftPort));
         backRightMotor.reset(new frc::PWMTalonSRX(backRightPort));
     }
+
     frontLeftMotor->SetInverted(true);
     backLeftMotor->SetInverted(true);
     frontRightMotor->SetInverted(true);
     backRightMotor->SetInverted(true);
+    
     printf("rrDriveTrain init completed\n");
 }
 
-void frc4783::rrDriveTrain::Periodic(){}
+void rrDriveTrain::Periodic(){}
 
-void frc4783::rrDriveTrain::setSpeed(int port, double speed)
+void rrDriveTrain::setSpeed(int port, double speed)
 {
     switch(port){
         case 0: 
@@ -77,13 +83,33 @@ void frc4783::rrDriveTrain::setSpeed(int port, double speed)
     }
 }
 
-void frc4783::rrDriveTrain::ArcadeDrive(double speed, double turn){}
-
-void frc4783::rrDriveTrain::Stop(){}
-
-void frc4783::rrDriveTrain::TankDrive(double leftspeed, double rightspeed){}
-
-void frc4783::rrDriveTrain::ReverseGear(){printf("Rev Gear - DriveTrain\n");}
-
-void frc4783::rrDriveTrain::ForwardGear(){printf("Fwd Gear - DriveTrain\n");} 
+void rrDriveTrain::ArcadeDrive(double speed, double turn){
 }
+
+void rrDriveTrain::Stop(){
+    frontLeftMotor->Set(0);
+    frontRightMotor->Set(0);
+    backLeftMotor->Set(0);
+    backRightMotor->Set(0);
+}
+
+void rrDriveTrain::TankDrive(double leftspeed, double rightspeed){
+}
+
+void rrDriveTrain::ReverseGear(){
+    printf("Rev Gear - DriveTrain\n");
+}
+
+void rrDriveTrain::ForwardGear(){
+    printf("Fwd Gear - DriveTrain\n");
+}
+
+void rrDriveTrain::GearOff() {
+
+}
+
+bool rrDriveTrain::isHighGear() {
+    return true;
+}
+
+} // namespace frc4783

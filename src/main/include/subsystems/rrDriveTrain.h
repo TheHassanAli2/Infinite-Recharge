@@ -8,14 +8,8 @@
 #define RRDRIVETRAIN_H
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/drive/DifferentialDrive.h>
-#include <frc/SpeedControllerGroup.h>
+
 #include "frc/SpeedController.h"
-#include <frc/DoubleSolenoid.h>
-#include <frc/VictorSP.h>
-#include "ctre/Phoenix.h"
-#include "frc/PWMVictorSPX.h"
-#include "frc/PWMTalonSRX.h"
 
 //ya feel?
 
@@ -32,37 +26,44 @@ class rrDriveTrain : public frc2::SubsystemBase {
 public:
 
     rrDriveTrain();
-    //DriveWithJoystick Methods
+    
+    //Driving methods
     virtual void setSpeed(int port, double speed);
+
     virtual void TankDrive(double leftspeed, double rightspeed);
     virtual void ArcadeDrive(double speed, double turn);
     virtual void Stop();
+
+    // Gearshift methods
     virtual void ReverseGear();
-	virtual void ForwardGear();
+    virtual void ForwardGear();
+    virtual void GearOff();
+    virtual bool isHighGear();
+
     void Periodic() override;
 
-    bool highGear;
-    std::shared_ptr<frc::DoubleSolenoid> gearSolenoid;
 protected:
     //Enumeration declarations
-    enum motortype {VictorSPX, TalonSRX}; // Enumeration of the types of motor controllers
-    enum signaltype {PWM,CAN}; // Enumeration of the types of signals
+
+    // Enumeration of the types of motor controllers
+    enum motortype {
+        VictorSPX, 
+        TalonSRX
+    };
+
+    // Enumeration of the types of signals
+    enum signaltype {
+        PWM,
+        CAN
+    };
+
     enum motortype motors; 
     enum signaltype signal;
-    
-    // DriveWithJoystick Motors  
-
-
-
-
 
     std::shared_ptr<frc::SpeedController> frontLeftMotor;
     std::shared_ptr<frc::SpeedController> backLeftMotor;
     std::shared_ptr<frc::SpeedController> frontRightMotor;
-    std::shared_ptr<frc::SpeedController> backRightMotor;    
-    std::shared_ptr<frc::DifferentialDrive> differentialDrive;
-    std::shared_ptr<frc::SpeedControllerGroup> leftDrive;
-    std::shared_ptr<frc::SpeedControllerGroup> rightDrive;
+    std::shared_ptr<frc::SpeedController> backRightMotor; 
 
     //Ports
     int frontLeftPort;

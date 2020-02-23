@@ -7,7 +7,6 @@
 
 #include "subsystems/rrDifferentialDrive.h"
 
-//ya feel?
 
 namespace frc4783{
 
@@ -22,24 +21,8 @@ rrDifferentialDrive::rrDifferentialDrive()
     printf("rrDifferentialDrive init completed\n");
 }
 
-void rrDifferentialDrive::Periodic(){}
+void rrDifferentialDrive::Periodic(){
 
-void rrDifferentialDrive::setSpeed(int port, double speed)
-{
-    switch(port){
-        case 0: 
-        frontLeftMotor->Set(speed);
-        break;
-        case 1:
-        frontRightMotor->Set(speed);
-        break;
-        case 2:
-        backLeftMotor->Set(speed);
-        break;
-        case 3:
-        backRightMotor->Set(speed);
-        break;
-    }
 }
 
 void rrDifferentialDrive::ArcadeDrive(double speed, double turn){
@@ -54,8 +37,4 @@ void rrDifferentialDrive::TankDrive(double leftspeed, double rightspeed){
     differentialDrive->TankDrive(leftspeed, rightspeed);
 }
 
-void rrDifferentialDrive::ReverseGear(){printf("Rev Gear - Diff Drive\n");}
-
-void rrDifferentialDrive::ForwardGear(){printf("Fwd Gear - Diff Drive\n");} 
-
-}
+} // namespace frc4783

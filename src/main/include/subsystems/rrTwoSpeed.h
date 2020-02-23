@@ -8,6 +8,7 @@
 #define RRTWOSPEED_H
 
 #include <subsystems/rrDifferentialDrive.h>
+#include <frc/DoubleSolenoid.h>
 
 //ya feel?
 
@@ -21,13 +22,19 @@ class rrTwoSpeed : public frc4783::rrDifferentialDrive{
 public:
 
     rrTwoSpeed();
-    void setSpeed(int port, double speed);
-    void TankDrive(double leftspeed, double rightspeed);
-    void ArcadeDrive(double speed, double turn);
-    void Stop();
-    void ReverseGear();
-	void ForwardGear();
-    void Periodic();
+
+    // Gearshift methods
+    void ReverseGear() override;
+    void ForwardGear() override;
+    void GearOff() override;
+
+    bool isHighGear() override;
+
+protected:
+    bool highGear;
+    std::shared_ptr<frc::DoubleSolenoid> gearSolenoid;
+
 };
+
 }
 #endif // RRTWOSPEED_H

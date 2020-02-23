@@ -91,7 +91,7 @@ private:
     frc4783::ControlPanel  ctrlPanel;
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
-    frc4783::rrDriveTrain *drivetrain = new frc4783::rrDifferentialDrive();
+    frc4783::rrDriveTrain *drivetrain;
     
     void ConfigureButtonBindings();
 }; 
