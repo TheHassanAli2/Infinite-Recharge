@@ -50,12 +50,12 @@ void RobotContainer::ConfigureButtonBindings()
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
 
     printf("configure button bindings - init rotatepanel command\n");
-    aButtonS->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
-    yButtonS->ToggleWhenPressed(new Solenoid(&ctrlPanel));
+    aButtonS->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
+    yButtonS->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
 
 #ifdef XBOX_CONTROLLER
-    xButtonP->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
-    yButtonP->ToggleWhenPressed(new Solenoid(&ctrlPanel));
+    xButtonP->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
+    yButtonP->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
 #endif
     
 }

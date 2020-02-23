@@ -12,15 +12,13 @@
 
 #include "subsystems/ControlPanel.h"
 
+namespace frc4783 {
+
 /**
- * An example command that uses an example subsystem.
+ * Command use to rotate the Control Panel
  *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
+ * This command will toggle the motor to rotate the Control panel ON or OFF
  * 
- * 
- *
  */
 class RotatePanel
     : public frc2::CommandHelper<frc2::CommandBase, RotatePanel> {
@@ -44,3 +42,6 @@ private:
     frc4783::ControlPanel *controlpanelSubsystem;
     bool on;
 };
+
+
+} // namespace frc4783
