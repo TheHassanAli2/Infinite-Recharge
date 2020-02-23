@@ -5,14 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//ya feel?
+
 #include "RobotContainer.h"
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
+#include "commands/GearShift.h"
+#include <frc2/command/button/JoystickButton.h>
+
+namespace frc4783{
 
 RobotContainer::RobotContainer()
 {
     printf("RobotContainer: drivetrain -set default command\n");
-    drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
+    drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, this)));
     frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
     ConfigureButtonBindings();
 }
@@ -23,7 +29,7 @@ void RobotContainer::ConfigureButtonBindings()
 
 #ifdef XBOX_CONTROLLER
     aButtonP = new frc::JoystickButton(&xbox,1);
-    bButtonP = new frc::JoystickButton(&xbox, 2);
+    //bButtonP = new frc::JoystickButton(&xbox, 2);
     xButtonP = new frc2::JoystickButton(&xbox, 3);
     yButtonP = new frc2::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
@@ -35,7 +41,7 @@ void RobotContainer::ConfigureButtonBindings()
 #endif
 
     // Drive Stick Buttons
-    xButtonS = new frc::JoystickButton(&ps4, 1);			 //'[]' on PS
+    xButtonS = new frc2::JoystickButton(&ps4, 1);			 //'[]' on PS
     aButtonS = new frc2::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
     yButtonS = new frc2::JoystickButton(&ps4, 4);			 //'/\' on PS
@@ -49,6 +55,8 @@ void RobotContainer::ConfigureButtonBindings()
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
 
+    xButtonS->ToggleWhenPressed(new frc4783::GearShift(drivetrain));
+
     printf("configure button bindings - init rotatepanel command\n");
     aButtonS->ToggleWhenPressed(new RotatePanel(&ctrlPanel));
     yButtonS->ToggleWhenPressed(new Solenoid(&ctrlPanel));
@@ -59,3 +67,5 @@ void RobotContainer::ConfigureButtonBindings()
 #endif
     
 }
+
+}  //namespace

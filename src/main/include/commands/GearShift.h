@@ -5,34 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef DRIVEWITHJOYSTICK_H
-#define DRIVEWITHJOYSTICK_H
-
-//ya feel?
+#pragma once
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include <RobotContainer.h>
+#include "Robot.h"
+#include "frc/DoubleSolenoid.h"
 #include <subsystems/rrDriveTrain.h>
 #include <subsystems/rrDifferentialDrive.h>
 #include "subsystems/rrTwoSpeed.h"
-#include "Robot.h"
+
+//ya feel?
 
 namespace frc4783{
 
-class DriveWithJoystick : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
- public:
-
-    DriveWithJoystick(frc4783::rrDriveTrain* subsystem, RobotContainer* contained);
-    void Initialize() override;
-    void Execute() override;
-    bool IsFinished() override; 
+class GearShift : public frc2::CommandHelper<frc2::CommandBase, GearShift>  {
+ public: 
+    GearShift(frc4783::rrDriveTrain* subsystem);
+    void Initialize();
+    void Execute();
+    bool IsFinished();
     void End();
     void Interrupted();
-
- private:
+  
+private:
     frc4783::rrDriveTrain* drivetrain;
-    frc4783::RobotContainer* container; 
 };
 }
-#endif // DRIVEWITHJOYSTICK_H
