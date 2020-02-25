@@ -10,9 +10,14 @@
 #define ROBOTCONTAINER_H
 
 #include <frc/Joystick.h>
+#include <frc2/command/button/JoystickButton.h>
 #include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
+
+#include <subsystems/ControlPanel.h>
+#include <commands/RotatePanel.h>
+#include <commands/Solenoid.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -25,14 +30,13 @@ class RobotContainer {
 public:
     RobotContainer();
 
-    frc::Joystick xbox{0};
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
-    frc::JoystickButton *aButtonS;
+    frc2::JoystickButton *aButtonS;
     frc::JoystickButton *bButtonS;
     frc::JoystickButton *xButtonS;
-    frc::JoystickButton *yButtonS;
+    frc2::JoystickButton *yButtonS;
     frc::JoystickButton *leftBumperButtonS;
     frc::JoystickButton *rightBumperButtonS;
     frc::JoystickButton *selectButtonS;
@@ -44,16 +48,19 @@ public:
     frc::JoystickButton *homeButtonS;
     frc::JoystickButton *touchpadButtonS;
 
+#ifdef XBOX_CONTROLLER
+    frc::Joystick xbox{0};
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
-    frc::JoystickButton *xButtonP;
-    frc::JoystickButton *yButtonP;
+    frc2::JoystickButton *xButtonP;
+    frc2::JoystickButton *yButtonP;
     frc::JoystickButton *leftBumperButtonP;
     frc::JoystickButton *rightBumperButtonP;
     frc::JoystickButton *selectButtonP;
     frc::JoystickButton *startButtonP;
     frc::JoystickButton *leftStickButtonP;
     frc::JoystickButton *rightStickButtonP;
+#endif
 
     // Axies for controller
     static const int LEFT_X_AXIS = 0;	//Logitech
@@ -72,6 +79,7 @@ public:
 
 private:
     frc4783::DriveTrain drivetrain;
+    frc4783::ControlPanel  ctrlPanel;
 
     void ConfigureButtonBindings();
 }; 
