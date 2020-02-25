@@ -27,8 +27,7 @@ class Climber : public frc2::SubsystemBase {
   void ClimbMotor(bool clockwise);
   void ClimbSolenoid(bool extended);
   void ClimbPivotStage(int pivotStage);
-  void ClimbExtendStage();
-  void ClimbRetractStage();
+  void ClimbExtendStage(int extendStage);
   bool ClimbLimitSwitch();
   
   /**

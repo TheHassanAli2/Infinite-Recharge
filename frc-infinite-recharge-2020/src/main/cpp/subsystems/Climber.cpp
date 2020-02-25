@@ -69,14 +69,18 @@ void Climber::ClimbPivotStage(int pivotStage) {
   
 }
 
-void Climber::ClimbExtendStage() {
-  climbSolenoid1->Set(frc::DoubleSolenoid::Value::kForward);
-  climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward);
-}
-
-void Climber::ClimbRetractStage() {
-  climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
-  climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
+void Climber::ClimbExtendStage(int extendStage) {
+  switch (extendStage){
+    case 1:
+      climbSolenoid1->Set(frc::DoubleSolenoid::Value::kForward);
+      climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward); 
+      break;
+    case 2:
+      climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
+      climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
+      break;
+  }
+  
 }
 
 bool Climber::ClimbLimitSwitch() {

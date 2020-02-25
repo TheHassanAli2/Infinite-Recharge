@@ -5,12 +5,11 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef CLIMBPIVOT_H
-#define CLIMBPIVOT_H
+#ifndef CLIMBRETRACT_H
+#define CLIMBRETARCT_H
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "RobotContainer.h"
 #include "subsystems/Climber.h"
 
 /**
@@ -23,15 +22,15 @@
 
 namespace frc4783 {
 
-class ClimbPivot
-    : public frc2::CommandHelper<frc2::CommandBase, ClimbPivot> {
+class ClimbRetract
+    : public frc2::CommandHelper<frc2::CommandBase, ClimbRetract> {
  public:
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  ClimbPivot(Climber* subsystem, RobotContainer* contained);
+  ClimbRetract(Climber* subsystem);
   //explicit ExampleCommand(ExampleSubsystem* subsystem);
   void Initialize() override;
 
@@ -44,10 +43,8 @@ class ClimbPivot
   void Interrupted();
 
  private:
-  frc4783::Climber* climber;
-  frc4783::RobotContainer* container;
-  //bool pivot = true;
+  Climber* climber;
 };
 
 } //namespace frc4783
-#endif // CLIMBPIVOT_H
+#endif // CLIMBRETRACT_H

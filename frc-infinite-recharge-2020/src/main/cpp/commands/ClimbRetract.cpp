@@ -5,33 +5,33 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/ClimbExtend.h"
+#include "commands/ClimbRetract.h"
 #include "subsystems/Climber.h"
 
 
 namespace frc4783 {
 
-ClimbExtend::ClimbExtend(Climber* subsystem) : climber(subsystem){
+ClimbRetract::ClimbRetract(Climber* subsystem) : climber(subsystem){
         AddRequirements(subsystem);
         }
-void ClimbExtend::Initialize() {
-    climber->ClimbExtendStage(1);  
+void ClimbRetract::Initialize() {
+    climber->ClimbExtendStage(2);  
     //climber->ClimbSolenoid(true);     
 } 
 
-void ClimbExtend::Execute(){
+void ClimbRetract::Execute(){
         
 } 
 
-bool ClimbExtend::IsFinished(){
+bool ClimbRetract::IsFinished(){
     return false;
 } 
 
-void ClimbExtend::End(){
+void ClimbRetract::End(){
            
 }
 
-void ClimbExtend::Interrupted(){
+void ClimbRetract::Interrupted(){
    
 } 
 

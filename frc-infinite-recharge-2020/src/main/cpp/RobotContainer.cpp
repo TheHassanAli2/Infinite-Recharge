@@ -9,6 +9,7 @@
 #include "ctre/Phoenix.h"
 #include "commands/ClimbPivot.h"
 #include "commands/ClimbExtend.h"
+#include "commands/ClimbRetract.h"
 #include "commands/ClimbGroup.h"
 #include <frc2/command/button/JoystickButton.h>
 #include "subsystems/Climber.h"
@@ -55,6 +56,7 @@ void RobotContainer::ConfigureButtonBindings()
     //yButtonS->WhenPressed(new frc4783::ClimbPivot(&climber));
     //yButtonS->WhenPressed(new frc4783::ClimbExtend(&climber));
     yButtonS->WhenPressed(new frc4783::ClimbGroup(&climber, this));
+    xButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
 }
 
 }
