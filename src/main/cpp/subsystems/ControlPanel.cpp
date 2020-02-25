@@ -6,10 +6,10 @@
 /*----------------------------------------------------------------------------*/
 #include "frc/DoubleSolenoid.h"
 #include "subsystems/ControlPanel.h"
-#include <frc/util/color.h>
+#include <frc/util/Color.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
-#include <frc/smartdashboard/smartdashboard.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 #include <unistd.h>
 #include "Robot.h"
 #include <frc/commands/Scheduler.h>
