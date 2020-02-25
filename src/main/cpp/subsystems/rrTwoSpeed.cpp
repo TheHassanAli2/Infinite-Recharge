@@ -13,7 +13,7 @@ namespace frc4783{
 
 rrTwoSpeed::rrTwoSpeed()
 {
-    gearSolenoid.reset(new frc::DoubleSolenoid(4,5));
+    gearSolenoid.reset(new frc::DoubleSolenoid(0,1));
     highGear = false;
     printf("rrTwoSpeed init completed\n");
 }
