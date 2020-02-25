@@ -8,7 +8,7 @@
 #include "subsystems/Climber.h"
 #include <frc/VictorSP.h>
 #include <frc/DoubleSolenoid.h>
-#include "commands/ClimbPivot.h" 
+#include "commands/ClimbHook.h" 
 
 namespace frc4783{
 

@@ -5,11 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef CLIMBEXTEND_H
-#define CLIMBEXTEND_H
+#ifndef CLIMBHOOK_H
+#define CLIMBHOOK_H
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
+#include "RobotContainer.h"
 #include "subsystems/Climber.h"
 
 /**
@@ -22,15 +23,15 @@
 
 namespace frc4783 {
 
-class ClimbExtend
-    : public frc2::CommandHelper<frc2::CommandBase, ClimbExtend> {
+class ClimbHook
+    : public frc2::CommandHelper<frc2::CommandBase, ClimbHook> {
  public:
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  ClimbExtend(Climber* subsystem);
+  ClimbHook(Climber* subsystem, RobotContainer* contained);
   //explicit ExampleCommand(ExampleSubsystem* subsystem);
   void Initialize() override;
 
@@ -43,8 +44,10 @@ class ClimbExtend
   void Interrupted();
 
  private:
-  Climber* climber;
+  frc4783::Climber* climber;
+  frc4783::RobotContainer* container;
+  //bool pivot = true;
 };
 
 } //namespace frc4783
-#endif // CLIMB_H
+#endif // CLIMBHOOK_H

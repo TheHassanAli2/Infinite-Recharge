@@ -5,33 +5,36 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/ClimbExtend.h"
+#include "commands/ClimbHook.h"
 #include "subsystems/Climber.h"
+
 
 
 namespace frc4783 {
 
-ClimbExtend::ClimbExtend(Climber* subsystem) : climber(subsystem){
+ClimbHook::ClimbHook(Climber* subsystem, RobotContainer* contained) : climber(subsystem), container(contained){
         AddRequirements(subsystem);
         }
-void ClimbExtend::Initialize() {
-    climber->ClimbExtendStage(1);  
-    //climber->ClimbSolenoid(true);     
+void ClimbHook::Initialize() {
+    climber->ClimbPivotStage(1);
+    //climber->ClimbMotor(true);
 } 
 
-void ClimbExtend::Execute(){
-        
+void ClimbHook::Execute(){
+    
 } 
 
-bool ClimbExtend::IsFinished(){
-    return false;
+bool ClimbHook::IsFinished(){
+    return climber->ClimbLimitSwitch();
+    //return false;
 } 
 
-void ClimbExtend::End(){
-           
+void ClimbHook::End(){
+climber->ClimbPivotStage(2); 
+//container->isExtended = true;      
 }
 
-void ClimbExtend::Interrupted(){
+void ClimbHook::Interrupted(){
    
 } 
 
