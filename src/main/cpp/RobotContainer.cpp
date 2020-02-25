@@ -18,7 +18,8 @@ namespace frc4783{
 RobotContainer::RobotContainer()
 {
     printf("RobotContainer: drivetrain -set default command\n");
-    drivetrain = new frc4783::rrDifferentialDrive();
+    //drivetrain = new frc4783::rrDifferentialDrive();
+    drivetrain = new frc4783::rrTwoSpeed();
     drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, this)));
     frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
     ConfigureButtonBindings();
