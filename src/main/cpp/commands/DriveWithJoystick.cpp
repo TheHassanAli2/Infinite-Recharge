@@ -32,19 +32,25 @@ void DriveWithJoystick::Execute(){
         H_errorEntry = table->GetEntry("H_error");
         double H_error = H_errorEntry.GetDouble(0);
         angleEntry = table->GetEntry("angle");
-        distanceEntry = table->GetEntry("distance");//m_turn represents the speed of the turn
+        distanceEntry = table->GetEntry("H_dist");//m_turn represents the speed of the turn
         double distance = distanceEntry.GetDouble(0);
-        double dist_error = distance - 45;
+        double dist_error = distance;
 
         //m_turn = angleEntry.GetDouble(0)*0.03; //field of view is of 53.5
         if(H_error > 0 && H_error<165 ) {
-            m_turn = (H_error*0.004) + 0.35;
+            m_turn = (H_error*0.0022) + 0.35;
         } else if (H_error < 0 && H_error > -165) {
-            m_turn = (H_error*0.004) - 0.35;
+            m_turn = (H_error*0.0022) - 0.35;
         }
 
         printf("dist error:  %f \n", dist_error);
-        m_speed = dist_error * 0.2;
+        if(distance>80){
+            m_speed = -0.6;
+        } else{
+            m_speed = dist_error * -0.03 - 0.2;
+        }
+        
+        //m_speed = -1;
 
 
         //m_turn = H_errorEntry.GetDouble(0)*-0.0045; //field of view is of 53.5
