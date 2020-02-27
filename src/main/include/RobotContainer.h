@@ -14,7 +14,7 @@
 #include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
-
+#include "subsystems/CompressorSubsystem.h"
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
@@ -83,5 +83,5 @@ private:
 
     void ConfigureButtonBindings();
 }; 
-
-#endif // ROBOTMAP_H
+#endif
+ // ROBOTMAP_H

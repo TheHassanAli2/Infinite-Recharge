@@ -10,23 +10,23 @@ namespace frc4783  {
 
 class CompressorSubsystem : public frc2::Subsystem {
 
-
 public:
-    CompressorSubsystem();
+    CompressorSubsystem(int pcmID );
     virtual ~CompressorSubsystem();
-
+    
 
    void Start();
+
    void Stop();
  
 protected:
-   frc::Compressor* compressor;
+   void TurnonCompressor(int pcmID);
+
+   frc::Compressor *compressor;
+
+
 };
 
-} // namespace 4783
+} // namespace4783
 
-
-
-
-
-#endif // COMPRESSORSUBSYTEM_H
+#endif // COMPRESSORSUBSYTEM_H;
