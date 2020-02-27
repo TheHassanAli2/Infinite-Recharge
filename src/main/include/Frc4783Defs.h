@@ -80,7 +80,6 @@ typedef enum controllerAxesType {
 typedef enum joystickButtonAction {
     // Trigger actions
     WhenActive,
-    WhileActive,
     WhenInactive,
     CancelWhenActive,
     ToggleWhenActive,
