@@ -14,6 +14,25 @@
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
 
+#include <frc/controller/PIDController.h>
+#include <frc/controller/RamseteController.h>
+#include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/trajectory/Trajectory.h>
+#include <frc/trajectory/TrajectoryGenerator.h>
+#include <frc/trajectory/constraint/DifferentialDriveVoltageConstraint.h>
+#include <frc2/command/InstantCommand.h>
+#include <frc2/command/RamseteCommand.h>
+#include <frc2/command/SequentialCommandGroup.h>
+#include <frc2/command/button/JoystickButton.h>
+
+#include <frc/Filesystem.h>
+#include <wpi/Path.h>
+#include <frc/trajectory/TrajectoryUtil.h>
+#include <wpi/SmallString.h>
+
+#include "Constants.h"
+
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -21,9 +40,12 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and button mappings) should be declared here.
  */
+
+namespace frc4783 {
 class RobotContainer {
 public:
     RobotContainer();
+    frc2::Command* GetAutonomousCommand();
 
     frc::Joystick xbox{0};
     frc::Joystick ps4{1};
@@ -73,7 +95,14 @@ public:
 private:
     frc4783::DriveTrain drivetrain;
 
+    wpi::SmallString<64> deployDirectory;
+    frc::Trajectory exampleTrajectory;
+
+    frc::DifferentialDriveKinematics kDriveKinematics;
+
     void ConfigureButtonBindings();
 }; 
+
+} // frc4783
 
 #endif // ROBOTMAP_H

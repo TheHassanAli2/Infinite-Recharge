@@ -5,47 +5,35 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef DRIVEWITHJOYSTICK_H
-#define DRIVEWITHJOYSTICK_H
+#pragma once
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <RobotContainer.h>
-#include "subsystems/DriveTrain.h"
-#include "Robot.h"
+#include <frc/Filesystem.h>
+#include <frc/trajectory/TrajectoryUtil.h>
+#include <wpi/SmallString.h>
 
 /**
- * An example command that uses an example subsystem.
- * pianist
+ * An example command.
+ *
  * <p>Note that this extends CommandHelper, rather extending CommandBase
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
+class Auto
+    : public frc2::CommandHelper<frc2::CommandBase, Auto> {
+ public:
+  Auto();
 
-namespace frc4783 {
+  void Initialize() override;
 
-class DriveWithJoystick
-    : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
-public:
-  
-  
-    DriveWithJoystick(frc4783::DriveTrain* subsystem, frc4783::RobotContainer* contained);
+  void Execute() override;
 
-    void Initialize() override;
+  void End(bool interrupted) override;
 
-    void Execute() override;
-
-    bool IsFinished() override; 
-
-    void End();
-
-    void Interrupted();
+  bool IsFinished() override;
 
 private:
-    frc4783::DriveTrain* drivetrain;
-    frc4783::RobotContainer* container; 
+  wpi::SmallString<64> deployDirectory;
+  frc::Trajectory trajectory;
 };
-
-} /* namespace frc4783 */
-
-#endif // DRIVEWITHJOYSTICK_H
