@@ -19,9 +19,10 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
 void Robot::AutonomousInit(){
-    if (m_autonomousCommand != nullptr){
-            m_autonomousCommand->Cancel();
-            m_autonomousCommand = nullptr;
+    m_autonomousCommand = container.GetAutonomousCommand();
+
+    if (m_autonomousCommand != nullptr) {
+        m_autonomousCommand->Schedule();
     }
 }
 
