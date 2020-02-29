@@ -24,40 +24,36 @@ void DriveWithJoystick::Execute(){
     
 
     if (container->ps4.GetRawButton(2)) {
+        
         nt::NetworkTableEntry angleEntry;
         nt::NetworkTableEntry distanceEntry;
         nt::NetworkTableEntry H_errorEntry;
+        
         auto inst = nt::NetworkTableInstance::GetDefault();
         auto table = inst.GetTable("Vision"); 
         H_errorEntry = table->GetEntry("H_error");
         double H_error = H_errorEntry.GetDouble(0);
         angleEntry = table->GetEntry("angle");
-        distanceEntry = table->GetEntry("H_dist");//m_turn represents the speed of the turn
+        distanceEntry = table->GetEntry("H_dist"); //m_turn represents the speed of the turn
         double distance = distanceEntry.GetDouble(0);
-        double dist_error = distance;
 
         //m_turn = angleEntry.GetDouble(0)*0.03; //field of view is of 53.5
-        if(H_error > 0 && H_error<165 ) {
+        if(H_error > 0 && H_error < 165 ) {
             m_turn = (H_error*0.0022) + 0.35;
         } else if (H_error < 0 && H_error > -165) {
-            m_turn = (H_error*0.0022) - 0.35;
+            m_turn = (H_error * 0.0022) - 0.35;
         }
 
-        printf("dist error:  %f \n", dist_error);
-        if(distance>80){
+        printf("dist error:  %f \n", distance);
+        if(distance > 80) {
             m_speed = -0.6;
-        } else{
-            m_speed = dist_error * -0.03 - 0.2;
+        } else {
+            m_speed = distance * -0.03 - 0.2;
         }
-        
-        //m_speed = -1;
-
 
         //m_turn = H_errorEntry.GetDouble(0)*-0.0045; //field of view is of 53.5
-        
-        //m_speed = 0.3 +(1/distanceEntry.GetDouble(0)*-0.8);
+        //m_speed = 0.3 +(1/distanceEntry.GetDouble(0)*-0.8);    
         //printf("m_speed is of : %f \n m_turn is of : %f\n",m_speed, m_turn);
-
         //float pp_speed = (1 - (1/distanceEntry.GetDouble(0)))*0.4;
         //printf("m_speed is of %f \n", pp_speed);
     }
@@ -68,7 +64,7 @@ void DriveWithJoystick::Execute(){
 } 
 
 bool DriveWithJoystick::IsFinished(){
-    return false;
+    return false;    
 }
 
 void DriveWithJoystick::End(){
