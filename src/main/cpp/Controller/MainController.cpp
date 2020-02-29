@@ -18,7 +18,7 @@ MainController::~MainController() {
     }
 }
 
-double MainController::getRawAxis(int id) {
+double MainController::getRawAxis(ControllerAxesType_e id) {
     double ret = 0.0;
     if (m_driveStick != nullptr) {
         ret = m_driveStick->GetRawAxis(mapAxes(id));
