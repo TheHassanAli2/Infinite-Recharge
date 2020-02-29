@@ -46,20 +46,16 @@ void Climber::ClimbExtendStage(int extendStage) {
     case 1:
       if (climbSolenoid1 != nullptr && climbSolenoid2 != nullptr){
         climbSolenoid1->Set(frc::DoubleSolenoid::Value::kForward);
-        climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward);
+        climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward); 
+        isExtended = true; 
       }
-      climbSolenoid1->Set(frc::DoubleSolenoid::Value::kForward);
-      climbSolenoid2->Set(frc::DoubleSolenoid::Value::kForward); 
-      isExtended = true; 
       break;
     case 2:
       if (climbSolenoid1 != nullptr && climbSolenoid2 != nullptr){
         climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
         climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
+        isExtended = false;
       }
-      climbSolenoid1->Set(frc::DoubleSolenoid::Value::kReverse);
-      climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse); 
-      isExtended = false;
       break;
   }
   
