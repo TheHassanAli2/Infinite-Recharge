@@ -30,7 +30,8 @@ bool ClimbHook::IsFinished(){
 } 
 
 void ClimbHook::End(){
-climber->ClimbPivotStage(2); 
+climber->ClimbPivotStage(2);
+climber->ClimbExtendStage(1); 
 //container->isExtended = true;      
 }
 
