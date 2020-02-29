@@ -24,25 +24,18 @@ class Climber : public frc2::SubsystemBase {
  public:
   Climber();
   void ClimbReset();
-  void ClimbMotor(bool clockwise);
   void ClimbSolenoid(bool extended);
-  void ClimbPivotStage(int pivotStage);
   void ClimbExtendStage(int extendStage);
-  bool ClimbLimitSwitch();
-  
+
+  bool isExtended;
+  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid1;
+  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid2;
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
  private:
-  std::shared_ptr<frc::SpeedController> pivotMotor1;
-  std::shared_ptr<frc::SpeedController> pivotMotor2;
-  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid1;
-  std::shared_ptr<frc::DoubleSolenoid> climbSolenoid2;
-  std::shared_ptr<frc::Compressor> compressorOn;
-  std::shared_ptr<frc::DigitalInput> limitSwitch;
-  std::shared_ptr<frc::Counter> counter;
   Climber* climber; 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.

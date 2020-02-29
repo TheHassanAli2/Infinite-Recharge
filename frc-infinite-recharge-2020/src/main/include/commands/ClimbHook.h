@@ -11,6 +11,8 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "RobotContainer.h"
+#include "Robot.h"
+#include "frc/DoubleSolenoid.h"
 #include "subsystems/Climber.h"
 
 /**

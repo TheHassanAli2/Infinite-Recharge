@@ -16,8 +16,12 @@ ClimbHook::ClimbHook(Climber* subsystem, RobotContainer* contained) : climber(su
         AddRequirements(subsystem);
         }
 void ClimbHook::Initialize() {
-    climber->ClimbPivotStage(1);
-    //climber->ClimbMotor(true);
+    if (climber->isExtended == true) {    						 
+   		climber->ClimbExtendStage(2);
+   	}
+	else	{    				
+   	  	climber->ClimbExtendStage(1); 							
+	} 
 } 
 
 void ClimbHook::Execute(){
@@ -25,14 +29,12 @@ void ClimbHook::Execute(){
 } 
 
 bool ClimbHook::IsFinished(){
-    return climber->ClimbLimitSwitch();
-    //return false;
+    return false;
 } 
 
 void ClimbHook::End(){
-climber->ClimbPivotStage(2);
-climber->ClimbExtendStage(1); 
-//container->isExtended = true;      
+    climber->climbSolenoid1->Set(frc::DoubleSolenoid::Value::kOff);
+    climber->climbSolenoid2->Set(frc::DoubleSolenoid::Value::kOff);
 }
 
 void ClimbHook::Interrupted(){
