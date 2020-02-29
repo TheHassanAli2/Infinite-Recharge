@@ -23,7 +23,7 @@ namespace frc4783{
 class DriveWithJoystick : public frc2::CommandHelper<frc2::CommandBase, DriveWithJoystick> {
  public:
 
-    DriveWithJoystick(frc4783::rrDriveTrain* subsystem, RobotContainer* contained);
+    DriveWithJoystick(frc4783::rrDriveTrain* subsystem, frc4783::MainController* controller);
     void Initialize() override;
     void Execute() override;
     bool IsFinished() override; 
@@ -32,7 +32,8 @@ class DriveWithJoystick : public frc2::CommandHelper<frc2::CommandBase, DriveWit
 
  private:
     frc4783::rrDriveTrain* drivetrain;
-    frc4783::RobotContainer* container; 
+    //frc4783::RobotContainer* container;
+    frc4783::MainController *m_controller; 
 };
 }
 #endif // DRIVEWITHJOYSTICK_H

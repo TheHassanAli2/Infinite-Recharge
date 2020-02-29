@@ -16,6 +16,8 @@
 #include <subsystems/rrTwoSpeed.h>
 #include <frc2/command/ParallelRaceGroup.h>
 
+#include "Controller/MainController.h"
+
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
@@ -36,7 +38,9 @@ public:
     RobotContainer();
 
     frc2::Command* GetAutonomousCommand();
+    frc4783::MainController * m_controller;
 
+#if 0
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
@@ -85,7 +89,7 @@ public:
     static const int RIGHT_X_AXIS_E = 2;
     static const int RIGHT_Y_AXIS_E = 5;
 
-
+#endif 
 
 private:
     frc4783::ControlPanel  ctrlPanel;
