@@ -10,8 +10,9 @@
 #include "networktables/NetworkTableInstance.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 
-namespace frc4783 {
+//ya feel?
 
+namespace frc4783{
 
 frc4783::DriveWithJoystick::DriveWithJoystick(frc4783::rrDriveTrain* subsystem, RobotContainer* contained) : drivetrain(subsystem), container(contained){
         AddRequirements(subsystem);
@@ -21,9 +22,7 @@ frc4783::DriveWithJoystick::DriveWithJoystick(frc4783::rrDriveTrain* subsystem, 
 void frc4783::DriveWithJoystick::Execute(){
     float m_speed = (0.95 * container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
     float m_turn = (1.0 * container->ps4.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
-
-    //float m_speed = (0.95 * container->xbox.GetRawAxis(RobotContainer::LEFT_Y_AXIS));
-    //float m_turn = (1.0 * container->xbox.GetRawAxis(RobotContainer::RIGHT_X_AXIS));
+    
 
     if (container->ps4.GetRawButton(2)) {
         
@@ -41,16 +40,16 @@ void frc4783::DriveWithJoystick::Execute(){
 
         //m_turn = angleEntry.GetDouble(0)*0.03; //field of view is of 53.5
         if(H_error > 0 && H_error < 165 ) {
-            m_turn = (H_error*0.0020) + 0.45;
+            m_turn = (H_error*0.0022) + 0.35;
         } else if (H_error < 0 && H_error > -165) {
-            m_turn = (H_error * 0.0020) - 0.45;
+            m_turn = (H_error * 0.0022) - 0.35;
         }
 
         printf("dist error:  %f \n", distance);
         if(distance > 80) {
-            m_speed = -0.4;
+            m_speed = -0.6;
         } else {
-            m_speed = distance * -0.015 - 0.23;
+            m_speed = distance * -0.03 - 0.2;
         }
 
         //m_turn = H_errorEntry.GetDouble(0)*-0.0045; //field of view is of 53.5
@@ -61,10 +60,17 @@ void frc4783::DriveWithJoystick::Execute(){
     }
     
     drivetrain->ArcadeDrive(m_speed,m_turn);
+
+
 } 
 
+<<<<<<< HEAD
+bool DriveWithJoystick::IsFinished(){
+    return false;    
+=======
 bool frc4783::DriveWithJoystick::IsFinished(){
     return false;
+>>>>>>> master
 }
 
 void frc4783::DriveWithJoystick::End(){
@@ -77,6 +83,4 @@ void frc4783::DriveWithJoystick::Interrupted(){
 
 void frc4783::DriveWithJoystick::Initialize() {
     
-}
-
-} /* namespace frc4783 */
+}}

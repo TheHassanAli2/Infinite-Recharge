@@ -5,34 +5,48 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//ya feel?
+
 #include "RobotContainer.h"
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
+#include "commands/GearShift.h"
+#include <frc2/command/button/JoystickButton.h>
+
+namespace frc4783{
 
 RobotContainer::RobotContainer()
 {
-    drivetrain.SetDefaultCommand(std::move(frc4783::DriveWithJoystick(&drivetrain, this)));
+    printf("RobotContainer: drivetrain -set default command\n");
+    //drivetrain = new frc4783::rrDifferentialDrive();
+    drivetrain = new frc4783::rrTwoSpeed();
+    drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, this)));
+    frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
     ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()
 {
+    printf("configure button bindings");
     // Drive Stick Buttons
+
+#ifdef XBOX_CONTROLLER
     aButtonP = new frc::JoystickButton(&xbox,1);
-    bButtonP = new frc::JoystickButton(&xbox, 2);
-    xButtonP = new frc::JoystickButton(&xbox, 3);
-    yButtonP = new frc::JoystickButton(&xbox, 4);
+    //bButtonP = new frc::JoystickButton(&xbox, 2);
+    xButtonP = new frc2::JoystickButton(&xbox, 3);
+    yButtonP = new frc2::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
     rightBumperButtonP = new frc::JoystickButton(&xbox, 6);
     selectButtonP = new frc::JoystickButton(&xbox, 7);
     startButtonP = new frc::JoystickButton(&xbox, 8);
     leftStickButtonP = new frc::JoystickButton(&xbox, 9);
     rightStickButtonP = new frc::JoystickButton(&xbox, 10);
-
+#endif
+//#ifdef PS4_CONTROLLER
     // Drive Stick Buttons
-    xButtonS = new frc::JoystickButton(&ps4, 1);			 //'[]' on PS
-    aButtonS = new frc::JoystickButton(&ps4, 2);			 //'X' on PS
+    xButtonS = new frc2::JoystickButton(&ps4, 1);			 //'[]' on PS
+    aButtonS = new frc2::JoystickButton(&ps4, 2);			 //'X' on PS
     bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
-    yButtonS = new frc::JoystickButton(&ps4, 4);			 //'/\' on PS
+    yButtonS = new frc2::JoystickButton(&ps4, 4);			 //'/\' on PS
     leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
     rightBumperButtonS = new frc::JoystickButton(&ps4, 6);  //'R1' on PS
     leftTriggerButtonS = new frc::JoystickButton(&ps4, 7);  //'L2' on PS
@@ -42,4 +56,18 @@ void RobotContainer::ConfigureButtonBindings()
     leftStickButtonS = new frc::JoystickButton(&ps4, 11);   //'L3' on PS
     rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
     homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
+//#endif
+    xButtonS->ToggleWhenPressed(new frc4783::GearShift(drivetrain));
+
+    printf("configure button bindings - init rotatepanel command\n");
+    aButtonS->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
+    yButtonS->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
+
+#ifdef XBOX_CONTROLLER
+    xButtonP->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
+    yButtonP->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
+#endif
+    
 }
+
+}  //namespace

@@ -5,58 +5,51 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/DriveTrain.h"
-#include <frc/VictorSP.h>
+#include "subsystems/rrDifferentialDrive.h"
 
-using namespace DriveConstants;
 
-namespace frc4783 {
+namespace frc4783{
 
-DriveTrain::DriveTrain()
+rrDifferentialDrive::rrDifferentialDrive()
 {
-    printf("Drivetrain init completed\n");
-    frontLeftMotor.reset(new frc::VictorSP(0));
-    backLeftMotor.reset(new frc::VictorSP(1));
-    frontRightMotor.reset(new frc::VictorSP(2));
-    backRightMotor.reset(new frc::VictorSP(3));
     leftDrive.reset(new frc::SpeedControllerGroup(*backLeftMotor, *frontLeftMotor));
     rightDrive.reset(new frc::SpeedControllerGroup(*backRightMotor, *frontRightMotor));
-    differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
-
-
-    frontLeftMotor->SetInverted(true);
-    backLeftMotor->SetInverted(true);
-    frontRightMotor->SetInverted(true);
-    backRightMotor->SetInverted(true);
-    leftDrive->SetInverted(true);
     rightDrive->SetInverted(true);
 
+    differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
+
+    printf("rrDifferentialDrive init completed\n");
 }
 
-void DriveTrain::Periodic()
-{
+void rrDifferentialDrive::Periodic(){
+
 }
 
+<<<<<<< HEAD:src/main/cpp/subsystems/DriveTrain.cpp
 void DriveTrain::ArcadeDrive(double speed, double turn)
 {
 
 //    printf("Controller values are: %f \n",turn*1.0);
+=======
+void rrDifferentialDrive::ArcadeDrive(double speed, double turn){
+>>>>>>> master:src/main/cpp/subsystems/rrDifferentialDrive.cpp
     differentialDrive->ArcadeDrive(speed, turn);
 
 }
 
+<<<<<<< HEAD:src/main/cpp/subsystems/DriveTrain.cpp
 
 
 void DriveTrain::Stop()
 {
+=======
+void rrDifferentialDrive::Stop(){
+>>>>>>> master:src/main/cpp/subsystems/rrDifferentialDrive.cpp
     ArcadeDrive(0, 0);
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-void DriveTrain::TankDrive(double leftspeed, double rightspeed)
-{
+void rrDifferentialDrive::TankDrive(double leftspeed, double rightspeed){
     differentialDrive->TankDrive(leftspeed, rightspeed);
 }
 
-} /* namespace frc4783 */
+} // namespace frc4783
