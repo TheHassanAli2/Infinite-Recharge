@@ -20,6 +20,24 @@
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
 
+#include <frc/controller/PIDController.h>
+#include <frc/controller/RamseteController.h>
+#include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/trajectory/Trajectory.h>
+#include <frc/trajectory/TrajectoryGenerator.h>
+#include <frc/trajectory/constraint/DifferentialDriveVoltageConstraint.h>
+#include <frc2/command/InstantCommand.h>
+#include <frc2/command/RamseteCommand.h>
+#include <frc2/command/SequentialCommandGroup.h>
+#include <frc2/command/button/JoystickButton.h>
+
+#include <frc/Filesystem.h>
+#include <wpi/Path.h>
+#include <frc/trajectory/TrajectoryUtil.h>
+#include <wpi/SmallString.h>
+
+#include "Constants.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -93,6 +111,11 @@ private:
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;
     
+    wpi::SmallString<64> deployDirectory;
+    frc::Trajectory exampleTrajectory;
+
+    frc::DifferentialDriveKinematics kDriveKinematics;
+
     void ConfigureButtonBindings();
 }; 
 }

@@ -11,7 +11,14 @@
 
 #include "frc/SpeedController.h"
 
-//ya feel?
+#include <Constants.h>
+
+#include <frc/ADXRS450_Gyro.h>
+#include <frc/Encoder.h>
+#include <frc/geometry/Pose2d.h>
+#include <frc/kinematics/DifferentialDriveOdometry.h>
+#include <units/units.h>
+
 
 namespace frc4783{
 
@@ -42,6 +49,21 @@ public:
 
     void Periodic() override;
 
+    // Autonomous methods
+    void ResetEncoders();
+    double GetAverageEncoderDistance();
+    frc::Encoder GetLeftEncoder();
+    frc::Encoder GetRightEncoder();
+
+    virtual void SetMaxOutput(double maxOutput);
+    double GetHeading();
+    double GetTurnRate();
+    frc::Pose2d GetPose();
+    void ResetOdometry(frc::Pose2d pose);
+
+    virtual void TankDriveVolts(units::volt_t left, units::volt_t right);
+    virtual frc::DifferentialDriveWheelSpeeds GetWheelSpeeds();
+
 protected:
     //Enumeration declarations
 
@@ -60,10 +82,16 @@ protected:
     enum motortype motors; 
     enum signaltype signal;
 
+    // speed controllers
     std::shared_ptr<frc::SpeedController> frontLeftMotor;
     std::shared_ptr<frc::SpeedController> backLeftMotor;
     std::shared_ptr<frc::SpeedController> frontRightMotor;
     std::shared_ptr<frc::SpeedController> backRightMotor; 
+
+    frc::Encoder m_leftEncoder;
+    frc::Encoder m_rightEncoder;
+    frc::ADXRS450_Gyro m_gyro;
+    frc::DifferentialDriveOdometry m_odometry;
 
     //Ports
     int frontLeftPort;

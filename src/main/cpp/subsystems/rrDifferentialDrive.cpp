@@ -37,4 +37,20 @@ void rrDifferentialDrive::TankDrive(double leftspeed, double rightspeed){
     differentialDrive->TankDrive(leftspeed, rightspeed);
 }
 
+void rrDifferentialDrive::TankDriveVolts(units::volt_t left, units::volt_t right) {
+    leftDrive->SetVoltage(left);
+    rightDrive->SetVoltage(-right);
+    differentialDrive->Feed();
+}
+
+void rrDifferentialDrive::SetMaxOutput(double maxOutput) {
+    differentialDrive->SetMaxOutput(maxOutput);
+}
+
+frc::DifferentialDriveWheelSpeeds rrDifferentialDrive::GetWheelSpeeds() {
+  return {units::meters_per_second_t(m_leftEncoder.GetRate()),
+          units::meters_per_second_t(m_rightEncoder.GetRate())};
+}
+
+
 } // namespace frc4783

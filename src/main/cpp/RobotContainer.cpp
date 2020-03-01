@@ -15,7 +15,8 @@
 
 namespace frc4783{
 
-RobotContainer::RobotContainer()
+frc4783::RobotContainer::RobotContainer()
+    : kDriveKinematics{DriveConstants::kTrackwidth}
 {
     printf("RobotContainer: drivetrain -set default command\n");
     //drivetrain = new frc4783::rrDifferentialDrive();
@@ -70,4 +71,45 @@ void RobotContainer::ConfigureButtonBindings()
     
 }
 
-}  //namespace
+frc2::Command* frc4783::RobotContainer::GetAutonomousCommand() {
+    // Create a voltage constraint to ensure we don't accelerate too fast
+    frc::DifferentialDriveVoltageConstraint autoVoltageConstraint(
+        frc::SimpleMotorFeedforward<units::meters>(DriveConstants::ks, DriveConstants::kv, DriveConstants::ka),
+        kDriveKinematics, 10_V);
+
+
+    // Set up config for trajectory
+    frc::TrajectoryConfig config(DriveConstants::kMaxSpeed,
+                               DriveConstants::kMaxAcceleration);
+    // Add kinematics to ensure max speed is actually obeyed
+    config.SetKinematics(kDriveKinematics);
+    // Apply the voltage constraint
+    config.AddConstraint(autoVoltageConstraint);
+
+    frc::filesystem::GetDeployDirectory(deployDirectory);
+    wpi::sys::path::append(deployDirectory, "paths");
+    wpi::sys::path::append(deployDirectory, "Circle.wpilib.json");
+    frc::filesystem::GetDeployDirectory(deployDirectory);
+
+    frc::Trajectory exampleTrajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);
+
+    frc2::RamseteCommand ramseteCommand(
+        exampleTrajectory, 
+        [this]() { return drivetrain->GetPose(); },
+        frc::RamseteController(DriveConstants::kRamseteB, DriveConstants::kRamseteZeta),
+        frc::SimpleMotorFeedforward<units::meters>(DriveConstants::ks, DriveConstants::kv, DriveConstants::ka),
+        kDriveKinematics,
+        [this] { return drivetrain->GetWheelSpeeds(); },
+        frc2::PIDController(DriveConstants::kPDriveVel, 0, 0),
+        frc2::PIDController(DriveConstants::kPDriveVel, 0, 0),
+        [this](auto left, auto right) { drivetrain->TankDriveVolts(left, right); },
+        {drivetrain});
+
+    // no auto
+    return new frc2::SequentialCommandGroup(
+        std::move(ramseteCommand),
+        frc2::InstantCommand([this] { drivetrain->TankDriveVolts(0_V, 0_V); }, {}));
+
+}
+
+} // namespace frc4783

@@ -33,6 +33,9 @@ public:
 
     void Periodic();
 
+    void TankDriveVolts(units::volt_t left, units::volt_t right) override;
+    void SetMaxOutput(double maxOutput) override;
+    frc::DifferentialDriveWheelSpeeds GetWheelSpeeds() override;
 protected:
     std::shared_ptr<frc::DifferentialDrive> differentialDrive;
     std::shared_ptr<frc::SpeedControllerGroup> leftDrive;

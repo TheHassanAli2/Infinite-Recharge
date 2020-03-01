@@ -10,6 +10,8 @@
 
 // VERY important for auto constants
 #include "units/units.h"
+#include <frc/kinematics/DifferentialDriveKinematics.h>
+//#include "frc/DifferentialDriveKinematics.h"
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -31,12 +33,14 @@ namespace DriveConstants
     constexpr double kPDriveVel = 8.5;
     // distance between wheels for differential drive
     constexpr auto kTrackwidth = 0.609_m;
+    //extern const frc::DifferentialDriveKinematics kDriveKinematics(kTrackwidth);
     // max speed/accelerations
     constexpr auto kMaxSpeed = 4_mps;
     constexpr auto kMaxAcceleration = 3_mps_sq;
     // RAMSETE follower values
     constexpr double kRamseteB = 2;
     constexpr double kRamseteZeta = 0.7;
+    constexpr bool kGyroReversed = true;
 }
 
 #endif //CONSTANTS_H

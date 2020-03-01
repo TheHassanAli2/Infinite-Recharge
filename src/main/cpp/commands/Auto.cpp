@@ -13,11 +13,11 @@ Auto::Auto() {
 
 // Called when the command is initially scheduled.
 void Auto::Initialize() {
-  wpi::sys::path::append(deployDirectory, "paths");
+  /*wpi::sys::path::append(deployDirectory, "paths");
   wpi::sys::path::append(deployDirectory, "YourPath.wpilib.json");
   frc::filesystem::GetDeployDirectory(deployDirectory);
 
-  trajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);
+  trajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);*/
 }
 
 // Called repeatedly when this Command is scheduled to run

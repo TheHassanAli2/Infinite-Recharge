@@ -35,4 +35,6 @@ void frc4783::DriveWithJoystick::Interrupted(){
 
 void frc4783::DriveWithJoystick::Initialize() {
     
-}}
+}
+
+} /* namespace frc4783 */
