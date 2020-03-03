@@ -35,6 +35,7 @@
 #include <wpi/Path.h>
 #include <frc/trajectory/TrajectoryUtil.h>
 #include <wpi/SmallString.h>
+#include <string>
 
 #include "Constants.h"
 
@@ -53,7 +54,7 @@ class RobotContainer {
 public:
     RobotContainer();
 
-    frc2::Command* GetAutonomousCommand();
+    frc2::Command* GetAutonomousCommand(std::string pathName);
 
     frc::Joystick ps4{1};
 

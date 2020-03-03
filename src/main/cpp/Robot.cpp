@@ -21,7 +21,7 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
 void Robot::AutonomousInit(){
-    m_autonomousCommand = robotcontainer.GetAutonomousCommand();
+    m_autonomousCommand = robotcontainer.GetAutonomousCommand("Circle.paths.json");
 
     if (m_autonomousCommand != nullptr) {
         m_autonomousCommand->Schedule();

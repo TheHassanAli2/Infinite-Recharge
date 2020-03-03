@@ -71,7 +71,7 @@ void RobotContainer::ConfigureButtonBindings()
     
 }
 
-frc2::Command* frc4783::RobotContainer::GetAutonomousCommand() {
+frc2::Command* frc4783::RobotContainer::GetAutonomousCommand(std::string pathName) {
     // Create a voltage constraint to ensure we don't accelerate too fast
     frc::DifferentialDriveVoltageConstraint autoVoltageConstraint(
         frc::SimpleMotorFeedforward<units::meters>(DriveConstants::ks, DriveConstants::kv, DriveConstants::ka),
@@ -88,7 +88,7 @@ frc2::Command* frc4783::RobotContainer::GetAutonomousCommand() {
 
     frc::filesystem::GetDeployDirectory(deployDirectory);
     wpi::sys::path::append(deployDirectory, "paths");
-    wpi::sys::path::append(deployDirectory, "Circle.wpilib.json");
+    wpi::sys::path::append(deployDirectory, pathName);
     frc::filesystem::GetDeployDirectory(deployDirectory);
 
     frc::Trajectory exampleTrajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);
