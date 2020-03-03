@@ -18,6 +18,8 @@ namespace frc4783{
 frc4783::RobotContainer::RobotContainer()
 {
     printf("RobotContainer init completed");
+    drivetrain = new frc4783::rrDifferentialDrive();
+    m_autonomousCommand = new frc4783::AutoCmd(drivetrain);
     drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, this)));
     ConfigureButtonBindings();
 }
@@ -55,5 +57,8 @@ void frc4783::RobotContainer::ConfigureButtonBindings()
     frc2::JoystickButton(&ps4, 2)
         .ToggleWhenPressed(new frc4783::GearShift(drivetrain));
 }
-
+frc2::Command* RobotContainer::GetAutonomousCommand() {
+  // An example command will be run in autonomous
+  return m_autonomousCommand;
+}
 }  //namespace

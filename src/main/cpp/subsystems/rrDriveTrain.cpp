@@ -15,7 +15,7 @@ frc4783::rrDriveTrain::rrDriveTrain()
 {
     //Motor Controller and Signal type enumeration
     enum motortype motors = VictorSPX; 
-    enum signaltype signal = PWM;
+    enum signaltype signal = CAN;
 
     //Port numeration
     frontLeftPort = 0;

@@ -14,7 +14,7 @@
 #include <frc/Joystick.h>
 #include <subsystems/rrTwoSpeed.h>
 #include <frc2/command/ParallelRaceGroup.h>
-
+#include <commands/AutoCmd.h>
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -29,8 +29,6 @@ namespace frc4783{
 class RobotContainer {
 public:
     RobotContainer();
-
-
     frc2::Command* GetAutonomousCommand();
 
     frc::Joystick ps4{1};
@@ -84,7 +82,8 @@ public:
 
 private:
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
-    frc4783::rrDriveTrain *drivetrain = new frc4783::rrDifferentialDrive();
+    frc4783::rrDriveTrain *drivetrain;
+    frc4783::AutoCmd *m_autonomousCommand;
     void ConfigureButtonBindings();
 }; 
 }
