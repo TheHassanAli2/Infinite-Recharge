@@ -1,31 +1,37 @@
-#include "subsystems/CompressorSubsystem.h"
 #include "commands/TurnCompressor.h"
 //#include "Robot.h"
+namespace frc4783{
 
-
-TurnCompressor::TurnCompressor(frc4783::CompressorSubsystem* compressorsubsystem)
-    : m_compressorSubsystem(compressorsubsystem),
-      on(false) 
-    {
-      printf("Turn Compressor ctor\n");
+TurnCompressor::TurnCompressor(frc4783::CompressorSubsystem* compressorsubsystem) : m_compressorSubsystem(compressorsubsystem){
+  AddRequirements(compressorsubsystem);
     
-    }
-           
-void TurnCompressor::Start() {
-        if (on) {
-        m_compressorSubsystem->TurnonCompressor(0);
-        on = false;
-    }  
-    else {
-        m_compressorSubsystem->TurnonCompressor(0);
-        on = true;
-    }
-
-    printf("RotatePanel::initialize: %d\n", on);
-
-}s 
-
-void TurnCompressor::Stop() {
-    printf("RotatePanel::end\n");
-    m_compressorSubsystem-> Stop();
 }
+           
+void frc4783::TurnCompressor::Initialize(){
+  printf("Gearshift init completed\n");
+	m_compressorSubsystem->Start();   						 
+
+}
+
+void TurnCompressor::Execute(){
+   
+}
+
+
+bool TurnCompressor::IsFinished(){
+        
+    printf("TurnCompressor::isFinished\n");
+    return true;
+
+}
+
+void TurnCompressor::Interrupted(){
+printf("TurnCompressor::interrupted\n");
+}
+
+void TurnCompressor::End() {
+    printf("TurnCompressor::end\n");
+
+} 
+
+} //namespace frc4783

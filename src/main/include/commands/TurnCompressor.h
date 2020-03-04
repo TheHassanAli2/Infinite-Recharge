@@ -1,32 +1,33 @@
-
+#ifndef TURNCOMPRESSOR_H
+#define TURNCOMPRESSOR_H
 #pragma once
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/CompressorSubsystem.h"
 
-#define pcmID
+//#define pcmID
 
-class TurnCompressor
+namespace frc4783{
 
-    : public frc2::CommandHelper<frc2::CommandBase,TurnCompressor> {
-   public:
-     TurnCompressor();
-       void Start(pcmID);
-       void Stop(pcmID);
+class TurnCompressor :
+  public frc2::CommandHelper<frc2::CommandBase,TurnCompressor> {
 
-       // I'm not sure if I need this
-       //void Initialize();
-       //void Execute();    
-       //bool IsFinished();
-       //void End();    
-       //void Interrupted();
+public:
+  
+  TurnCompressor(frc4783::CompressorSubsystem* compressorsubsystem);
+       
+  void Initialize();
+  void Execute();    
+  bool IsFinished();
+  void End();    
+  void Interrupted();
 
-
-
- explicit TurnCompressor(frc4783::CompressorSubsystem* CompresorSubsystem);
+  //explicit TurnCompressor(frc4783::CompressorSubsystem* CompressorSubsystem);
 
 private:
-    frc4783::CompressorSubsystem *m_compressorSubsystem;
-    bool on;
+  frc4783::CompressorSubsystem* m_compressorSubsystem;
 };    
+
+} //namespace frc4783
+#endif //TURNCOMPRESSOR

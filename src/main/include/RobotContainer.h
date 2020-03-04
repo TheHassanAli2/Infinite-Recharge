@@ -14,11 +14,13 @@
 #include <frc/buttons/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <subsystems/DriveTrain.h>
-#include "subsystems/CompressorSubsystem.h"
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
+#include "subsystems/CompressorSubsystem.h"
+#include <commands/TurnCompressor.h>
 
+namespace frc4783{
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -26,35 +28,43 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and button mappings) should be declared here.
  */
+
+//#define XBOX_CONTROLLER
+
 class RobotContainer {
 public:
     RobotContainer();
 
+#ifdef XBOX_CONTROLLER
+    frc::Joystick xbox{0};
+#else
     frc::Joystick ps4{1};
+#endif
+
+#ifndef XBOX_CONTROLLER
 
     // Drive Stick Buttons
     frc2::JoystickButton *aButtonS;
-    frc::JoystickButton *bButtonS;
-    frc::JoystickButton *xButtonS;
+    frc2::JoystickButton *bButtonS;
+    frc2::JoystickButton *xButtonS;
     frc2::JoystickButton *yButtonS;
-    frc::JoystickButton *leftBumperButtonS;
-    frc::JoystickButton *rightBumperButtonS;
-    frc::JoystickButton *selectButtonS;
-    frc::JoystickButton *startButtonS;
-    frc::JoystickButton *leftStickButtonS;
-    frc::JoystickButton *rightStickButtonS;
-    frc::JoystickButton *leftTriggerButtonS;
-    frc::JoystickButton *rightTriggerButtonS;
-    frc::JoystickButton *homeButtonS;
-    frc::JoystickButton *touchpadButtonS;
+    frc2::JoystickButton *leftBumperButtonS;
+    frc2::JoystickButton *rightBumperButtonS;
+    frc2::JoystickButton *selectButtonS;
+    frc2::JoystickButton *startButtonS;
+    frc2::JoystickButton *leftStickButtonS;
+    frc2::JoystickButton *rightStickButtonS;
+    frc2::JoystickButton *leftTriggerButtonS;
+    frc2::JoystickButton *rightTriggerButtonS;
+    frc2::JoystickButton *homeButtonS;
+    frc2::JoystickButton *touchpadButtonS;
 
-#ifdef XBOX_CONTROLLER
-    frc::Joystick xbox{0};
+#else
     frc::JoystickButton *aButtonP;
     frc::JoystickButton *bButtonP;
     frc2::JoystickButton *xButtonP;
     frc2::JoystickButton *yButtonP;
-    frc::JoystickButton *leftBumperButtonP;
+    frc2::JoystickButton *leftBumperButtonP;
     frc::JoystickButton *rightBumperButtonP;
     frc::JoystickButton *selectButtonP;
     frc::JoystickButton *startButtonP;
@@ -80,8 +90,14 @@ public:
 private:
     frc4783::DriveTrain drivetrain;
     frc4783::ControlPanel  ctrlPanel;
+    frc4783::CompressorSubsystem compressor;
+    RobotContainer* container;
+
+
 
     void ConfigureButtonBindings();
 }; 
+
+} //namespace frc4783
 #endif
  // ROBOTMAP_H
