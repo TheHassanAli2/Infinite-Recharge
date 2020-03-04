@@ -20,6 +20,9 @@
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
 
+#include <subsystems/Intake.h>
+
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -44,8 +47,8 @@ public:
     frc::JoystickButton *bButtonS;
     frc2::JoystickButton *xButtonS;
     frc2::JoystickButton *yButtonS;
-    frc::JoystickButton *leftBumperButtonS;
-    frc::JoystickButton *rightBumperButtonS;
+    frc2::JoystickButton *leftBumperButtonS;
+    frc2::JoystickButton *rightBumperButtonS;
     frc::JoystickButton *selectButtonS;
     frc::JoystickButton *startButtonS;
     frc::JoystickButton *leftStickButtonS;
@@ -92,7 +95,7 @@ private:
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;
-    
+    frc4783::Intake intake;
     void ConfigureButtonBindings();
 }; 
 }
