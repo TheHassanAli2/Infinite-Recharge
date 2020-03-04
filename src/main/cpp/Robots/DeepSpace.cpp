@@ -10,5 +10,7 @@ DeepSpace::DeepSpace(){
 
     m_drivetrain = new rrTwoSpeed();
     m_drivetrain->InitializeMotors(motors, signal);
+
+    printf ("DeepSpace complete\n");
 } 
 }//namespace frc4783

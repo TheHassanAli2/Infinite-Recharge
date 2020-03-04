@@ -25,6 +25,8 @@ rrDriveTrain::rrDriveTrain()
     frontRightPort = 1;
     backLeftPort = 2;
     backRightPort = 3;
+
+     printf ("rrDriveTrain complete\n");
 }
     //Automated decleration of motors
 void rrDriveTrain::InitializeMotors(motorControllerType motors, signalType signal)

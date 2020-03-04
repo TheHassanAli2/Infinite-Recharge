@@ -26,7 +26,7 @@ RobotContainer::RobotContainer()
 }
 void RobotContainer::ConfigureButtonBindings()
 {
-    printf("configure button bindings");
+    printf("configure button bindings\n");
     // Drive Stick Buttons
 
 #ifdef XBOX_CONTROLLER

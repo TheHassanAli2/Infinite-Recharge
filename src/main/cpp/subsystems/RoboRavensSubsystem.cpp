@@ -8,7 +8,7 @@
 namespace frc4783 {
 
 RoboRavensSubsystem::RoboRavensSubsystem(){
-
+ printf ("RoboRavensSubsystem complete\n");
 }
  
 void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId) 

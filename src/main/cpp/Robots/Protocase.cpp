@@ -13,5 +13,7 @@ Protocase::Protocase(){
 
     m_drivetrain = new rrTwoSpeed();
     m_drivetrain->InitializeMotors(motors, signal);
+
+     printf ("Protocase complete\n");
 }  
 }//namespace frc4783

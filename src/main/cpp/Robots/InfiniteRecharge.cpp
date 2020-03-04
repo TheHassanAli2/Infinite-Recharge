@@ -15,6 +15,8 @@ InfiniteRecharge::InfiniteRecharge(){
     m_controlPanel = new ControlPanel();
 
     frc2::CommandScheduler::GetInstance().RegisterSubsystem(m_controlPanel);
+
+     printf ("InfiniteRecharge complete\n");
 } 
 
 } // namespace frc4783

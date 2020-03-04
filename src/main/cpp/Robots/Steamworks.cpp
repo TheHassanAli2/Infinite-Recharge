@@ -10,5 +10,7 @@ Steamworks::Steamworks(){
 
     m_drivetrain = new rrDifferentialDrive();
     m_drivetrain->InitializeMotors(motors, signal);
+
+     printf ("Steamworks complete\n");
 } 
 }//namespace frc4783

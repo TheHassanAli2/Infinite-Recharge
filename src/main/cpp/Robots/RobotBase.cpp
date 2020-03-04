@@ -7,7 +7,7 @@ namespace frc4783{
 
 frc4783::RobotBase::RobotBase()
 {
-
+ printf ("RobotBase complete\n");
 }
 
 RobotBase::~RobotBase(){

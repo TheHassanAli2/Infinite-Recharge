@@ -11,5 +11,7 @@ PowerUp::PowerUp(){
 
     m_drivetrain = new rrDriveTrain();
     m_drivetrain->InitializeMotors(motors, signal);
+
+     printf ("PowerUp complete\n");
 } 
 }//namespace frc4783

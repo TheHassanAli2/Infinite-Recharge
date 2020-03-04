@@ -35,13 +35,16 @@ void Robot::AutonomousPeriodic() {
 }
 
 void Robot::TeleopInit() {
+    printf("TelelopInit\n");
     if (m_autonomousCommand != nullptr){
         m_autonomousCommand->Cancel();
         m_autonomousCommand = nullptr;
     }
 }
 
-void Robot::TeleopPeriodic(){}
+void Robot::TeleopPeriodic(){
+    printf("TeleopPeriodic\n");
+}
 
 
 void Robot::TestPeriodic() {}

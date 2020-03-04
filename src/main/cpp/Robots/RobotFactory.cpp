@@ -9,7 +9,7 @@
 
 namespace frc4783 {
 RobotFactory::RobotFactory(){
-
+ printf ("RobotFactory complete\n");
 } 
 
 frc4783::RobotBase *RobotFactory::createRobot(robotType_e rType){  
@@ -32,7 +32,7 @@ frc4783::RobotBase *RobotFactory::createRobot(robotType_e rType){
         robot = new PowerUp();
         break;
     }
-    printf("Initialized Robot\n");
+    //printf("Initialized Robot\n");
 
     return robot;
 }
