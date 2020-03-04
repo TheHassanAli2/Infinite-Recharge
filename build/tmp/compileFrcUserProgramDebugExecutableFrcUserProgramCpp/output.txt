@@ -1,0 +1,24 @@
+See file:///home/ravens/Documents/frc-infinite-recharge-2020/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+compiling GearShift.cpp successful.
+
+compiling Robot.cpp successful.
+
+compiling RobotContainer.cpp successful.
+
+compiling RoboRavensSubsystem.cpp successful.
+
+compiling DriveWithJoystick.cpp successful.
+
+compiling rrDriveTrain.cpp successful.
+
+compiling rrTwoSpeed.cpp successful.
+
+compiling ControlPanel.cpp successful.
+
+compiling rrDifferentialDrive.cpp successful.
+
+compiling Solenoid.cpp successful.
+
+compiling RotatePanel.cpp successful.
+
+Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///home/ravens/Documents/frc-infinite-recharge-2020/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.

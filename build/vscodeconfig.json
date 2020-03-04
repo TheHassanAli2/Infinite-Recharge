@@ -1,0 +1,448 @@
+[
+  {
+    "name": "linuxathena",
+    "architecture": "arm-v7",
+    "operatingSystem": "linux",
+    "flavor": "default",
+    "buildType": "debug",
+    "cppPath": "/home/ravens/wpilib/2020/roborio/bin/arm-frc2020-linux-gnueabi-g++",
+    "cPath": "/home/ravens/wpilib/2020/roborio/bin/arm-frc2020-linux-gnueabi-gcc",
+    "msvc": false,
+    "gcc": true,
+    "systemCppMacros": [],
+    "systemCppArgs": [],
+    "systemCMacros": [],
+    "systemCArgs": [],
+    "allLibFiles": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+      "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4f405ab0d6fe1201895c75ad0813f2bd/wpilibc-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8a69740879a179d7ec4be29fa35f5fb4/ntcore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0432c68d39a776233dcc8fe0a53e7ed4/hal-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/df1a9a2f158d0779f3def4abe1767844/wpiutil-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8ab0cf875856027a5adf677a3d1ebb55/cameraserver-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/926f8f191a2d0cafca5e9b3c9deb4e49/cscore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/c3af45daf5756cecd90b3084273b70dc/opencv-cpp-3.4.7-2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/ffce56651b43104baaa500bece416271/wpilibOldCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0e1682c5c2189eca37c0b1b6c213dc36/wpilibNewCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/26f12971cb6277b9788ba68cf972c51f/ColorSensorV3-cpp-1.0.1-source/"
+    ],
+    "allLibSources": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4f405ab0d6fe1201895c75ad0813f2bd/wpilibc-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8a69740879a179d7ec4be29fa35f5fb4/ntcore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0432c68d39a776233dcc8fe0a53e7ed4/hal-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/df1a9a2f158d0779f3def4abe1767844/wpiutil-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8ab0cf875856027a5adf677a3d1ebb55/cameraserver-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/926f8f191a2d0cafca5e9b3c9deb4e49/cscore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/c3af45daf5756cecd90b3084273b70dc/opencv-cpp-3.4.7-2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/ffce56651b43104baaa500bece416271/wpilibOldCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0e1682c5c2189eca37c0b1b6c213dc36/wpilibNewCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/26f12971cb6277b9788ba68cf972c51f/ColorSensorV3-cpp-1.0.1-source/"
+    ],
+    "allLibHeaders": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+      "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+    ],
+    "binaries": [
+      {
+        "componentName": "frcUserProgram",
+        "sourceSets": [
+          {
+            "source": {
+              "srcDirs": [
+                "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/cpp/"
+              ],
+              "includes": [
+                "**/*.cpp",
+                "**/*.cc"
+              ],
+              "excludes": []
+            },
+            "exportedHeaders": {
+              "srcDirs": [
+                "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+              ],
+              "includes": [
+                "**/*.cpp",
+                "**/*.cc"
+              ],
+              "excludes": []
+            },
+            "cpp": true,
+            "args": [
+              "-Wall",
+              "-Wextra",
+              "-std=c++17",
+              "-Wformat=2",
+              "-pedantic",
+              "-Wno-psabi",
+              "-g",
+              "-Wno-unused-parameter",
+              "-Wno-error=deprecated-declarations",
+              "-fPIC",
+              "-rdynamic",
+              "-pthread",
+              "-Og"
+            ],
+            "macros": []
+          }
+        ],
+        "libHeaders": [
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+          "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+        ],
+        "sharedLibrary": false,
+        "executable": true
+      }
+    ],
+    "sourceBinaries": [
+      {
+        "source": {
+          "srcDirs": [
+            "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/cpp/"
+          ],
+          "includes": [
+            "**/*.cpp",
+            "**/*.cc"
+          ],
+          "excludes": []
+        },
+        "componentName": "frcUserProgram",
+        "cpp": true,
+        "args": [
+          "-Wall",
+          "-Wextra",
+          "-std=c++17",
+          "-Wformat=2",
+          "-pedantic",
+          "-Wno-psabi",
+          "-g",
+          "-Wno-unused-parameter",
+          "-Wno-error=deprecated-declarations",
+          "-fPIC",
+          "-rdynamic",
+          "-pthread",
+          "-Og"
+        ],
+        "macros": [],
+        "sharedLibrary": false,
+        "executable": true
+      },
+      {
+        "source": {
+          "srcDirs": [
+            "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+          ],
+          "includes": [
+            "**/*.cpp",
+            "**/*.cc"
+          ],
+          "excludes": []
+        },
+        "componentName": "frcUserProgram",
+        "cpp": true,
+        "args": [
+          "-Wall",
+          "-Wextra",
+          "-std=c++17",
+          "-Wformat=2",
+          "-pedantic",
+          "-Wno-psabi",
+          "-g",
+          "-Wno-unused-parameter",
+          "-Wno-error=deprecated-declarations",
+          "-fPIC",
+          "-rdynamic",
+          "-pthread",
+          "-Og"
+        ],
+        "macros": [],
+        "sharedLibrary": false,
+        "executable": true
+      }
+    ],
+    "nameBinaryMap": {
+      "frcUserProgram": 0
+    }
+  },
+  {
+    "name": "linuxathena",
+    "architecture": "arm-v7",
+    "operatingSystem": "linux",
+    "flavor": "default",
+    "buildType": "release",
+    "cppPath": "/home/ravens/wpilib/2020/roborio/bin/arm-frc2020-linux-gnueabi-g++",
+    "cPath": "/home/ravens/wpilib/2020/roborio/bin/arm-frc2020-linux-gnueabi-gcc",
+    "msvc": false,
+    "gcc": true,
+    "systemCppMacros": [],
+    "systemCppArgs": [],
+    "systemCMacros": [],
+    "systemCArgs": [],
+    "allLibFiles": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+      "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4f405ab0d6fe1201895c75ad0813f2bd/wpilibc-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8a69740879a179d7ec4be29fa35f5fb4/ntcore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0432c68d39a776233dcc8fe0a53e7ed4/hal-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/df1a9a2f158d0779f3def4abe1767844/wpiutil-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8ab0cf875856027a5adf677a3d1ebb55/cameraserver-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/926f8f191a2d0cafca5e9b3c9deb4e49/cscore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/c3af45daf5756cecd90b3084273b70dc/opencv-cpp-3.4.7-2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/ffce56651b43104baaa500bece416271/wpilibOldCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0e1682c5c2189eca37c0b1b6c213dc36/wpilibNewCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/26f12971cb6277b9788ba68cf972c51f/ColorSensorV3-cpp-1.0.1-source/"
+    ],
+    "allLibSources": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4f405ab0d6fe1201895c75ad0813f2bd/wpilibc-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8a69740879a179d7ec4be29fa35f5fb4/ntcore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0432c68d39a776233dcc8fe0a53e7ed4/hal-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/df1a9a2f158d0779f3def4abe1767844/wpiutil-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/8ab0cf875856027a5adf677a3d1ebb55/cameraserver-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/926f8f191a2d0cafca5e9b3c9deb4e49/cscore-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/c3af45daf5756cecd90b3084273b70dc/opencv-cpp-3.4.7-2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/ffce56651b43104baaa500bece416271/wpilibOldCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0e1682c5c2189eca37c0b1b6c213dc36/wpilibNewCommands-cpp-2020.2.2-sources/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/26f12971cb6277b9788ba68cf972c51f/ColorSensorV3-cpp-1.0.1-source/"
+    ],
+    "allLibHeaders": [
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+      "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+      "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+    ],
+    "binaries": [
+      {
+        "componentName": "frcUserProgram",
+        "sourceSets": [
+          {
+            "source": {
+              "srcDirs": [
+                "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/cpp/"
+              ],
+              "includes": [
+                "**/*.cpp",
+                "**/*.cc"
+              ],
+              "excludes": []
+            },
+            "exportedHeaders": {
+              "srcDirs": [
+                "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+              ],
+              "includes": [
+                "**/*.cpp",
+                "**/*.cc"
+              ],
+              "excludes": []
+            },
+            "cpp": true,
+            "args": [
+              "-Wall",
+              "-Wextra",
+              "-std=c++17",
+              "-Wformat=2",
+              "-pedantic",
+              "-Wno-psabi",
+              "-g",
+              "-Wno-unused-parameter",
+              "-Wno-error=deprecated-declarations",
+              "-fPIC",
+              "-rdynamic",
+              "-pthread",
+              "-O2"
+            ],
+            "macros": []
+          }
+        ],
+        "libHeaders": [
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/4ff10e10d29bf1220940fcc163856bfa/wpilibc-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b90d509535926f04bec7e7178d78ef20/ntcore-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/cfcfc2324e78846196dcc7d4f0b76561/hal-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b690eb31a5b4b8b8039481ca7417d6bf/wpiutil-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/41854e115bebfc02feff4a87bd5656e4/chipobject-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/b0e5162b18c82297a2b3ecc85fdc9684/netcomm-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/0b1fbc1f7a03a924aada1907244461a1/visa-2020.10.1-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/03bf28f5301ef72474d37abb35912b05/cameraserver-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/31416f3c9142313f04153fb3ed46b9f6/cscore-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/1d60b8f6574b922935af0930e504a1cc/opencv-cpp-3.4.7-2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/e11897054d610f8332784a76dbccc918/wpiapi-cpp-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/63533a04078955894d66436039657345/api-cpp-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/73f5a331bf525bf4f00887d2857b50db/cci-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/a779e309113ffc7c463e29b20afd066d/diagnostics-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/a72e0ae15eff9e1a5e07daed6bddd1ba/canutils-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/6eae345bc0531bf7f810ce5cef9dd3a7/platform-stub-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/dc1fc9b604bf260c1c42551b517a2fce/core-5.17.4-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/d3f402a153e68610cf54f5537458e7e5/wpilibOldCommands-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/7fb7b89cae2e101bc6ed23ecc7689b6c/wpilibNewCommands-cpp-2020.2.2-headers/",
+          "/home/ravens/.gradle/caches/transforms-2/files-2.1/77d0967dfafe2746786a8d0407a95545/ColorSensorV3-cpp-1.0.1-headers/",
+          "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+        ],
+        "sharedLibrary": false,
+        "executable": true
+      }
+    ],
+    "sourceBinaries": [
+      {
+        "source": {
+          "srcDirs": [
+            "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/cpp/"
+          ],
+          "includes": [
+            "**/*.cpp",
+            "**/*.cc"
+          ],
+          "excludes": []
+        },
+        "componentName": "frcUserProgram",
+        "cpp": true,
+        "args": [
+          "-Wall",
+          "-Wextra",
+          "-std=c++17",
+          "-Wformat=2",
+          "-pedantic",
+          "-Wno-psabi",
+          "-g",
+          "-Wno-unused-parameter",
+          "-Wno-error=deprecated-declarations",
+          "-fPIC",
+          "-rdynamic",
+          "-pthread",
+          "-O2"
+        ],
+        "macros": [],
+        "sharedLibrary": false,
+        "executable": true
+      },
+      {
+        "source": {
+          "srcDirs": [
+            "/home/ravens/Documents/frc-infinite-recharge-2020/src/main/include/"
+          ],
+          "includes": [
+            "**/*.cpp",
+            "**/*.cc"
+          ],
+          "excludes": []
+        },
+        "componentName": "frcUserProgram",
+        "cpp": true,
+        "args": [
+          "-Wall",
+          "-Wextra",
+          "-std=c++17",
+          "-Wformat=2",
+          "-pedantic",
+          "-Wno-psabi",
+          "-g",
+          "-Wno-unused-parameter",
+          "-Wno-error=deprecated-declarations",
+          "-fPIC",
+          "-rdynamic",
+          "-pthread",
+          "-O2"
+        ],
+        "macros": [],
+        "sharedLibrary": false,
+        "executable": true
+      }
+    ],
+    "nameBinaryMap": {
+      "frcUserProgram": 0
+    }
+  }
+]
