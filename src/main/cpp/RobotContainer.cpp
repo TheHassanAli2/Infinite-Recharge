@@ -21,6 +21,10 @@ namespace frc4783{
 RobotContainer::RobotContainer()
 {
     printf("RobotContainer: drivetrain -set default command\n");
+
+    //m_controller = new frc4783::XboxController(0);
+    m_controller = new frc4783::PS4Controller(1);
+
     //drivetrain = new frc4783::rrDifferentialDrive();
     drivetrain = new frc4783::rrTwoSpeed();
     drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, m_controller)));
@@ -32,13 +36,10 @@ void RobotContainer::ConfigureButtonBindings()
     printf("configure button bindings");
     // Drive Stick Buttons
 
-    //m_controller = new frc4783::XboxController(0);
-    m_controller = new frc4783::PS4Controller(1);
-
 #if 0
 #ifdef XBOX_CONTROLLER
     aButtonP = new frc::JoystickButton(&xbox,1);
-    //bButtonP = new frc::JoystickButton(&xbox, 2);
+    bButtonP = new frc::JoystickButton(&xbox, 2);
     xButtonP = new frc2::JoystickButton(&xbox, 3);
     yButtonP = new frc2::JoystickButton(&xbox, 4);
     leftBumperButtonP = new frc::JoystickButton(&xbox, 5);
@@ -76,11 +77,18 @@ void RobotContainer::ConfigureButtonBindings()
 #endif
 #endif
 
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Button,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::GearShift(drivetrain));
+
     m_controller->addCommand(frc4783::ControllerButtonType_e::Bottom_Button,
                                 frc4783::JoystickButtonActions_e::ToggleWhenPressed,
                                 new frc4783::RotatePanel(&ctrlPanel));
         //aButtonS,WhenPressed, frc4783::RotatePanel(&ctrlPanel));
-    //m_controller->
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Top_Button,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::Solenoid(&ctrlPanel));
+
 }
 
 }  //namespace

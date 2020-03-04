@@ -40,6 +40,8 @@ public:
     frc2::Command* GetAutonomousCommand();
     frc4783::MainController * m_controller;
 
+    //frc2::POVButton::POVButton(frc::GenericHID * joystick, int angle, int povNumber = 0) 	
+
 #if 0
     frc::Joystick ps4{1};
 
@@ -92,7 +94,7 @@ public:
 #endif 
 
 private:
-    frc4783::ControlPanel  ctrlPanel;
+    frc4783::ControlPanel ctrlPanel;
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;

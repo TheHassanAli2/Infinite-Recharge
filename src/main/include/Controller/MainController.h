@@ -5,7 +5,6 @@
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
 
-
 namespace frc4783 {
 
 class MainController {
