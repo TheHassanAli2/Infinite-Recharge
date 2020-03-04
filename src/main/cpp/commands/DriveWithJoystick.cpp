@@ -25,41 +25,41 @@ void frc4783::DriveWithJoystick::Execute(){
     //float m_speed = (0.95 * container->xbox.GetRawAxis(RobotContainer::LEFT_Y_AXIS));
     //float m_turn = (1.0 * container->xbox.GetRawAxis(RobotContainer::RIGHT_X_AXIS));
 
-    if (container->ps4.GetRawButton(2)) {
+    if (container->ps4.GetRawButton(1)) { // (X) button on Xbox; Square button on PS4
+        // Power port alignment
+
+    }
+
+    if (container->ps4.GetRawButton(4)) { // (Y) button on Xbox; Triangle button on PS4
+        // Power cell alignment
         
+        // Declares variables from network tables
         nt::NetworkTableEntry angleEntry;
         nt::NetworkTableEntry distanceEntry;
         nt::NetworkTableEntry H_errorEntry;
         
+        // Specifies which table data is being collected from
         auto inst = nt::NetworkTableInstance::GetDefault();
         auto table = inst.GetTable("Vision"); 
-        H_errorEntry = table->GetEntry("H_error");
-        double H_error = H_errorEntry.GetDouble(0);
-        angleEntry = table->GetEntry("angle");
-        distanceEntry = table->GetEntry("H_dist"); //m_turn represents the speed of the turn
-        double distance = distanceEntry.GetDouble(0);
 
-        //m_turn = angleEntry.GetDouble(0)*0.03; //field of view is of 53.5
+        // Gets variable values from network tables
+        H_errorEntry = table->GetEntry("H_error");
+        angleEntry = table->GetEntry("angle");
+        distanceEntry = table->GetEntry("H_dist");
+
+        // Casts variables to doubles
+        double H_error = H_errorEntry.GetDouble(0); // Horizontal error from power cell (angle)
+        double distance = distanceEntry.GetDouble(0); // Distance from bumper to power cell
+
+        m_speed = distance * -0.015 - 0.23; // Adjusts speed proportional to distance of power cell from bumper
+
+        // Aligns robot to power cell with angle error
         if(H_error > 0 && H_error < 165 ) {
             m_turn = (H_error*0.0020) + 0.45;
         } else if (H_error < 0 && H_error > -165) {
             m_turn = (H_error * 0.0020) - 0.45;
         }
-
-        printf("dist error:  %f \n", distance);
-        if(distance > 80) {
-            m_speed = -0.4;
-        } else {
-            m_speed = distance * -0.015 - 0.23;
-        }
-
-        //m_turn = H_errorEntry.GetDouble(0)*-0.0045; //field of view is of 53.5
-        //m_speed = 0.3 +(1/distanceEntry.GetDouble(0)*-0.8);    
-        //printf("m_speed is of : %f \n m_turn is of : %f\n",m_speed, m_turn);
-        //float pp_speed = (1 - (1/distanceEntry.GetDouble(0)))*0.4;
-        //printf("m_speed is of %f \n", pp_speed);
     }
-    
     drivetrain->ArcadeDrive(m_speed,m_turn);
 } 
 
