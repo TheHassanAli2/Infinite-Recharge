@@ -4,47 +4,41 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
  
-#include "commands/MoveIntake.h"
-#include "subsystems/Intake.h"
+#include "commands/ReverseIntake.h"
+#include "subsystems/Powercell.h"
 
 namespace frc4783 {
 
-MoveIntake::MoveIntake(Intake* subsystem) : intake(subsystem){
+ReverseIntake::ReverseIntake(Powercell* subsystem) : powercell(subsystem){
         AddRequirements(subsystem);
             intakeCheck = false;
     }
-void MoveIntake::Initialize() {
-     if (intake->ballNumber<6){
-        if (intakeCheck){
-            intake->Stop();
-            intakeCheck = false;
-        }
-        else {
-            intake->Turn();
-            intakeCheck = true;
-        }   
-    }else{
-        intake->Stop();
-    }   
+void ReverseIntake::Initialize() {
+    if (intakeCheck ){
+        powercell->Stop();
+        intakeCheck = false;
+    }
+    else {
+        powercell->Reverse();
+        intakeCheck = true;
+    }
+
 }
 
-void MoveIntake::Execute(){
-   
+void ReverseIntake::Execute(){
+
 } 
 
-bool MoveIntake::IsFinished(){
+bool ReverseIntake::IsFinished(){
     return true;
 }
 
-void MoveIntake::End(){
-    intake->Stop();
-
+void ReverseIntake::End(){
+    powercell->Stop();
 }
 
-void MoveIntake::Interrupted(){
+void ReverseIntake::Interrupted(){
     //End();
 }
-
-
 
 } /* namespace frc4783 */

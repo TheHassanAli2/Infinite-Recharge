@@ -9,14 +9,14 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <subsystems/Intake.h>
+#include <subsystems/Powercell.h>
 
 namespace frc4783 {
 
-class MoveIntake
-    : public frc2::CommandHelper<frc2::CommandBase, MoveIntake> {
+class Intake
+    : public frc2::CommandHelper<frc2::CommandBase, Intake> {
  public:
-  MoveIntake(Intake* subsystem);
+  Intake(Powercell* subsystem);
   void Initialize();
   void Execute();
   bool IsFinished();
@@ -24,8 +24,7 @@ class MoveIntake
   void Interrupted();
 
  private:
-  frc4783::Intake* intake;
-  bool intakeCheck;
+  frc4783::Powercell* powercell;
 } ;
 
 } // namespace frc4783

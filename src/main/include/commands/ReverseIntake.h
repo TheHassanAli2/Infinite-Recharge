@@ -9,14 +9,14 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <subsystems/Intake.h>
+#include <subsystems/Powercell.h>
 
 namespace frc4783 {
 
-class SpitIntake
-    : public frc2::CommandHelper<frc2::CommandBase, SpitIntake> {
+class ReverseIntake
+    : public frc2::CommandHelper<frc2::CommandBase, ReverseIntake> {
  public:
-  SpitIntake(Intake* subsystem);
+  ReverseIntake(Powercell* subsystem);
   void Initialize();
   void Execute();
   bool IsFinished();
@@ -24,7 +24,7 @@ class SpitIntake
   void Interrupted();
 
  private:
- Intake* intake;
+ Powercell* powercell;
   bool intakeCheck;
 } ;
 

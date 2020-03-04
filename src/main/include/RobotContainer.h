@@ -20,7 +20,7 @@
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
 
-#include <subsystems/Intake.h>
+#include <subsystems/Powercell.h>
 
 
 /**
@@ -95,7 +95,7 @@ private:
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;
-    frc4783::Intake intake;
+    frc4783::Powercell powercell;
     void ConfigureButtonBindings();
 }; 
 }

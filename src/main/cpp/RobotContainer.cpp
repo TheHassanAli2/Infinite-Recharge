@@ -13,8 +13,8 @@
 #include "commands/GearShift.h"
 #include <frc2/command/button/JoystickButton.h>
 
-#include "commands/MoveIntake.h"
-#include "commands/SpitIntake.h"
+#include "commands/Intake.h"
+#include "commands/ReverseIntake.h"
 
 
 namespace frc4783{
@@ -68,10 +68,10 @@ void RobotContainer::ConfigureButtonBindings()
     yButtonS->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
 
   leftBumperButtonS
-        ->WhenPressed(new frc4783::MoveIntake(&intake));
+        ->WhenPressed(new frc4783::Intake(&powercell));
 
       rightBumperButtonS
-        ->ToggleWhenPressed(new frc4783::SpitIntake(&intake));
+        ->ToggleWhenPressed(new frc4783::ReverseIntake(&powercell));
     
 
 #ifdef XBOX_CONTROLLER

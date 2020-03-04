@@ -4,41 +4,35 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
  
-#include "commands/SpitIntake.h"
-#include "subsystems/Intake.h"
+#include "commands/Intake.h"
+#include "subsystems/Powercell.h"
 
 namespace frc4783 {
 
-SpitIntake::SpitIntake(Intake* subsystem) : intake(subsystem){
+Intake::Intake(Powercell* subsystem) : powercell(subsystem){
         AddRequirements(subsystem);
-            intakeCheck = false;
     }
-void SpitIntake::Initialize() {
-    if (intakeCheck ){
-        intake->Stop();
-        intakeCheck = false;
-    }
-    else {
-        intake->Reverse();
-        intakeCheck = true;
-    }
-
+void Intake::Initialize() {
+     powercell->IntakeLogic();
 }
 
-void SpitIntake::Execute(){
+void Intake::Execute(){
 
 } 
 
-bool SpitIntake::IsFinished(){
+bool Intake::IsFinished(){
     return true;
 }
 
-void SpitIntake::End(){
-    intake->Stop();
+void Intake::End(){
+    powercell->Stop();
+
 }
 
-void SpitIntake::Interrupted(){
+void Intake::Interrupted(){
     //End();
 }
+
+
 
 } /* namespace frc4783 */

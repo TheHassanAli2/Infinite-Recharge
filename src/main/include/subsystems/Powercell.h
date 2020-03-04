@@ -9,10 +9,10 @@
 
 namespace frc4783 {
 
-class Intake : public frc2::SubsystemBase {
+class Powercell : public frc2::SubsystemBase {
         
     public:
-        Intake();
+        Powercell();
         void Turn();
         void Stop();
         void Reverse();
@@ -20,6 +20,10 @@ class Intake : public frc2::SubsystemBase {
         int ballCheck;
         int ballNumber;
         void Periodic() override;
+        void IntakeLogic();
+        bool intakeCheck;
+        bool tempStop = true;
+        void ballReset();
 
    private:
         std::shared_ptr<frc::SpeedController> m_motor;
