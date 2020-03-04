@@ -20,16 +20,15 @@ rrDriveTrain::rrDriveTrain()
     /**
      * @todo: motor type and signal type should be parameters to rrDriveTrain constructor
      */
-    motors = VictorSPX; 
-    signal = CAN;
-
     //Port numeration
     frontLeftPort = 0;
     frontRightPort = 1;
     backLeftPort = 2;
     backRightPort = 3;
-
+}
     //Automated decleration of motors
+void rrDriveTrain::InitializeMotors(motorControllerType motors, signalType signal)
+{  
     if (motors == VictorSPX && signal == CAN){
         frontLeftMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(frontLeftPort));
         frontRightMotor.reset(new ctre::phoenix::motorcontrol::can::WPI_VictorSPX(frontRightPort));
@@ -62,6 +61,7 @@ rrDriveTrain::rrDriveTrain()
     
     printf("rrDriveTrain init completed\n");
 }
+
 
 void rrDriveTrain::Periodic(){}
 

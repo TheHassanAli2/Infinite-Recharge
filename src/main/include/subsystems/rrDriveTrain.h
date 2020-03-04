@@ -10,7 +10,7 @@
 #include <frc2/command/SubsystemBase.h>
 
 #include "frc/SpeedController.h"
-
+#include "Frc4783Defs.h"
 //ya feel?
 
 namespace frc4783{
@@ -29,6 +29,7 @@ public:
     
     //Driving methods
     virtual void setSpeed(int port, double speed);
+    virtual void InitializeMotors(motorControllerType motors, signalType signal);
 
     virtual void TankDrive(double leftspeed, double rightspeed);
     virtual void ArcadeDrive(double speed, double turn);
@@ -43,23 +44,7 @@ public:
     void Periodic() override;
 
 protected:
-    //Enumeration declarations
-
-    // Enumeration of the types of motor controllers
-    enum motortype {
-        VictorSPX, 
-        TalonSRX
-    };
-
-    // Enumeration of the types of signals
-    enum signaltype {
-        PWM,
-        CAN
-    };
-
-    enum motortype motors; 
-    enum signaltype signal;
-
+    
     std::shared_ptr<frc::SpeedController> frontLeftMotor;
     std::shared_ptr<frc::SpeedController> backLeftMotor;
     std::shared_ptr<frc::SpeedController> frontRightMotor;

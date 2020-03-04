@@ -7,7 +7,8 @@ typedef enum roboType {
     PROTOCASE,
     STEAMWORKS,
     POWERUP,
-    DEEPSPACE
+    DEEPSPACE,
+    INFINITERECHARGE
 } robotType_e;
 
 typedef enum motorControllerFunction {

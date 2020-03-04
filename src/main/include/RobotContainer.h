@@ -19,6 +19,7 @@
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
+#include <Robots/RobotBase.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -88,10 +89,12 @@ public:
 
 
 private:
+    frc4783::RobotBase *m_robot;
     frc4783::ControlPanel  ctrlPanel;
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;
+    
     
     void ConfigureButtonBindings();
 }; 
