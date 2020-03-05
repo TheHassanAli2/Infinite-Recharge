@@ -14,10 +14,11 @@ namespace frc4783 {
 
 ClimbHook::ClimbHook(Climber* subsystem, RobotContainer* contained) : climber(subsystem), container(contained){
         AddRequirements(subsystem);
-        }
+}
 void ClimbHook::Initialize() {
+    climber->ClimbReset();
+    climber->ClimbStartTimer();
     climber->ClimbPivotStage(1);
-    //climber->ClimbMotor(true);
 } 
 
 void ClimbHook::Execute(){
@@ -25,14 +26,28 @@ void ClimbHook::Execute(){
 } 
 
 bool ClimbHook::IsFinished(){
-    return climber->ClimbLimitSwitch();
-    //return false;
+    std::cout << "Timer: " << climber->ClimbGetTimer() << "\n";
+    std::cout << "Current: " << climber->ClimbCurrentDraw2() << "\n";
+    if (abs(climber->ClimbCurrentDraw2()) >= 20){
+        End();
+        return true;
+    }else if(climber->ClimbGetTimer() >= 3){
+        End();
+        return true;
+    }else if (climber->ClimbLimitSwitch()){
+        End();
+        return true; 
+    }
+    return false;
+
 } 
 
 void ClimbHook::End(){
-climber->ClimbPivotStage(2);
-climber->ClimbExtendStage(1); 
-//container->isExtended = true;      
+    printf("ClimbHook End \n");
+    climber->ClimbStopTimer();
+    climber->ClimbPivotStage(2);
+    climber->ClimbExtendStage(1); 
+    //container->isExtended = true;      
 }
 
 void ClimbHook::Interrupted(){

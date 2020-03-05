@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Climber.h"
-#include <frc/VictorSP.h>
+#include <frc/Talon.h>
 #include <frc/DoubleSolenoid.h>
 #include "commands/ClimbHook.h" 
 
@@ -18,11 +18,12 @@ Climber::Climber() {
   pivotMotor2.reset(new frc::VictorSP(5));*/
   pivotMotor1.reset(new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(4));
   pivotMotor2.reset(new ctre::phoenix::motorcontrol::can::WPI_TalonSRX(5));
-  climbSolenoid1.reset(new frc::DoubleSolenoid(0,1));
+  climbSolenoid1.reset(new frc::DoubleSolenoid(2,3));
   climbSolenoid2.reset(new frc::DoubleSolenoid(4,5)); //Actually 2 & 3
   limitSwitch.reset(new frc::DigitalInput(1));
   counter.reset(new frc::Counter(limitSwitch));
-
+  timer.reset(new frc::Timer());
+  ClimbReset();
   //pivotMotor2->SetInverted(true);
 }
 
@@ -35,6 +36,7 @@ void Climber::ClimbReset(){
   climbSolenoid2->Set(frc::DoubleSolenoid::Value::kReverse);
   pivotMotor1->Set(0);
   pivotMotor2->Set(0);
+  timer->Reset();
 }
 
 void Climber::ClimbMotor(bool clockwise) {
@@ -84,13 +86,29 @@ void Climber::ClimbExtendStage(int extendStage) {
 }
 
 bool Climber::ClimbLimitSwitch() {
-  printf(counter->Get() >0 ? "true" : "false");
+  printf(counter->Get() >0 ? "true\n" : "false\n");
   return counter->Get() >0;
   
 }
-  
+
+double Climber::ClimbCurrentDraw1(){
+  return pivotMotor1->GetOutputCurrent();
 }
 
+double Climber::ClimbCurrentDraw2(){
+  return pivotMotor2->GetOutputCurrent();
+}
 
+void Climber::ClimbStartTimer(){
+  timer->Start();
+}
 
- //namespace frc4783
+int Climber::ClimbGetTimer(){
+  return (int)timer->Get();
+}
+
+void Climber::ClimbStopTimer(){
+  timer->Stop();
+}
+  
+} //namespace frc4783

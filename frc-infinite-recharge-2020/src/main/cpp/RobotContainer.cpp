@@ -53,8 +53,8 @@ void RobotContainer::ConfigureButtonBindings()
     // Setting up trigger for command
     //yButtonS->WhenPressed(new frc4783::ClimbPivot(&climber));
     //yButtonS->WhenPressed(new frc4783::ClimbExtend(&climber));
-    yButtonS->WhenPressed(new frc4783::ClimbHook(&climber, this));
-    xButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
+    aButtonS->WhenPressed(new frc4783::ClimbHook(&climber, this));
+    bButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
 }
 
 }

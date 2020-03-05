@@ -15,6 +15,7 @@
 #include <frc/Counter.h>
 #include <ctre/Phoenix.h>
 #include <frc/Compressor.h>
+#include <frc/Timer.h>
 
 #include <Constants.h>
 
@@ -29,6 +30,11 @@ class Climber : public frc2::SubsystemBase {
   void ClimbPivotStage(int pivotStage);
   void ClimbExtendStage(int extendStage);
   bool ClimbLimitSwitch();
+  double ClimbCurrentDraw1();
+  double ClimbCurrentDraw2();
+  void ClimbStartTimer();
+  int ClimbGetTimer();
+  void ClimbStopTimer();
   
   /**
    * Will be called periodically whenever the CommandScheduler runs.
@@ -36,13 +42,14 @@ class Climber : public frc2::SubsystemBase {
   void Periodic() override;
 
  private:
-  std::shared_ptr<frc::SpeedController> pivotMotor1;
-  std::shared_ptr<frc::SpeedController> pivotMotor2;
+  std::shared_ptr<ctre::phoenix::motorcontrol::can::WPI_TalonSRX> pivotMotor1;
+  std::shared_ptr<ctre::phoenix::motorcontrol::can::WPI_TalonSRX> pivotMotor2;
   std::shared_ptr<frc::DoubleSolenoid> climbSolenoid1;
   std::shared_ptr<frc::DoubleSolenoid> climbSolenoid2;
   std::shared_ptr<frc::Compressor> compressorOn;
   std::shared_ptr<frc::DigitalInput> limitSwitch;
   std::shared_ptr<frc::Counter> counter;
+  std::shared_ptr<frc::Timer> timer;
   Climber* climber; 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
