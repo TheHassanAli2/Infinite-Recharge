@@ -62,6 +62,8 @@ void RobotContainer::ConfigureButtonBindings()
     printf("configure button bindings - init rotatepanel command\n");
     aButtonS->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
     yButtonS->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
+    
+
 
 #ifdef XBOX_CONTROLLER
     xButtonP->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));

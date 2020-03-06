@@ -28,6 +28,9 @@ void RotatePanel::Initialize(){
         on = true;
     }
 
+    
+    
+
     printf("RotatePanel::initidialize: %d\n", on);
 }
 

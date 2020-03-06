@@ -14,6 +14,7 @@
 
 #include "subsystems/RoboRavensSubsystem.h"
 
+
 namespace frc4783 {
 
 class ControlPanel : public RoboRavensSubsystem {
@@ -33,7 +34,8 @@ class ControlPanel : public RoboRavensSubsystem {
     static const int SolenoidForwardPort = 4;
     static const int SolenoidReversePort = 5;
 
-
+    
+    
   public:
    ControlPanel();
     void GetColor();
@@ -41,6 +43,12 @@ class ControlPanel : public RoboRavensSubsystem {
     void GetIR();
     void PutNumber();
     void GetProximity();
+    void DetectRotation();
+    bool Blue;
+
+    int ColourDetected;
+    int RotationNumber;
+
 
     /**
      * Control the control panel motor
@@ -48,6 +56,8 @@ class ControlPanel : public RoboRavensSubsystem {
      * @param speed  set the speed for the motor (0 to stop, negative or positive for direction)
      */
     void RotateControlPanel(float speed);
+
+    void Stage1Stop();
 
     /**
      * Control the solenoid

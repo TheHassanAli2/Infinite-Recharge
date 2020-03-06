@@ -11,7 +11,7 @@ RoboRavensSubsystem::RoboRavensSubsystem(){
 
 }
  
-void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId) 
+void frc4783::RoboRavensSubsystem::InitializeMotor(int motorId, motorControllerType motorType, signalType signal, int portId) 
 {
     /**
      * Instantiate an appropriate frc::SpeedController object, and store in m_motors, indexed by motorId

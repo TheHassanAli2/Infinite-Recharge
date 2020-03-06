@@ -7,21 +7,13 @@
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 #include <map>
+#include "Frc4783Defs.h"
 
 namespace frc4783 {
 
 class RoboRavensSubsystem : public frc2::Subsystem {
 
 public:
-    enum MotorControllerType {
-        VictorSPX,
-        TalonSRX
-    };
-
-    enum SignalType {
-        PWM,
-        CAN
-    };
 
     RoboRavensSubsystem();
 
@@ -33,7 +25,7 @@ public:
      * @param signalType  indicates the signalling type (PWM or CAN)
      * @param portId  indicate the PWM port ID or the CAN device ID
      */
-    void InitializeMotor(int motorId, MotorControllerType motorType, SignalType signal, int portId);
+    void InitializeMotor(int motorId, motorControllerType motorType, signalType signal, int portId);
     void InitDefaultCommand();
     void Reset();
 
