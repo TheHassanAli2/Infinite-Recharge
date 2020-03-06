@@ -35,18 +35,70 @@ void RobotContainer::ConfigureButtonBindings()
 {
     printf("configure button bindings");
     // Drive Stick Buttons
+    // --------------------------------
+    // Left Button
+    // --------------------------------
 
+    // --------------------------------
+    // Right Button
+    // --------------------------------
     m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Button,
                                 frc4783::JoystickButtonActions_e::ToggleWhenPressed,
                                 new frc4783::GearShift(drivetrain));
 
+    // --------------------------------
+    // Top Button
+    // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Top_Button,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::Solenoid(&ctrlPanel));
+    // --------------------------------
+    // Bottom Button
+    // --------------------------------
     m_controller->addCommand(frc4783::ControllerButtonType_e::Bottom_Button,
                                 frc4783::JoystickButtonActions_e::ToggleWhenPressed,
                                 new frc4783::RotatePanel(&ctrlPanel));
 
-    m_controller->addCommand(frc4783::ControllerButtonType_e::Top_Button,
-                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::Solenoid(&ctrlPanel));
+    // --------------------------------
+    // Left Bumper
+    // --------------------------------
+
+    // --------------------------------
+    // Right Bumper
+    // --------------------------------
+
+    // --------------------------------
+    // Left Trigger
+    // --------------------------------
+
+    // --------------------------------
+    // Right Trigger
+    // --------------------------------
+
+    // --------------------------------
+    // Left Stick
+    // --------------------------------
+
+    // --------------------------------
+    // Right Stick
+    // --------------------------------
+
+    // --------------------------------
+    // Fn Left
+    // --------------------------------
+
+    // --------------------------------
+    // Fn Right
+    // --------------------------------
+
+    // --------------------------------
+    // Centre
+    // --------------------------------
+
+    // --------------------------------
+    // Touchpad
+    // --------------------------------
+
 
 }
 
