@@ -10,14 +10,15 @@
 
 namespace frc4783{
 
-frc4783::DriveWithJoystick::DriveWithJoystick(frc4783::rrDriveTrain* subsystem, RobotContainer* contained) : drivetrain(subsystem), container(contained){
+frc4783::DriveWithJoystick::DriveWithJoystick(frc4783::rrDriveTrain* subsystem, frc4783::MainController *controller) : 
+        drivetrain(subsystem), m_controller(controller){
         AddRequirements(subsystem);
         printf("DriveWithJoystick init completed");
     }
 
 void frc4783::DriveWithJoystick::Execute(){
-    float m_speed = (0.95 * container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
-    float m_turn = (1.0 * container->ps4.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
+    float m_speed = (0.95 * m_controller->getRawAxis(Left_Y_Axis));
+    float m_turn = (1.0 * m_controller->getRawAxis(Right_X_Axis));
     drivetrain->ArcadeDrive(m_speed,m_turn);
 } 
 
