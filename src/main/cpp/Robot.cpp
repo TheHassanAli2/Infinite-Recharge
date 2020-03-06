@@ -4,8 +4,6 @@
 #include <frc2/command/PrintCommand.h>
 #include <frc2/command/CommandScheduler.h>
 
-#include <frc/Compressor.h>
-
 //ya feel?
 
 void Robot::RobotInit() {
@@ -44,8 +42,7 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic(){
-    frc::Compressor *cmp = new frc::Compressor();
-    cmp->Stop();
+
 }
 
 
