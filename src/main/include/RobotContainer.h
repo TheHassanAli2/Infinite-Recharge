@@ -19,6 +19,7 @@
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
+#include "subsystems/Climber.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -41,19 +42,19 @@ public:
 
     // Drive Stick Buttons
     frc2::JoystickButton *aButtonS;
-    frc::JoystickButton *bButtonS;
+    frc2::JoystickButton *bButtonS;
     frc2::JoystickButton *xButtonS;
     frc2::JoystickButton *yButtonS;
-    frc::JoystickButton *leftBumperButtonS;
-    frc::JoystickButton *rightBumperButtonS;
-    frc::JoystickButton *selectButtonS;
-    frc::JoystickButton *startButtonS;
-    frc::JoystickButton *leftStickButtonS;
-    frc::JoystickButton *rightStickButtonS;
-    frc::JoystickButton *leftTriggerButtonS;
-    frc::JoystickButton *rightTriggerButtonS;
-    frc::JoystickButton *homeButtonS;
-    frc::JoystickButton *touchpadButtonS;
+    frc2::JoystickButton *leftBumperButtonS;
+    frc2::JoystickButton *rightBumperButtonS;
+    frc2::JoystickButton *selectButtonS;
+    frc2::JoystickButton *startButtonS;
+    frc2::JoystickButton *leftStickButtonS;
+    frc2::JoystickButton *rightStickButtonS;
+    frc2::JoystickButton *leftTriggerButtonS;
+    frc2::JoystickButton *rightTriggerButtonS;
+    frc2::JoystickButton *homeButtonS;
+    frc2::JoystickButton *touchpadButtonS;
 
 #ifdef XBOX_CONTROLLER
     frc::Joystick xbox{0};
@@ -89,6 +90,7 @@ public:
 
 private:
     frc4783::ControlPanel  ctrlPanel;
+    frc4783::Climber climber;
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;

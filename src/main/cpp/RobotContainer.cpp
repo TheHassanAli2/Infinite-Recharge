@@ -11,6 +11,9 @@
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
 #include "commands/GearShift.h"
+#include "commands/ClimbHook.h" 
+#include "commands/ClimbRetract.h"
+#include "subsystems/Climber.h"
 #include <frc2/command/button/JoystickButton.h>
 
 namespace frc4783{
@@ -45,23 +48,27 @@ void RobotContainer::ConfigureButtonBindings()
     // Drive Stick Buttons
     xButtonS = new frc2::JoystickButton(&ps4, 1);			 //'[]' on PS
     aButtonS = new frc2::JoystickButton(&ps4, 2);			 //'X' on PS
-    bButtonS = new frc::JoystickButton(&ps4, 3);			 //'O' on PS
+    bButtonS = new frc2::JoystickButton(&ps4, 3);			 //'O' on PS
     yButtonS = new frc2::JoystickButton(&ps4, 4);			 //'/\' on PS
-    leftBumperButtonS = new frc::JoystickButton(&ps4, 5);   //'L1' on PS
-    rightBumperButtonS = new frc::JoystickButton(&ps4, 6);  //'R1' on PS
-    leftTriggerButtonS = new frc::JoystickButton(&ps4, 7);  //'L2' on PS
-    rightTriggerButtonS = new frc::JoystickButton(&ps4, 8); //'R2' on PS
-    selectButtonS = new frc::JoystickButton(&ps4, 9);		 //'Share/Back' on PS
-    startButtonS = new frc::JoystickButton(&ps4, 10);		 //'Start' on PS
-    leftStickButtonS = new frc::JoystickButton(&ps4, 11);   //'L3' on PS
-    rightStickButtonS = new frc::JoystickButton(&ps4, 12);  //'R3' on PS
-    homeButtonS = new frc::JoystickButton(&ps4, 13);		 //'PS' on PS
+    leftBumperButtonS = new frc2::JoystickButton(&ps4, 5);   //'L1' on PS
+    rightBumperButtonS = new frc2::JoystickButton(&ps4, 6);  //'R1' on PS
+    leftTriggerButtonS = new frc2::JoystickButton(&ps4, 7);  //'L2' on PS
+    rightTriggerButtonS = new frc2::JoystickButton(&ps4, 8); //'R2' on PS
+    selectButtonS = new frc2::JoystickButton(&ps4, 9);		 //'Share/Back' on PS
+    startButtonS = new frc2::JoystickButton(&ps4, 10);		 //'Start' on PS
+    leftStickButtonS = new frc2::JoystickButton(&ps4, 11);   //'L3' on PS
+    rightStickButtonS = new frc2::JoystickButton(&ps4, 12);  //'R3' on PS
+    homeButtonS = new frc2::JoystickButton(&ps4, 13);		 //'PS' on PS
 
     xButtonS->ToggleWhenPressed(new frc4783::GearShift(drivetrain));
 
     printf("configure button bindings - init rotatepanel command\n");
-    aButtonS->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
+    //aButtonS->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
     yButtonS->ToggleWhenPressed(new frc4783::Solenoid(&ctrlPanel));
+
+    aButtonS->WhenPressed(new frc4783::ClimbHook(&climber, this));
+    bButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
+
 
 #ifdef XBOX_CONTROLLER
     xButtonP->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));
