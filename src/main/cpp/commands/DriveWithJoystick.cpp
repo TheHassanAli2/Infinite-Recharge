@@ -32,15 +32,18 @@ void frc4783::DriveWithJoystick::Execute(){
 
     if (container->ps4.GetRawButton(4)) { // (Y) button on Xbox; Triangle button on PS4
         // Power cell alignment
-        
-        // Declares variables from network tables
+
+        // Declares variables for network tables
         nt::NetworkTableEntry angleEntry;
         nt::NetworkTableEntry distanceEntry;
         nt::NetworkTableEntry H_errorEntry;
+        nt::NetworkTableEntry Target;
         
         // Specifies which table data is being collected from
         auto inst = nt::NetworkTableInstance::GetDefault();
-        auto table = inst.GetTable("Vision"); 
+        auto table = inst.GetTable("Vision");
+
+        table->PutString("target","powercell");
 
         // Gets variable values from network tables
         H_errorEntry = table->GetEntry("H_error");
@@ -50,14 +53,29 @@ void frc4783::DriveWithJoystick::Execute(){
         // Casts variables to doubles
         double H_error = H_errorEntry.GetDouble(0); // Horizontal error from power cell (angle)
         double distance = distanceEntry.GetDouble(0); // Distance from bumper to power cell
+        double controllerSpeed = container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E);
 
-        m_speed = distance * -0.015 - 0.23; // Adjusts speed proportional to distance of power cell from bumper
+        // Adjusts speed proportional to distance of power cell from bumper
+        double adjustedSpeed = (distance * -0.015 - 0.28);
+
+        // If no power cells are detected, distance will be equal to -9999
+        if (distance == -9999) {
+            // If no power cells are detected the robot will not move
+            m_speed = 0;
+        } else if (controllerSpeed < -0.05) {
+            // Adjusts speed using controller input
+            m_speed = adjustedSpeed + (controllerSpeed * 0.7);
+        } else {
+            m_speed = adjustedSpeed;
+        }
 
         // Aligns robot to power cell with angle error
-        if(H_error > 0 && H_error < 165 ) {
-            m_turn = (H_error*0.0020) + 0.45;
-        } else if (H_error < 0 && H_error > -165) {
+        if (H_error > 0 && H_error < 165 && distance != -9999) {
+            m_turn = (H_error * 0.0020) + 0.45;
+        } else if (H_error < 0 && H_error > -165 && distance != -9999) {
             m_turn = (H_error * 0.0020) - 0.45;
+        } else {
+            m_turn = 0;
         }
     }
     drivetrain->ArcadeDrive(m_speed,m_turn);
