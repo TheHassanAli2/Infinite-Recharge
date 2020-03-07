@@ -11,6 +11,9 @@
 #include "ctre/Phoenix.h"
 #include "commands/DriveWithJoystick.h"
 #include "commands/GearShift.h"
+#include "commands/ClimbHook.h" 
+#include "commands/ClimbRetract.h"
+#include "subsystems/Climber.h"
 #include <frc2/command/button/JoystickButton.h>
 
 #include "Controller/PS4.h"
@@ -26,9 +29,9 @@ RobotContainer::RobotContainer()
     m_controller = new frc4783::PS4Controller(1);
 
     //drivetrain = new frc4783::rrDifferentialDrive();
-    drivetrain = new frc4783::rrTwoSpeed();
-    drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, m_controller)));
-    frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
+    m_drivetrain = new frc4783::rrTwoSpeed();
+    m_drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(m_drivetrain, m_controller)));
+    //frc2::CommandScheduler::GetInstance().RegisterSubsystem(&m_ctrlPanel);
     ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()
@@ -39,29 +42,42 @@ void RobotContainer::ConfigureButtonBindings()
     // Left Button
     // --------------------------------
 
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Button,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::GearShift(m_drivetrain));
+
     // --------------------------------
     // Right Button
     // --------------------------------
+    //bButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
+
     m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Button,
-                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::GearShift(drivetrain));
+                                frc4783::JoystickButtonActions_e::WhenPressed,
+                                new frc4783::ClimbRetract(&m_climber));
 
     // --------------------------------
     // Top Button
     // --------------------------------
+
     m_controller->addCommand(frc4783::ControllerButtonType_e::Top_Button,
                                 frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::Solenoid(&ctrlPanel));
+                                new frc4783::RotatePanel(&m_ctrlPanel));
+
     // --------------------------------
     // Bottom Button
     // --------------------------------
+    //aButtonS->WhenPressed(new frc4783::ClimbHook(&climber, this));
+
     m_controller->addCommand(frc4783::ControllerButtonType_e::Bottom_Button,
-                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::RotatePanel(&ctrlPanel));
+                                frc4783::JoystickButtonActions_e::WhenPressed,
+                                new frc4783::ClimbHook(&m_climber));
 
     // --------------------------------
     // Left Bumper
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Bumper,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::Solenoid(&m_ctrlPanel));
 
     // --------------------------------
     // Right Bumper
@@ -98,6 +114,8 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Touchpad
     // --------------------------------
+
+    
 
 
 }

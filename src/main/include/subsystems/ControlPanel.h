@@ -30,8 +30,8 @@ class ControlPanel : public RoboRavensSubsystem {
      * Note: solenoid is used for testing solendoid code
      */
     static const int SolenoidId = 0;
-    static const int SolenoidForwardPort = 4;
-    static const int SolenoidReversePort = 5;
+    static const int SolenoidForwardPort = 6; 
+    static const int SolenoidReversePort = 7; 
 
 
   public:
