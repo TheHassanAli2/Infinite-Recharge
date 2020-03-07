@@ -13,6 +13,8 @@
 #include "commands/GearShift.h"
 #include <frc2/command/button/JoystickButton.h>
 
+#include <commands/OpenCloseHatch.h>
+
 #include "Controller/PS4.h"
 #include "Controller/Xbox.h"
 
@@ -28,7 +30,7 @@ RobotContainer::RobotContainer()
     //drivetrain = new frc4783::rrDifferentialDrive();
     drivetrain = new frc4783::rrTwoSpeed();
     drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(drivetrain, m_controller)));
-    frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
+    //frc2::CommandScheduler::GetInstance().RegisterSubsystem(&ctrlPanel);
     ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()
@@ -38,6 +40,10 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Left Button
     // --------------------------------
+
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Button,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::OpenCloseHatch(&m_powerCell));
 
     // --------------------------------
     // Right Button

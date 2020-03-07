@@ -24,7 +24,7 @@ protected:
 
     std::shared_ptr<frc::Joystick> m_driveStick;
 
-    frc2::JoystickButton *m_buttons[1] = {0};
+    frc2::JoystickButton *m_buttons[Button_Max] = {0};
 
 };
 

@@ -22,6 +22,8 @@
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
 
+#include <subsystems/PowerCell.h>
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -48,6 +50,8 @@ private:
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *drivetrain;
     
+    frc4783::PowerCell m_powerCell;
+
     void ConfigureButtonBindings();
 }; 
 
