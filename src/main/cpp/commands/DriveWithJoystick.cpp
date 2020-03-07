@@ -22,14 +22,6 @@ void frc4783::DriveWithJoystick::Execute(){
     float m_speed = (0.95 * container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
     float m_turn = (1.0 * container->ps4.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
 
-    //float m_speed = (0.95 * container->xbox.GetRawAxis(RobotContainer::LEFT_Y_AXIS));
-    //float m_turn = (1.0 * container->xbox.GetRawAxis(RobotContainer::RIGHT_X_AXIS));
-
-    if (container->ps4.GetRawButton(1)) { // (X) button on Xbox; Square button on PS4
-        // Power port alignment
-
-    }
-
     if (container->ps4.GetRawButton(4)) { // (Y) button on Xbox; Triangle button on PS4
         // Power cell alignment
 
@@ -37,13 +29,10 @@ void frc4783::DriveWithJoystick::Execute(){
         nt::NetworkTableEntry angleEntry;
         nt::NetworkTableEntry distanceEntry;
         nt::NetworkTableEntry H_errorEntry;
-        nt::NetworkTableEntry Target;
         
         // Specifies which table data is being collected from
         auto inst = nt::NetworkTableInstance::GetDefault();
         auto table = inst.GetTable("Vision");
-
-        table->PutString("target","powercell");
 
         // Gets variable values from network tables
         H_errorEntry = table->GetEntry("H_error");
