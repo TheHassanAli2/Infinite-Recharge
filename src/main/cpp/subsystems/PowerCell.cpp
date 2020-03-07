@@ -3,13 +3,13 @@
 namespace frc4783 {
 
 const int PowerCell::ServoPwmPort = 6;
-const int PowerCell::OpenAngle = 90;
-const int PowerCell::LoadAngle = 45;
+const int PowerCell::OpenAngle = 120;
+const int PowerCell::LoadAngle = 60;
 const int PowerCell::ClosedAngle = 0;
 
 PowerCell::PowerCell() {
     m_servo = new frc::Servo(ServoPwmPort);
-    printf("Servo; min= %f  max= %f", 
+    printf("Servo; min= %f  max= %f\n", 
         m_servo->GetMinAngle(), m_servo->GetMaxAngle());
 }
 

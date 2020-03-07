@@ -42,7 +42,8 @@ void OpenCloseHatch::Execute(){
 }
 
 bool OpenCloseHatch::IsFinished(){
-    printf("OpenCloseHatch isFinished  angle= %f  value= %f\n",
+    printf("OpenCloseHatch isFinished  state= %d  angle= %f  value= %f\n",
+            (int)m_state,
             m_powerCell->getHatchAngle(), 
             m_powerCell->getHatchValue());
     return true;
