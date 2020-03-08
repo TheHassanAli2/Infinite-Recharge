@@ -18,12 +18,16 @@ void Robot::RobotInit() {
     
 }
 
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
+void Robot::RobotPeriodic() {
+    frc2::CommandScheduler::GetInstance().Run();
+}
 
-void Robot::AutonomousInit(){}
+void Robot::AutonomousInit() {
+
+}
 
 void Robot::DisabledInit() {
-    
+
 }
 
 void Robot::DisabledPeriodic() {
@@ -42,11 +46,11 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic(){
-
 }
 
+void Robot::TestPeriodic() {
+}
 
-void Robot::TestPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

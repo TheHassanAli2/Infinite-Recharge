@@ -8,17 +8,16 @@
 #include "subsystems/rrDifferentialDrive.h"
 
 
-namespace frc4783{
+namespace frc4783 {
 
 rrDifferentialDrive::rrDifferentialDrive()
 {
     leftDrive.reset(new frc::SpeedControllerGroup(*backLeftMotor, *frontLeftMotor));
     rightDrive.reset(new frc::SpeedControllerGroup(*backRightMotor, *frontRightMotor));
-    rightDrive->SetInverted(true);
+    rightDrive->SetInverted(false);
 
     differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
 
-    printf("rrDifferentialDrive init completed\n");
 }
 
 void rrDifferentialDrive::Periodic(){
@@ -37,4 +36,4 @@ void rrDifferentialDrive::TankDrive(double leftspeed, double rightspeed){
     differentialDrive->TankDrive(leftspeed, rightspeed);
 }
 
-} // namespace frc4783
+ } // namespace frc4783
