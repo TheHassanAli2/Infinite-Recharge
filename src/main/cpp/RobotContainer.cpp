@@ -32,6 +32,9 @@ RobotContainer::RobotContainer()
     m_drivetrain = new frc4783::rrTwoSpeed();
     m_drivetrain->SetDefaultCommand(std::move(frc4783::DriveWithJoystick(m_drivetrain, m_controller)));
     //frc2::CommandScheduler::GetInstance().RegisterSubsystem(&m_ctrlPanel);
+
+    m_autonomousCommand = new frc4783::AutoCmd(m_drivetrain);
+    
     ConfigureButtonBindings();
 }
 void RobotContainer::ConfigureButtonBindings()
@@ -119,5 +122,8 @@ void RobotContainer::ConfigureButtonBindings()
 
 
 }
-
+frc2::Command* RobotContainer::GetAutonomousCommand() {
+  // An example command will be run in autonomous
+  return m_autonomousCommand;
+}
 }  //namespace

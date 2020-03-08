@@ -1,8 +1,6 @@
 #include <Robot.h>
 #include <unistd.h>
 
-#include <frc2/command/PrintCommand.h>
-#include <frc2/command/CommandScheduler.h>
 
 //ya feel?
 
@@ -13,14 +11,19 @@ void Robot::RobotInit() {
 
     //drivetrain.reset(newrrTwoSpeed());
     //robotcontainer.reset(new RobotContainer());
-
+    
     frc2::PrintCommand("yo wussup  22").Schedule();
     
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
-void Robot::AutonomousInit(){}
+void Robot::AutonomousInit(){
+    m_autonomousCommand = robotcontainer.GetAutonomousCommand();
+  if (m_autonomousCommand != nullptr) {
+    m_autonomousCommand->Schedule();
+  }
+}
 
 void Robot::DisabledInit() {
     
@@ -31,7 +34,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousPeriodic() {
-
+    
 }
 
 void Robot::TeleopInit() {

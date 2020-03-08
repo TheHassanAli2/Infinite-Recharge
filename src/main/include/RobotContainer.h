@@ -15,7 +15,7 @@
 #include <frc/Joystick.h>
 #include <subsystems/rrTwoSpeed.h>
 #include <frc2/command/ParallelRaceGroup.h>
-
+#include <commands/AutoCmd.h>
 #include "Controller/MainController.h"
 
 #include <subsystems/ControlPanel.h>
@@ -37,7 +37,6 @@ namespace frc4783{
 class RobotContainer {
 public:
     RobotContainer();
-
     frc2::Command* GetAutonomousCommand();
 
 private:
@@ -49,7 +48,7 @@ private:
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *m_drivetrain;
-    
+    frc4783::AutoCmd *m_autonomousCommand;
     void ConfigureButtonBindings();
 }; 
 
