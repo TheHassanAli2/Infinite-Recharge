@@ -14,7 +14,7 @@ rrDifferentialDrive::rrDifferentialDrive()
 {
     leftDrive.reset(new frc::SpeedControllerGroup(*backLeftMotor, *frontLeftMotor));
     rightDrive.reset(new frc::SpeedControllerGroup(*backRightMotor, *frontRightMotor));
-    rightDrive->SetInverted(true);
+    rightDrive->SetInverted(false);
 
     differentialDrive.reset(new frc::DifferentialDrive(*leftDrive, *rightDrive));
 
