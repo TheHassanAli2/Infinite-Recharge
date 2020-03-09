@@ -7,8 +7,9 @@
 
 #include "commands/Auto.h"
 
-Auto::Auto() {
+Auto::Auto(int path) {
   // Use addRequirements() here to declare subsystem dependencies.
+  this->path = path;
 }
 
 // Called when the command is initially scheduled.
@@ -18,6 +19,14 @@ void Auto::Initialize() {
   frc::filesystem::GetDeployDirectory(deployDirectory);
 
   trajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);*/
+  if (path == 1){
+    robotcontainer->GetAutonomousCommand("Circle.paths.json");
+    //robotcontainer.GetAutonomousCommand("Circle.paths.json");
+  }
+  else if (path == 2){
+    robotcontainer->GetAutonomousCommand("Square.paths.json");
+  }
+  
 }
 
 // Called repeatedly when this Command is scheduled to run

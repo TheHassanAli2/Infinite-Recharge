@@ -14,14 +14,20 @@ void Robot::RobotInit() {
     //drivetrain.reset(newrrTwoSpeed());
     //robotcontainer.reset(new RobotContainer());
 
-    frc2::PrintCommand("yo wussup  22").Schedule();
+    frc2::PrintCommand("yo wussup 22").Schedule();
+
+    auto_Chooser.SetDefaultOption("Auto 1", new Auto(1));
+    auto_Chooser.AddOption("Auto 2", new Auto(2));
+    //auto_Chooser.AddOption("Auto 3", new auto_3());
+    //auto_Chooser.AddOption("Auto 4", new auto_4());
+    frc::SmartDashboard::PutData("Autonomous Mode:", &auto_Chooser);
     
 }
 
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
 void Robot::AutonomousInit(){
-    m_autonomousCommand = robotcontainer.GetAutonomousCommand("Circle.paths.json");
+    m_autonomousCommand = auto_Chooser.GetSelected();
 
     if (m_autonomousCommand != nullptr) {
         m_autonomousCommand->Schedule();

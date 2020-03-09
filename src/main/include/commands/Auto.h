@@ -14,6 +14,8 @@
 #include <wpi/Path.h>
 //#include <wpi/SmallVectorImpl.h>
 #include <wpi/SmallString.h>
+#include "Robot.h"
+#include "RobotContainer.h"
 
 /**
  * An example command.
@@ -25,9 +27,9 @@
 class Auto
     : public frc2::CommandHelper<frc2::CommandBase, Auto> {
  public:
-  Auto();
+  Auto(int path);
 
-  void Initialize() override;
+  void Initialize();
 
   void Execute() override;
 
@@ -38,4 +40,6 @@ class Auto
 private:
   wpi::SmallString<64> deployDirectory;
   frc::Trajectory trajectory;
+  frc4783::RobotContainer* robotcontainer;
+  int path;
 };
