@@ -25,10 +25,10 @@ class RotatePanel
    public:
      RotatePanel();
        void Initialize();
-       void Execute();    
-       bool IsFinished();
+       void Execute();
        void End();    
        void Interrupted();
+      // bool something;
     
     
   /**
@@ -39,7 +39,7 @@ class RotatePanel
 explicit RotatePanel(frc4783::ControlPanel* ControlPanel);
 
 private:
-    frc4783::ControlPanel *controlpanelSubsystem;
+    frc4783::ControlPanel *CPSubsystem;
     bool on;
 };
 

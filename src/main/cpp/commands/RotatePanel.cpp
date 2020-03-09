@@ -5,7 +5,7 @@
 namespace frc4783 {
 
 RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)
-    : controlpanelSubsystem(ctrlPanel),
+    : CPSubsystem(ctrlPanel),
       on(false) 
 {
     printf("Rotate Panel ctor\n");
@@ -14,7 +14,7 @@ RotatePanel::RotatePanel(frc4783::ControlPanel* ctrlPanel)
 void RotatePanel::Initialize(){
     if (on ){
         // if the motor is on, turn it off
-        controlpanelSubsystem->RotateControlPanel(0);
+        CPSubsystem->RotateControlPanel(0);
         on = false;
     }
     else {
@@ -24,19 +24,25 @@ void RotatePanel::Initialize(){
          * @todo: configure the speed of the motor
          *        potentially use the joystick to control the speed of the motor
          */
-        controlpanelSubsystem->RotateControlPanel(0.5);
+        CPSubsystem->RotateControlPanel(0.5);
         on = true;
     }
 
-    printf("RotatePanel::initidialize: %d\n", on);
+    printf("RotatePanel::initialize: %d\n", on);
 }
 
 void RotatePanel::Execute(){
-}
-
-bool RotatePanel::IsFinished(){
-    printf("RotatePanel::isFinished\n");
-    return true;
+    CPSubsystem->DetectRotation();
+    //CPSubsystem->something = false;
+    if (CPSubsystem->something){
+        CPSubsystem->RotateControlPanel(0);
+    } else {
+        CPSubsystem->RotateControlPanel(0.5);
+    }
+    if(CPSubsystem->something){
+        End();
+    }
+    
 }
 
 void RotatePanel::Interrupted(){
@@ -45,6 +51,7 @@ void RotatePanel::Interrupted(){
 
 void RotatePanel::End() {
     printf("RotatePanel::end\n");
-}
+    
 
+}
 } // namespace frc4783

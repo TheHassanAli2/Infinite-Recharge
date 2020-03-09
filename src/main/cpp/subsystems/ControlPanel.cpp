@@ -73,19 +73,49 @@ void ControlPanel::Periodic() {
 
     if (matchedColor == kBlueTarget) {
       colorString = "Blue";
+      Blue = true;
     } else if (matchedColor == kRedTarget) {
       colorString = "Red";
+      Blue = false;
     } else if (matchedColor == kGreenTarget) {
       colorString = "Green";
+      Blue = false;
     } else if (matchedColor == kYellowTarget) {
       colorString = "Yellow";
+      Blue = false;
     } else {
       colorString = "Unknown";
+      Blue = false;
     }
 
-    //printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
+    printf("r: %f  g: %f  b: %f  %s\n", detectedColor.red, detectedColor.green, detectedColor.blue, colorString.c_str());
 
 }
+
+void ControlPanel::DetectRotation(){
+    if (Blue == true){
+        ColourDetected = 1;
+        RotationNumber++;
+        
+    } else if (Blue == false && ColourDetected == 1){
+        ColourDetected = 0;
+    }
+    if (RotationNumber == 2){
+        //ControlPanel::RotateControlPanel(0);
+        RotationNumber = 0;
+        something = true;
+    } else if (RotationNumber != 2){
+        //ControlPanel::RotateControlPanel(0.5);
+        something = false;
+    }
+}
+ 
+/*void ControlPanel::Stage1Stop(){
+    if (RotationNumber == 2){
+        ControlPanel::RotateControlPanel(0);
+        RotationNumber = 0;
+    }
+}*/
 
 void ControlPanel::RotateControlPanel(float speed) {
     printf("ControlPanel:::RotateControlPanel %f\n", speed);

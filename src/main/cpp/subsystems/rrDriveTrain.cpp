@@ -99,7 +99,7 @@ void rrDriveTrain::TankDrive(double leftspeed, double rightspeed){
 void rrDriveTrain::ReverseGear(){
     printf("Rev Gear - DriveTrain\n");
 }
-
+//MINH DUC DOAN
 void rrDriveTrain::ForwardGear(){
     printf("Fwd Gear - DriveTrain\n");
 }

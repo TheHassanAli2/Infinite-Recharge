@@ -33,6 +33,8 @@ class ControlPanel : public RoboRavensSubsystem {
     static const int SolenoidForwardPort = 4;
     static const int SolenoidReversePort = 5;
 
+     
+
 
   public:
    ControlPanel();
@@ -41,6 +43,13 @@ class ControlPanel : public RoboRavensSubsystem {
     void GetIR();
     void PutNumber();
     void GetProximity();
+    bool Blue;
+    bool something;
+    int ColourDetected;
+    int RotationNumber;
+
+    //void Stage1Stop();
+    void DetectRotation();
 
     /**
      * Control the control panel motor
