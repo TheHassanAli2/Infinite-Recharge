@@ -25,8 +25,9 @@ rrDriveTrain::rrDriveTrain()
 
     //Port numeration
     frontLeftPort = 0;
-    frontRightPort = 1;
-    backLeftPort = 2;
+    backLeftPort = 1;
+
+    frontRightPort = 2;
     backRightPort = 3;
 
     //Automated decleration of motors
