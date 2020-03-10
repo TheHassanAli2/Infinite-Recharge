@@ -48,10 +48,8 @@ void frc4783::DriveWithJoystick::Execute(){
         double adjustedSpeed = (distance * -0.015 - 0.28);
 
         // If no power cells are detected, distance will be equal to -9999
-        if (distance == -9999) {
-            // If no power cells are detected the robot will not move
-            m_speed = 0;
-        } else if (controllerSpeed < -0.05) {
+
+        if (controllerSpeed < -0.05) {
             // Adjusts speed using controller input
             m_speed = adjustedSpeed + (controllerSpeed * 0.7);
         } else {
@@ -59,12 +57,10 @@ void frc4783::DriveWithJoystick::Execute(){
         }
 
         // Aligns robot to power cell with angle error
-        if (H_error > 0 && H_error < 165 && distance != -9999) {
+        if (H_error > 0 && H_error < 165) {
             m_turn = (H_error * 0.0020) + 0.45;
-        } else if (H_error < 0 && H_error > -165 && distance != -9999) {
+        } else if (H_error < 0 && H_error > -165) {
             m_turn = (H_error * 0.0020) - 0.45;
-        } else {
-            m_turn = 0;
         }
     }
     drivetrain->ArcadeDrive(m_speed,m_turn);
