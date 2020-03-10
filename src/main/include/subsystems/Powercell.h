@@ -6,6 +6,7 @@
 #include "ctre/Phoenix.h"
 #include <math.h>
 #include "frc/DigitalInput.h"
+#include "frc/Servo.h"
 
 namespace frc4783 {
 
@@ -24,11 +25,27 @@ class Powercell : public frc2::SubsystemBase {
         bool intakeCheck;
         bool tempStop = true;
         void ballReset();
+        void Turn90();
+        void Turn45();
+        void Turn90Reverse();
+        void Turn45Reverse();
+        void State();
 
    private:
         std::shared_ptr<frc::SpeedController> m_motor;
         std::shared_ptr<frc::DigitalInput> forwardLimitSwitch;
         std::shared_ptr<frc::DigitalInput> reverseLimitSwitch;
- 
+        std::shared_ptr<frc::Servo> OuttakeMotor;
+
+    enum States{
+        closed = 0,
+        open = 1,
+        loading = 2
+    };
+
+    enum States m_state;
+
+    //state m_state;
+
 };
 } // namespace 4783

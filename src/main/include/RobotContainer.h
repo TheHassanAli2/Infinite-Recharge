@@ -39,39 +39,40 @@ public:
     RobotContainer();
 
     frc2::Command* GetAutonomousCommand();
-
+#ifdef PS4_CONTROLLER
     frc::Joystick ps4{1};
 
     // Drive Stick Buttons
     frc2::JoystickButton *aButtonS;
-    frc::JoystickButton *bButtonS;
+    frc2::JoystickButton *bButtonS;
     frc2::JoystickButton *xButtonS;
     frc2::JoystickButton *yButtonS;
     frc2::JoystickButton *leftBumperButtonS;
     frc2::JoystickButton *rightBumperButtonS;
-    frc::JoystickButton *selectButtonS;
-    frc::JoystickButton *startButtonS;
-    frc::JoystickButton *leftStickButtonS;
-    frc::JoystickButton *rightStickButtonS;
-    frc::JoystickButton *leftTriggerButtonS;
-    frc::JoystickButton *rightTriggerButtonS;
-    frc::JoystickButton *homeButtonS;
-    frc::JoystickButton *touchpadButtonS;
+    frc2::JoystickButton *selectButtonS;
+    frc2::JoystickButton *startButtonS;
+    frc2::JoystickButton *leftStickButtonS;
+    frc2::JoystickButton *rightStickButtonS;
+    frc2::JoystickButton *leftTriggerButtonS;
+    frc2::JoystickButton *rightTriggerButtonS;
+    frc2::JoystickButton *homeButtonS;
+    frc2::JoystickButton *touchpadButtonS;
+#endif
 
-#ifdef XBOX_CONTROLLER
+//#ifdef XBOX_CONTROLLER
     frc::Joystick xbox{0};
 
-    frc::JoystickButton *aButtonP;
-    frc::JoystickButton *bButtonP;
+    frc2::JoystickButton *aButtonP;
+    frc2::JoystickButton *bButtonP;
     frc2::JoystickButton *xButtonP;
     frc2::JoystickButton *yButtonP;
-    frc::JoystickButton *leftBumperButtonP;
-    frc::JoystickButton *rightBumperButtonP;
-    frc::JoystickButton *selectButtonP;
-    frc::JoystickButton *startButtonP;
-    frc::JoystickButton *leftStickButtonP;
-    frc::JoystickButton *rightStickButtonP;
-#endif
+    frc2::JoystickButton *leftBumperButtonP;
+    frc2::JoystickButton *rightBumperButtonP;
+    frc2::JoystickButton *selectButtonP;
+    frc2::JoystickButton *startButtonP;
+    frc2::JoystickButton *leftStickButtonP;
+    frc2::JoystickButton *rightStickButtonP;
+//#endif
 
     // Axies for controller
     static const int LEFT_X_AXIS = 0;	//Logitech
@@ -94,6 +95,7 @@ private:
     frc4783::ControlPanel  ctrlPanel;
     
     //Pointer Object of rrDriveTrain and object of rrTwoSpeed
+    
     frc4783::rrDriveTrain *drivetrain;
     frc4783::Powercell powercell;
     void ConfigureButtonBindings();
