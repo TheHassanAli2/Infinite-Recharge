@@ -5,10 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-
-#ifndef ROBOTCONTAINER_H
-#define ROBOTCONTAINER_H
-
+#pragma once
 #include <frc2/command/button/JoystickButton.h>
 #include <frc2/command/Command.h>
 #include <frc/buttons/JoystickButton.h>
@@ -16,11 +13,11 @@
 #include <subsystems/rrTwoSpeed.h>
 #include <frc2/command/ParallelRaceGroup.h>
 
+
 #include <subsystems/ControlPanel.h>
 #include <commands/RotatePanel.h>
 #include <commands/Solenoid.h>
-
-#include <frc/controller/PIDController.h>
+//#include "subsystems/Climber.h"
 #include <frc/controller/RamseteController.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/trajectory/Trajectory.h>
@@ -36,9 +33,6 @@
 #include <frc/trajectory/TrajectoryUtil.h>
 #include <wpi/SmallString.h>
 #include <string>
-
-#include "Constants.h"
-
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -54,7 +48,7 @@ class RobotContainer {
 public:
     RobotContainer();
 
-    frc2::Command* GetAutonomousCommand(std::string pathName);
+    frc2::Command* GetAutonomousCommand();
 
     frc::Joystick ps4{1};
 
@@ -113,11 +107,12 @@ private:
     frc4783::rrDriveTrain *drivetrain;
     
     wpi::SmallString<64> deployDirectory;
+    wpi::SmallString<64> deployDirectory2;
     frc::Trajectory exampleTrajectory;
+    frc::Trajectory traj2;
 
     frc::DifferentialDriveKinematics kDriveKinematics;
 
     void ConfigureButtonBindings();
 }; 
 }
-#endif // ROBOTMAP_H

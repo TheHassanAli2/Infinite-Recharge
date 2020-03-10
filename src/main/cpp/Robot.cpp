@@ -4,7 +4,7 @@
 #include <frc2/command/PrintCommand.h>
 #include <frc2/command/CommandScheduler.h>
 
-//ya feel?
+//ya feel? I feel.
 
 void Robot::RobotInit() {
 
@@ -21,8 +21,7 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run();}
 
 void Robot::AutonomousInit(){
-    m_autonomousCommand = robotcontainer.GetAutonomousCommand("Circle.paths.json");
-
+    m_autonomousCommand = robotcontainer.GetAutonomousCommand();
     if (m_autonomousCommand != nullptr) {
         m_autonomousCommand->Schedule();
     }

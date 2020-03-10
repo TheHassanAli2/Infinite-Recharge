@@ -7,24 +7,24 @@
 
 #include "commands/Auto.h"
 
-Auto::Auto() {
-  // Use addRequirements() here to declare subsystem dependencies.
+namespace frc4783{
+
+frc4783::Auto::Auto(frc4783::RobotContainer* contained) : container(contained) {
 }
 
 // Called when the command is initially scheduled.
-void Auto::Initialize() {
-  /*wpi::sys::path::append(deployDirectory, "paths");
-  wpi::sys::path::append(deployDirectory, "YourPath.wpilib.json");
-  frc::filesystem::GetDeployDirectory(deployDirectory);
-
-  trajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);*/
+void frc4783::Auto::Initialize() {
+  //container->GetAutonomousCommand("Circle.paths.json"); // drive forward
+  /* DUMP BALLS */
+  //container->GetAutonomousCommand("Line.paths.json"); // move to trench to collect power cells
 }
 
 // Called repeatedly when this Command is scheduled to run
-void Auto::Execute() {}
+void frc4783::Auto::Execute() {}
 
 // Called once the command ends or is interrupted.
-void Auto::End(bool interrupted) {}
+void frc4783::Auto::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool Auto::IsFinished() { return false; }
+bool frc4783::Auto::IsFinished() { return false; }
+}

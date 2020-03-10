@@ -71,7 +71,7 @@ void RobotContainer::ConfigureButtonBindings()
     
 }
 
-frc2::Command* frc4783::RobotContainer::GetAutonomousCommand(std::string pathName) {
+frc2::Command* frc4783::RobotContainer::GetAutonomousCommand() {
     // Create a voltage constraint to ensure we don't accelerate too fast
     frc::DifferentialDriveVoltageConstraint autoVoltageConstraint(
         frc::SimpleMotorFeedforward<units::meters>(DriveConstants::ks, DriveConstants::kv, DriveConstants::ka),
@@ -88,10 +88,15 @@ frc2::Command* frc4783::RobotContainer::GetAutonomousCommand(std::string pathNam
 
     frc::filesystem::GetDeployDirectory(deployDirectory);
     wpi::sys::path::append(deployDirectory, "paths");
-    wpi::sys::path::append(deployDirectory, pathName);
-    frc::filesystem::GetDeployDirectory(deployDirectory);
-
+    wpi::sys::path::append(deployDirectory, "Circle.paths.json");
     frc::Trajectory exampleTrajectory = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory);
+
+    frc::filesystem::GetDeployDirectory(deployDirectory2);
+    wpi::sys::path::append(deployDirectory2, "paths");
+    wpi::sys::path::append(deployDirectory2, "Line.paths.json");
+    frc::Trajectory traj2 = frc::TrajectoryUtil::FromPathweaverJson(deployDirectory2);
+
+
 
     frc2::RamseteCommand ramseteCommand(
         exampleTrajectory, 
@@ -105,9 +110,24 @@ frc2::Command* frc4783::RobotContainer::GetAutonomousCommand(std::string pathNam
         [this](auto left, auto right) { drivetrain->TankDriveVolts(left, right); },
         {drivetrain});
 
+    frc2::RamseteCommand ramseteCommand2(
+        traj2, 
+        [this]() { return drivetrain->GetPose(); },
+        frc::RamseteController(DriveConstants::kRamseteB, DriveConstants::kRamseteZeta),
+        frc::SimpleMotorFeedforward<units::meters>(DriveConstants::ks, DriveConstants::kv, DriveConstants::ka),
+        kDriveKinematics,
+        [this] { return drivetrain->GetWheelSpeeds(); },
+        frc2::PIDController(DriveConstants::kPDriveVel, 0, 0),
+        frc2::PIDController(DriveConstants::kPDriveVel, 0, 0),
+        [this](auto left, auto right) { drivetrain->TankDriveVolts(left, right); },
+        {drivetrain});
+
     // no auto
     return new frc2::SequentialCommandGroup(
         std::move(ramseteCommand),
+        // command(subsystem), // dump balls
+        // command(subsystem), // bring hatch open up
+        std::move(ramseteCommand2),
         frc2::InstantCommand([this] { drivetrain->TankDriveVolts(0_V, 0_V); }, {}));
 
 }

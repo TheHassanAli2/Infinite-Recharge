@@ -1,6 +1,6 @@
+#pragma once
 
-#ifndef ROBOT_H
-#define ROBOT_H
+#include <RobotContainer.h>
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 
@@ -9,7 +9,6 @@
 //#include <thread>
 
 // Subsystem includes
-#include <RobotContainer.h>
 
 class Robot : public frc::TimedRobot {
     public:
@@ -37,4 +36,3 @@ private:
 
     frc4783::RobotContainer robotcontainer;
 };
-#endif //ROBOT_H
