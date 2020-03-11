@@ -11,34 +11,42 @@ Outtake45::Outtake45(Powercell* subsystem) : powercell(subsystem){
 }
 
 void Outtake45::Initialize() {
-    if (powercellCheck){
+    /*if (powercellCheck){
         powercell->Stop();
         powercellCheck = false;
-        }
-    else {
-        movement++ ;
+        }*/
+    //else {
+        movement++;
         if (movement==1){
-          powercell->Turn90();
+            // open
+          powercell->OpenHatch();
           powercellCheck = true;
+          printf ("90 turn complete\n");
         }
         else if (movement==2){
-          powercell->Turn45Reverse();
+            //load
+          powercell->Loading();
           powercellCheck = true;
+          printf ("half-open\n");
         }
         else if (movement==3){
-          powercell->Turn45Reverse();
+            // close
+          powercell->Close();
           powercellCheck = true;
+          movement=0;
+          printf ("full close\n ");
         } 
-        else if (movement==4) {
+        /*else if (movement==4) {
             powercell->Turn90();
             powercellCheck = true;
             movement=0;
-        }
-        else {
+        }*/
+        /*else {
             powercell->Stop();
             powercellCheck = false;
-        }
-    }
+        }*/
+    //}
+    End();
     //OuttakeMotor->SetAngle(0);
 }
 

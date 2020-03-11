@@ -4,6 +4,10 @@
 
 namespace frc4783 {
 
+const int Powercell::OpenAngle = 130;
+const int Powercell::LoadAngle = 75;
+const int Powercell::ClosedAngle = 15;
+
 Powercell::Powercell(){
     //Let's show everything on the LiveWindow
     m_motor.reset(new frc::VictorSP(6));
@@ -11,7 +15,7 @@ Powercell::Powercell(){
     forwardLimitSwitch.reset(new frc::DigitalInput(0));
     reverseLimitSwitch.reset(new frc::DigitalInput(2));
     OuttakeMotor.reset(new frc::Servo(5));
-    OuttakeMotor->SetAngle(0);   
+    OuttakeMotor->SetAngle(ClosedAngle);   
     m_state = closed; 
 
 }
@@ -70,20 +74,28 @@ void Powercell::Periodic() {
     #endif
 }
 
-void Powercell::Turn90(){
-    OuttakeMotor->SetAngle(120);
+void Powercell::OpenHatch(){
+    OuttakeMotor->SetAngle(OpenAngle);
 }
 
+#if 0
 void Powercell::Turn45(){
     OuttakeMotor->SetAngle(60);
 }
+#endif
 
+#if 0
 void Powercell::Turn90Reverse(){
     OuttakeMotor->SetAngle(-120);
 }
+#endif
 
-void Powercell::Turn45Reverse(){
-    OuttakeMotor->SetAngle(-60);
+void Powercell::Loading(){
+    OuttakeMotor->SetAngle(LoadAngle);
+}
+
+void Powercell::Close(){
+    OuttakeMotor->SetAngle(ClosedAngle);
 }
 
 void Powercell::State(){

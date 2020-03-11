@@ -16,9 +16,7 @@
 #include "commands/Intake.h"
 #include "commands/ReverseIntake.h"
 #include "commands/Outtake45.h"
-#include "commands/Outtake90.h"
-#include "commands/Outtake40Reverse.h"
-#include "commands/Outtake90Reverse.h"
+
 
 
 namespace frc4783{

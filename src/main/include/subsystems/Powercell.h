@@ -25,10 +25,11 @@ class Powercell : public frc2::SubsystemBase {
         bool intakeCheck;
         bool tempStop = true;
         void ballReset();
-        void Turn90();
-        void Turn45();
-        void Turn90Reverse();
-        void Turn45Reverse();
+        void OpenHatch();
+        //void Turn45();
+        //void Turn90Reverse();
+        void Loading();
+        void Close();
         void State();
 
    private:
@@ -44,6 +45,10 @@ class Powercell : public frc2::SubsystemBase {
     };
 
     enum States m_state;
+
+    static const int OpenAngle;
+    static const int LoadAngle;
+    static const int ClosedAngle;
 
     //state m_state;
 
