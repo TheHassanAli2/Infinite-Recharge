@@ -16,9 +16,9 @@ frc4783::DriveWithJoystick::DriveWithJoystick(frc4783::rrDriveTrain* subsystem, 
     }
 
 void frc4783::DriveWithJoystick::Execute(){
-   // float m_speed = (0.95 * container->ps4.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
-    //float m_turn = (1.0 * container->ps4.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
-    //drivetrain->ArcadeDrive(m_speed,m_turn);
+    float m_speed = (0.95 * container->xbox.GetRawAxis(RobotContainer::LEFT_Y_AXIS_E));
+    float m_turn = (1.0 * container->xbox.GetRawAxis(RobotContainer::RIGHT_X_AXIS_E));
+    drivetrain->ArcadeDrive(m_speed,m_turn);
 } 
 
 bool frc4783::DriveWithJoystick::IsFinished(){
