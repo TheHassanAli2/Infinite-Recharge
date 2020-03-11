@@ -21,20 +21,20 @@ void Outtake45::Initialize() {
             // open
           powercell->OpenHatch();
           powercellCheck = true;
-          printf ("90 turn complete\n");
+          printf ("Hatch Opened\n");
         }
         else if (movement==2){
             //load
           powercell->Loading();
           powercellCheck = true;
-          printf ("half-open\n");
+          printf ("Hatch Loading\n");
         }
         else if (movement==3){
             // close
           powercell->Close();
           powercellCheck = true;
           movement=0;
-          printf ("full close\n ");
+          printf ("Hatch Closed\n ");
         } 
         /*else if (movement==4) {
             powercell->Turn90();

@@ -36,7 +36,7 @@ void Powercell::IntakeLogic() {
 }
 
 void Powercell::Turn() {
-     m_motor->Set(0.3); 
+     m_motor->Set(1.0); 
 }
 
 void Powercell::Stop() { 
@@ -44,7 +44,7 @@ void Powercell::Stop() {
 }
 
 void Powercell::Reverse() { 
-    m_motor->Set(-0.3); 
+    m_motor->Set(-1.0); 
 }
 
 void Powercell::ballReset() {
