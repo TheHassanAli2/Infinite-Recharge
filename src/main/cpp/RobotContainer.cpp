@@ -41,7 +41,6 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Left Button
     // --------------------------------
-
     m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Button,
                                 frc4783::JoystickButtonActions_e::ToggleWhenPressed,
                                 new frc4783::GearShift(m_drivetrain));
@@ -49,8 +48,6 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Right Button
     // --------------------------------
-    //bButtonS->WhenPressed(new frc4783::ClimbRetract(&climber));
-
     m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Button,
                                 frc4783::JoystickButtonActions_e::WhenPressed,
                                 new frc4783::ClimbRetract(&m_climber));
@@ -59,15 +56,13 @@ void RobotContainer::ConfigureButtonBindings()
     // Top Button
     // --------------------------------
 
-    m_controller->addCommand(frc4783::ControllerButtonType_e::Top_Button,
-                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::RotatePanel(&m_ctrlPanel));
+    /**
+     * Used for Vision Alignment
+     */
 
     // --------------------------------
     // Bottom Button
     // --------------------------------
-    //aButtonS->WhenPressed(new frc4783::ClimbHook(&climber, this));
-
     m_controller->addCommand(frc4783::ControllerButtonType_e::Bottom_Button,
                                 frc4783::JoystickButtonActions_e::WhenPressed,
                                 new frc4783::ClimbHook(&m_climber));
@@ -75,9 +70,6 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Left Bumper
     // --------------------------------
-    m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Bumper,
-                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
-                                new frc4783::Solenoid(&m_ctrlPanel));
 
     // --------------------------------
     // Right Bumper
@@ -102,10 +94,16 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Fn Left
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::FnLeft,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::RotatePanel(&m_ctrlPanel));
 
     // --------------------------------
     // Fn Right
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::FnRight,
+                                frc4783::JoystickButtonActions_e::ToggleWhenPressed,
+                                new frc4783::Solenoid(&m_ctrlPanel));
 
     // --------------------------------
     // Centre
@@ -114,7 +112,6 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Touchpad
     // --------------------------------
-
     
 
 
