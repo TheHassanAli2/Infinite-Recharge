@@ -57,8 +57,9 @@ bool Powercell::cellCheck() {
 }
 
 void Powercell::Periodic() {
+    #if 0
      this->cellCheck();
-   printf ("Periodic:  %d\n", this->ballNumber);
+  //  printf ("Periodic:  %d\n", this->ballNumber);
     if (this->cellCheck() == true) {
         this->ballCheck = 1;
     }else if (this->cellCheck() == false && this->ballCheck == 1){
@@ -70,6 +71,7 @@ void Powercell::Periodic() {
         this->IntakeLogic();
         tempStop = false;
     }
+    #endif
 }
 
 void Powercell::OpenHatch(){

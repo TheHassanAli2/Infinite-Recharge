@@ -16,6 +16,13 @@ Intake::Intake(Powercell* subsystem) : powercell(subsystem){
 void Intake::Initialize() {
      powercell->IntakeLogic();
 
+    if (intake){
+        powercell->Stop();
+        intake = false;
+    } else {
+        powercell->Turn();
+        intake = true;
+    }
 } 
 
 void Intake::Execute(){
