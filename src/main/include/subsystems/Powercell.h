@@ -31,6 +31,7 @@ class Powercell : public frc2::SubsystemBase {
         void Loading();
         void Close();
         void State();
+        float speed;
 
    private:
         std::shared_ptr<frc::SpeedController> m_motor;
