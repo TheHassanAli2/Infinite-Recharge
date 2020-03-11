@@ -25,6 +25,7 @@ class Intake
 
  private:
   frc4783::Powercell* powercell;
+  bool intake;
 } ;
 
 } // namespace frc4783

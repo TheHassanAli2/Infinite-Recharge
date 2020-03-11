@@ -11,10 +11,19 @@ namespace frc4783 {
 
 Intake::Intake(Powercell* subsystem) : powercell(subsystem){
         AddRequirements(subsystem);
+        intake = false;
     }
 void Intake::Initialize() {
      powercell->IntakeLogic();
-}
+
+    if (intake){
+        powercell->Stop();
+        intake = false;
+    } else {
+        powercell->Turn();
+        intake = true;
+    }
+} 
 
 void Intake::Execute(){
 

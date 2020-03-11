@@ -87,7 +87,8 @@ void RobotContainer::ConfigureButtonBindings()
     leftTriggerButtonS*/
     aButtonP
         ->WhenPressed(new frc4783::Outtake45(&powercell));
-    
+     leftBumperButtonP->WhenPressed(new frc4783::Intake(&powercell));
+     rightBumperButtonP->WhenPressed(new frc4783::ReverseIntake(&powercell));
 
 #ifdef XBOX_CONTROLLER
     xButtonP->ToggleWhenPressed(new frc4783::RotatePanel(&ctrlPanel));

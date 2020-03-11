@@ -46,8 +46,10 @@ void Outtake45::Initialize() {
             powercellCheck = false;
         }*/
     //}
+
     End();
     //OuttakeMotor->SetAngle(0);
+
 }
 
 void Outtake45::Execute(){
@@ -59,7 +61,7 @@ bool Outtake45::IsFinished(){
 }
 
 void Outtake45::End(){
-    powercell->Stop();
+    //powercell->Stop();
 }
 
 void Outtake45::Interrupted(){
