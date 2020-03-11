@@ -21,7 +21,7 @@ rrDriveTrain::rrDriveTrain()
      * @todo: motor type and signal type should be parameters to rrDriveTrain constructor
      */
     motors = VictorSPX; 
-    signal = CAN;
+    signal = PWM;
 
     //Port numeration
     frontLeftPort = 0;
@@ -56,10 +56,10 @@ rrDriveTrain::rrDriveTrain()
         backRightMotor.reset(new frc::PWMTalonSRX(backRightPort));
     }
 
-    frontLeftMotor->SetInverted(true);
-    backLeftMotor->SetInverted(true);
-    frontRightMotor->SetInverted(true);
-    backRightMotor->SetInverted(true);
+    frontLeftMotor->SetInverted(false);
+    backLeftMotor->SetInverted(false);
+    frontRightMotor->SetInverted(false);
+    backRightMotor->SetInverted(false);
     
     printf("rrDriveTrain init completed\n");
 }
