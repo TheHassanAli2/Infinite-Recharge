@@ -21,12 +21,13 @@ rrDriveTrain::rrDriveTrain()
      * @todo: motor type and signal type should be parameters to rrDriveTrain constructor
      */
     motors = VictorSPX; 
-    signal = PWM;
+    signal = CAN;
 
     //Port numeration
     frontLeftPort = 0;
-    frontRightPort = 1;
-    backLeftPort = 2;
+    backLeftPort = 1;
+
+    frontRightPort = 2;
     backRightPort = 3;
 
     //Automated decleration of motors
