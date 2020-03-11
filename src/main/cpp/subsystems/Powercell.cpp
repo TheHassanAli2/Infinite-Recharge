@@ -22,12 +22,12 @@ Powercell::Powercell(){
 
 void Powercell::IntakeLogic() {
     if (this->ballNumber<6){
-        if (speed == 0){
-            this->Turn();
+        if (this->intakeCheck){
+            this->Stop();
             this->intakeCheck = false;
         }
         else {
-            this->Stop();
+            this->Turn();
             this->intakeCheck = true;
         }   
     }else{
@@ -36,18 +36,15 @@ void Powercell::IntakeLogic() {
 }
 
 void Powercell::Turn() {
-    speed = 1;
-     m_motor->Set(speed); 
+     m_motor->Set(0.3); 
 }
 
-void Powercell::Stop() {
-    speed = 0; 
-    m_motor->Set(speed); 
+void Powercell::Stop() { 
+    m_motor->Set(0); 
 }
 
 void Powercell::Reverse() { 
-    speed = -1;
-    m_motor->Set(speed); 
+    m_motor->Set(-0.3); 
 }
 
 void Powercell::ballReset() {
@@ -77,7 +74,6 @@ void Powercell::Periodic() {
 
 void Powercell::OpenHatch(){
     OuttakeMotor->SetAngle(OpenAngle);
-    ballReset();
 }
 
 #if 0
