@@ -24,7 +24,7 @@ protected:
         buttonBackId = 7,
         buttonStartId = 8,
         buttonLeftStickId = 9,
-        buttonRightStickId = 10
+        buttonRightStickId = 10,
     };
 
     enum axisId {

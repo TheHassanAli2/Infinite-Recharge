@@ -13,6 +13,9 @@
 #include "commands/GearShift.h"
 #include "commands/ClimbHook.h" 
 #include "commands/ClimbRetract.h"
+#include "commands/Outtake45.h"
+#include "commands/Intake.h"
+#include "commands/ReverseIntake.h"
 #include "subsystems/Climber.h"
 #include <frc2/command/button/JoystickButton.h>
 
@@ -25,8 +28,8 @@ RobotContainer::RobotContainer()
 {
     printf("RobotContainer: drivetrain -set default command\n");
 
-    //m_controller = new frc4783::XboxController(0);
-    m_controller = new frc4783::PS4Controller(1);
+    m_controller = new frc4783::XboxController(0);
+    //m_controller = new frc4783::PS4Controller(1);
 
     //drivetrain = new frc4783::rrDifferentialDrive();
     m_drivetrain = new frc4783::rrTwoSpeed();
@@ -70,10 +73,16 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Left Bumper
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Left_Bumper,
+                                frc4783::JoystickButtonActions_e::WhenPressed,
+                                new frc4783::ReverseIntake(&m_powercell));
 
     // --------------------------------
     // Right Bumper
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Bumper,
+                                frc4783::JoystickButtonActions_e::WhenPressed,
+                                new frc4783::Intake(&m_powercell));
 
     // --------------------------------
     // Left Trigger
@@ -82,6 +91,9 @@ void RobotContainer::ConfigureButtonBindings()
     // --------------------------------
     // Right Trigger
     // --------------------------------
+    m_controller->addCommand(frc4783::ControllerButtonType_e::Right_Trigger,
+                                frc4783::JoystickButtonActions_e::WhenPressed,
+                                new frc4783::Outtake45(&m_powercell));
 
     // --------------------------------
     // Left Stick

@@ -23,6 +23,13 @@
 #include <commands/Solenoid.h>
 #include "subsystems/Climber.h"
 
+
+
+
+
+
+
+#include <subsystems/Powercell.h>
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -46,8 +53,10 @@ private:
 
     frc4783::ControlPanel m_ctrlPanel;
     frc4783::Climber m_climber;
-    
-    //Pointer Object of rrDriveTrain and object of rrTwoSpeed
+    frc4783::Powercell m_powercell;
+
+   
+ //Pointer Object of rrDriveTrain and object of rrTwoSpeed
     frc4783::rrDriveTrain *m_drivetrain;
     
     void ConfigureButtonBindings();
