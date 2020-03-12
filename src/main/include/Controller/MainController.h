@@ -16,9 +16,10 @@ public:
     bool getRawButton(ControllerButtonType_e id);
     int addCommand(ControllerButtonType_e button, JoystickButtonActions_e action, frc2::Command * command);
 
+    virtual int mapButton(ControllerButtonType_e id) = 0;
+
 protected:
     virtual int mapAxes(ControllerAxesType_e id) = 0; 
-    virtual int mapButton(ControllerButtonType_e id) = 0;
 
     int m_id;
 

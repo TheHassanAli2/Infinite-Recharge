@@ -51,13 +51,13 @@ private:
 
     frc4783::MainController * m_controller;
 
-    frc4783::ControlPanel m_ctrlPanel;
-    frc4783::Climber m_climber;
-    frc4783::Powercell m_powercell;
+    //frc4783::ControlPanel m_ctrlPanel;
+    //frc4783::Climber m_climber;
+    //frc4783::Powercell m_powercell;
 
    
  //Pointer Object of rrDriveTrain and object of rrTwoSpeed
-    frc4783::rrDriveTrain *m_drivetrain;
+    //frc4783::rrDriveTrain *m_drivetrain;
     
     void ConfigureButtonBindings();
 }; 
